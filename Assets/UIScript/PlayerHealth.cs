@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -17,13 +18,14 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth = currentHealth - damage;
+        healthUI.SetHealth(currentHealth);
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(20);
-            healthUI.SetHealth(currentHealth);
+   
         }
     }
 }
