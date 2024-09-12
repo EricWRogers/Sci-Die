@@ -9,7 +9,7 @@ public class Pistol : MonoBehaviour
     public float timeLeft = 3.0f;
     void Update()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
+        transform.position += transform.right * speed * Time.deltaTime;
         timeLeft = timeLeft - Time.deltaTime;
         if(timeLeft < 0)
         {
