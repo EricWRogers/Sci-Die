@@ -6,8 +6,11 @@ public class WeaponUpgrade : MonoBehaviour
     // Initial weapon damage
     public float baseDamage = 10f;
 
-    // Multiplier for weapon upgrades
+    // Multiplier for weapon upgrades (exposed in the Inspector)
     public float upgradeMultiplier = 1f;
+
+    // Maximum damage limit (exposed in the Inspector)
+    public float maxDamage = 100f;
 
     // Current damage with upgrades applied
     private float currentDamage;
@@ -18,7 +21,7 @@ public class WeaponUpgrade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize current damage
+        // Initialize current damage to base damage (no upgrades yet)
         currentDamage = baseDamage;
 
         // Get the Renderer component to change color
@@ -29,23 +32,25 @@ public class WeaponUpgrade : MonoBehaviour
         {
             cubeRenderer.material.color = Color.white;
         }
-
-        UpdateWeaponDamage();
     }
 
-    // Function to upgrade the weapon with a given multiplier
-    public void UpgradeWeapon(float multiplier)
+    // Function to upgrade the weapon with the current multiplier
+    public void UpgradeWeapon()
     {
-        upgradeMultiplier = multiplier;
+        // Multiply the current damage by the upgrade multiplier
+        currentDamage *= upgradeMultiplier;
+
+        // Clamp the current damage to not exceed the maximum damage
+        currentDamage = Mathf.Min(currentDamage, maxDamage);
+
         UpdateWeaponDamage();
     }
 
-    // Function to calculate the current damage based on multiplier
+    // Function to calculate and log the current damage
     void UpdateWeaponDamage()
     {
-        currentDamage = baseDamage * upgradeMultiplier;
         UnityEngine.Debug.Log("Weapon upgraded! Current damage: " + currentDamage);
-        // Debugger to pause the game for inspection
+        // Debugger to pause the game for inspection (optional)
         Debugger.Break();
     }
 
@@ -68,8 +73,8 @@ public class WeaponUpgrade : MonoBehaviour
     // Simulate a weapon upgrade, e.g., when picking up an upgrade
     void OnUpgrade()
     {
-        // Example: Double the weapon's damage
-        UpgradeWeapon(2.0f); // Change 2.0f to the desired multiplier for different upgrades
+        // Upgrade the weapon using the multiplier from the Inspector
+        UpgradeWeapon();
 
         // Change the cube's color to indicate the upgrade (e.g., red)
         ChangeColor(Color.red);
