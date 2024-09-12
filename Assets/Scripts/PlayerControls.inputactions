@@ -140,7 +140,7 @@
                 {
                     "name": "up",
                     "id": "6e4784e9-fd73-4fab-b6e7-09349f4e20fb",
-                    "path": "<XInputController>/leftStick/up",
+                    "path": "<XInputController>/leftStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -151,7 +151,7 @@
                 {
                     "name": "down",
                     "id": "a2bcf49e-9135-4b2e-88b7-2ee7550d2d27",
-                    "path": "<XInputController>/leftStick/down",
+                    "path": "<XInputController>/leftStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -162,7 +162,7 @@
                 {
                     "name": "left",
                     "id": "567360da-56de-4a7d-b906-112a8f03f683",
-                    "path": "<XInputController>/leftStick/left",
+                    "path": "<XInputController>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -173,7 +173,7 @@
                 {
                     "name": "right",
                     "id": "d28c9f56-eb82-4235-b058-a50ae93971a5",
-                    "path": "<XInputController>/leftStick/right",
+                    "path": "<XInputController>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",

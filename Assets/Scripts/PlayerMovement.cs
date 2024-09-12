@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         moveDirection = move.action.ReadValue<Vector2>();
-        if (Input.GetKeyDown(KeyCode.Q) && canDash)
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float orginalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.velocity = new Vector2(moveDirection.x * dashingPower, moveDirection.y * dashingPower);
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = orginalGravity;
         isDashing = false;
