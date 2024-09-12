@@ -5,7 +5,16 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     private float bulletTime = 10;
+    public float bulletSpeed = 10;
+    Rigidbody2D rb;
+    private GameObject target;
 
+    private void Start()
+    {
+        target = GameObject.FindWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(target.transform.position *  bulletSpeed);
+    }
     // Update is called once per frame
     void Update()
     {

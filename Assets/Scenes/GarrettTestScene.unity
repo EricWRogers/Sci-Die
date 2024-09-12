@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 413213114}
-  speed: 300
+  speed: 200
   nextWaypointDistance: 3
 --- !u!114 &663668350
 MonoBehaviour:
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 2041569124}
   Bullet: {fileID: 3555092075681369672, guid: 1e12e051a2330eb47b7acff852a4710a, type: 3}
-  bulletSpeed: 40
+  bulletSpeed: 200
   target: {fileID: 413213114}
   fireRate: 0.8
 --- !u!61 &663668354
@@ -1448,7 +1448,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2041569124}
   - component: {fileID: 2041569125}
-  - component: {fileID: 2041569127}
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
@@ -1523,19 +1522,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2041569127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041569123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9343625d4e9e62744beeb4494f3f2de6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 413213114}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

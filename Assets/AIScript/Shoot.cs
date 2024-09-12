@@ -9,14 +9,16 @@ public class Shoot : MonoBehaviour
     public GameObject Bullet;
     public float bulletSpeed = 10f;
     public Transform target;
-    Vector2 Direction;
+    Vector2 dir;
     public float fireRate = 1f;
     float nextFire;
 
     void Update()
     {
-        Vector2 targetpos = target.position;
-        Direction = targetpos - (Vector2)transform.position;
+        dir = target.position - transform.position;
+        float angle = (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
 
         if (Time.time > nextFire)
         {
@@ -28,6 +30,5 @@ public class Shoot : MonoBehaviour
     void shoot()
     {
         GameObject BulletIns = Instantiate(Bullet, FirePoint.position, Quaternion.identity);
-        BulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * bulletSpeed);
     }
 }
