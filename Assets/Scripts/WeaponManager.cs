@@ -8,24 +8,20 @@ public class WeaponManager : MonoBehaviour
 
     public Transform weapon;
 
-    public float updateTime = 0.0f;
+    public float fireRate = 0.0f;
     
-    public float frequency = 0.0f;
-
-    void Awake(){
-        QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 60;
-    }
+    private float time = 0.0f;
 
     void Update(){
-        updateTime = updateTime += Time.deltaTime;
-        if (updateTime <= frequency){
-            if(Input.GetKey(KeyCode.Mouse0)){
+
+        time += Time.deltaTime;
+        float timeToNextFire = 1/fireRate;
+        if(Input.GetKeyDown(KeyCode.Mouse0)){
+            if(time >= timeToNextFire){
                 Instantiate(bullet, weapon.position, weapon.rotation);
+                time = 0;
             }
-            updateTime = 0.0f;
         }
-        
     }
     
 }
