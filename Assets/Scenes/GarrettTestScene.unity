@@ -636,6 +636,7 @@ GameObject:
   - component: {fileID: 663668348}
   - component: {fileID: 663668352}
   - component: {fileID: 663668354}
+  - component: {fileID: 663668355}
   - component: {fileID: 663668353}
   - component: {fileID: 663668350}
   - component: {fileID: 663668349}
@@ -746,7 +747,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 2041569124}
   Bullet: {fileID: 3555092075681369672, guid: 1e12e051a2330eb47b7acff852a4710a, type: 3}
-  bulletSpeed: 200
   target: {fileID: 70337353}
   fireRate: 0.8
 --- !u!61 &663668354
@@ -794,6 +794,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &663668355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663668347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb5b3fcf9bd8124b95262a1a0a1c8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 10
+  maxHealth: 10
+  outOfHealth:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &881025837
 GameObject:
   m_ObjectHideFlags: 0
