@@ -156,6 +156,7 @@ MonoBehaviour:
   weaponManager: {fileID: 1780140952}
   Pistol: {fileID: 11400000, guid: 9638b080b547fb148a2e0be5c044d35f, type: 2}
   Shotgun: {fileID: 11400000, guid: 1a0b0558e2fcbb04f95fb01e7b55874c, type: 2}
+  MachineGun: {fileID: 11400000, guid: 9e17f72e85e610a41946b172a15c6a38, type: 2}
 --- !u!212 &381353842
 SpriteRenderer:
   m_ObjectHideFlags: 0

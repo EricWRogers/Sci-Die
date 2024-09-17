@@ -8,6 +8,7 @@ public class GunHaverScript : MonoBehaviour
     public WeaponManager weaponManager;
     public WeaponAsset Pistol;
     public WeaponAsset Shotgun;
+    public WeaponAsset MachineGun;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,11 @@ public class GunHaverScript : MonoBehaviour
 
         if (Input.GetKeyDown("2")){
             weaponManager.UpdateWeapon(Shotgun);
+            Destroy(this.transform.parent);
+        }
+
+        if (Input.GetKeyDown("3")){
+            weaponManager.UpdateWeapon(MachineGun);
             Destroy(this.transform.parent);
         }
     }
