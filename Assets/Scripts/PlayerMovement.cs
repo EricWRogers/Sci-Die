@@ -27,9 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = new Vector2(moveX, moveY).normalized;
 
-        if(Input.GetKey(KeyCode.Q))
+        if(Input.GetKey(KeyCode.Space))
         {
-            moveSpeed = 10;
+            moveSpeed = 25;
         }
 
     }
