@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7642351716866407521, guid: a6c81257feeb3af49a6a04d910e1d233, type: 3}
   activeGun: Shotgun
-  fireRate: 1
+  fireRate: 2

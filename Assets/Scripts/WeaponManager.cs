@@ -47,13 +47,13 @@ public class WeaponManager : MonoBehaviour
             } 
         }
 
-        if (activeGun == "MachineGun" && (Input.GetKey(KeyCode.Mouse0))){
-                if (activeGun == "MachineGun"){
-                    if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
-                    }
-                }
+        if (activeGun == "MachineGun" && (Input.GetKey(KeyCode.Mouse0)) && time >= 0){
+            if(time >= timeToNextFire){
+                Instantiate(bullet, weapon.position, weapon.rotation);
+                time = 0;
             }
+                
+        }
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
     {
