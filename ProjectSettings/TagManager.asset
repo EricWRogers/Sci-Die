@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Walls
+  - Bullet
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -12,8 +14,8 @@ TagManager:
   - Walls
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
