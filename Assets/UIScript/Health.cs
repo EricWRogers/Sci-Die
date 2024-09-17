@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(1.0f);
+           // TakeDamage(1.0f);
 
         }
     }
