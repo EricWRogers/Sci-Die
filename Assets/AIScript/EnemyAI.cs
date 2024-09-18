@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform target;
+    private GameObject m_target;
 
     public float speed;
     public float nextWaypointDistance;
@@ -22,6 +23,7 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        m_target = GameObject.FindGameObjectWithTag("Player");
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
@@ -29,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         if(seeker.IsDone())
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            seeker.StartPath(rb.position, m_target.transform.position, OnPathComplete);
     }
 
     void OnPathComplete(Path p)

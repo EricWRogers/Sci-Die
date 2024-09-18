@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     }
 
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
 
           currentHealth -= damage;

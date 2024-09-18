@@ -18,6 +18,9 @@ public class WeaponManager : MonoBehaviour
 
     public WeaponAsset defaultWeaponAsset;
 
+    private Camera mainCam;
+    private Vector3 mousePos;
+
     public WeaponManager(){
 
     }
@@ -26,8 +29,18 @@ public class WeaponManager : MonoBehaviour
     {
         UpdateWeapon(defaultWeaponAsset);
     }
-    void Update(){
 
+    private void Start()
+    {
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+    }
+    void Update(){
+        
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 rotation = mousePos - transform.position;
+        float zAxis = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, zAxis);
 
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;

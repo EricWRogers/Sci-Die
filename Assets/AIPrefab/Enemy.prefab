@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 7922358620755125518}
   m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,7 +221,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 1.5
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -310,7 +310,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 6976228245880051487}
   Bullet: {fileID: 3555092075681369672, guid: 1e12e051a2330eb47b7acff852a4710a, type: 3}
-  target: {fileID: 0}
   fireRate: 0.8
 --- !u!114 &7398669331438284318
 MonoBehaviour:
@@ -352,6 +351,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d65ed0b6f715646ba197c8435324ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   speed: 200
   nextWaypointDistance: 3
