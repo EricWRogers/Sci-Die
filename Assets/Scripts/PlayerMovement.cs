@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         moveDirection = move.action.ReadValue<Vector2>();
+        
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash());
