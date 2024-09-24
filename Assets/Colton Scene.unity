@@ -157,6 +157,8 @@ MonoBehaviour:
   Pistol: {fileID: 11400000, guid: 9638b080b547fb148a2e0be5c044d35f, type: 2}
   Shotgun: {fileID: 11400000, guid: 1a0b0558e2fcbb04f95fb01e7b55874c, type: 2}
   MachineGun: {fileID: 11400000, guid: 9e17f72e85e610a41946b172a15c6a38, type: 2}
+  RocketLauncher: {fileID: 11400000, guid: 368e482fe8e63d74190d210a5a21368c, type: 2}
+  Railgun: {fileID: 11400000, guid: 1d10ddd68e3655c41b140410fb815b22, type: 2}
 --- !u!212 &381353842
 SpriteRenderer:
   m_ObjectHideFlags: 0

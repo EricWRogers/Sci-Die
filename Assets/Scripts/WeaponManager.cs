@@ -31,8 +31,8 @@ public class WeaponManager : MonoBehaviour
 
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
-        if((activeGun == "Pistol" || activeGun == "Shotgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
-            if (activeGun == "Pistol"){
+        if((activeGun == "RocketLauncher" || activeGun == "Shotgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
+            if (activeGun == "RocketLauncher"){
                 if(time >= timeToNextFire){
                     Instantiate(bullet, weapon.position, weapon.rotation);
                     time = 0;
@@ -47,13 +47,22 @@ public class WeaponManager : MonoBehaviour
             } 
         }
 
-        if (activeGun == "MachineGun" && (Input.GetKey(KeyCode.Mouse0)) && time >= 0){
-            if(time >= timeToNextFire){
-                Instantiate(bullet, weapon.position, weapon.rotation);
-                time = 0;
+        if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0)) && time >= 0){
+            if(activeGun == "Pistol"){
+                if(time >= timeToNextFire){
+                    Instantiate(bullet, weapon.position, weapon.rotation);
+                    time = 0;
+                }
+            }
+            if(activeGun == "MachineGun"){
+                if(time >= timeToNextFire){
+                    Instantiate(bullet, weapon.position, weapon.rotation);
+                    time = 0;
+                }
             }
                 
         }
+        
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
     {

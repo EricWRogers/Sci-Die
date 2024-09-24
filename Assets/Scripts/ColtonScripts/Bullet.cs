@@ -11,9 +11,6 @@ public class Bullet : MonoBehaviour
     {
         transform.position += transform.right * speed * Time.deltaTime;
         timeLeft = timeLeft - Time.deltaTime;
-        /*if(transform.root!=transform){
-            Destroy(gameObject.parent);
-        } The parent of the shotgun bullets is left behind currently when the bullets get deleted.*/ 
         if(timeLeft < 0)
         {
             Destroy(gameObject);
