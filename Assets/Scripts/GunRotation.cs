@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GunFollowAndRotate : MonoBehaviour
+public class GunRotation : MonoBehaviour
 {
     private Camera mainCam;
 
@@ -17,15 +17,13 @@ public class GunFollowAndRotate : MonoBehaviour
         mousePos.z = 0; // Ensure we're working in 2D space
 
         // Calculate the direction to the mouse position
-        Vector3 direction = mousePos - transform.position;
+        Vector3 direction = (mousePos - transform.position).normalized;
 
         // Calculate the angle in degrees and apply the rotation
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        // Adjust the angle by adding 180 degrees
+        // Adjust the angle by adding 180 degrees if needed
         transform.rotation = Quaternion.Euler(0, 0, angle + 180);
-
-        // Optionally, move the GameObject to the mouse position
-        transform.position = mousePos;
     }
 }
+
