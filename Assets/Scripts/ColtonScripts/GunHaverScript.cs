@@ -34,7 +34,7 @@ public class GunHaverScript : MonoBehaviour
             Destroy(this.transform.parent);
         }
         if(Input.GetKeyDown("5")){
-            weaponManager.UpdateWeapon(RocketLauncher);
+            weaponManager.UpdateWeapon(Railgun);
             Destroy(this.transform.parent);
         }
     }

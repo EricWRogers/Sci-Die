@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SuperPupSystems.Helper;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class WeaponManager : MonoBehaviour
     private float time = 0.0f;
 
     public string activeGun;
+
+    private float destroyTimer;
 
     public WeaponAsset defaultWeaponAsset;
 
@@ -31,7 +34,7 @@ public class WeaponManager : MonoBehaviour
 
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
-        if((activeGun == "RocketLauncher" || activeGun == "Shotgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
+        if((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
             if (activeGun == "RocketLauncher"){
                 if(time >= timeToNextFire){
                     Instantiate(bullet, weapon.position, weapon.rotation);
@@ -44,7 +47,19 @@ public class WeaponManager : MonoBehaviour
                     Instantiate(bullet, weapon.position, weapon.rotation);
                     time = 0;
                 }
-            } 
+            }
+
+            if (activeGun == "Railgun"){
+                if(Input.GetKeyUp(KeyCode.Mouse0)){
+                    Debug.Log("Released");
+                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
+                    time = 0;
+                    destroyTimer += 1;
+                    if(destroyTimer == 3.0f){
+                        Destroy(go);
+                    }
+                }
+            }
         }
 
         if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0)) && time >= 0){
