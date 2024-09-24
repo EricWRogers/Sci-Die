@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     }
 
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
 
           currentHealth -= damage;
@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(1.0f);
+           // TakeDamage(1.0f);
 
         }
     }

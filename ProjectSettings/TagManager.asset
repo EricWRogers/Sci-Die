@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Walls
+  - Bullet
   - Gun
+  - Floors
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,8 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
-  - 
+  - Wall
+  - Floor
   - 
   - 
   - 
@@ -42,4 +45,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Walls
+    uniqueID: 1082924409
+    locked: 0
+  - name: Floors
+    uniqueID: 182821455
+    locked: 0
+  - name: Pillars
+    uniqueID: 3643941159
+    locked: 0
+  - name: PressurePlates
+    uniqueID: 564231271
+    locked: 0
+  - name: Doors
+    uniqueID: 1690793613
     locked: 0
