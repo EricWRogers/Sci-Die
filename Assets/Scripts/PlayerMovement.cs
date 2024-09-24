@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 moveDirection;
-
+    
     public InputActionReference move;
 
     private bool canDash = true;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         moveDirection = move.action.ReadValue<Vector2>();
+        
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash());
