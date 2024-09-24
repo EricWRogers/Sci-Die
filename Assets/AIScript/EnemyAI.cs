@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyAI : MonoBehaviour
 {
     private GameObject m_target;
 
+
+    public float maxSpeed;
     public float speed;
     public float nextWaypointDistance;
 
@@ -21,6 +20,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxSpeed = speed;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         m_target = GameObject.FindGameObjectWithTag("Player");
