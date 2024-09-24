@@ -1387,6 +1387,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &32987743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3448847987444685970, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
+  m_PrefabInstance: {fileID: 1455702840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &115263999
 GameObject:
   m_ObjectHideFlags: 0
