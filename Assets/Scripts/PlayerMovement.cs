@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
-
+    public float moveSpeed = 5f; // Default move speed
     public Rigidbody2D rb;
 
+    public float health = 100f;   // Starting health
+    public float maxHealth = 100f; // Max health cap
+    public float damage = 10f;     // Starting damage
+    public int dashCount = 1;      // Starting dash count
+
     private Vector2 moveDirection;
-    // Update is called once per frame
+
     void Update()
     {
         ProcessInputs();
     }
 
-    public void FixedUpdate()
+    void FixedUpdate()
     {
         Move();
     }
@@ -27,11 +31,10 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = new Vector2(moveX, moveY).normalized;
 
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            moveSpeed = 25;
+            moveSpeed = 25f;  // Increased speed when space is held down
         }
-
     }
 
     void Move()
