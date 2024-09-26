@@ -7,14 +7,19 @@ public class Shoot : MonoBehaviour
 {
     public Transform FirePoint;
     public GameObject Bullet;
-    public Transform target;
+    private GameObject m_target;
     Vector2 dir;
     public float fireRate = 1f;
     float nextFire;
 
+    private void Start()
+    {
+        m_target = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void FixedUpdate()
     {
-        dir = target.position - transform.position;
+        dir = m_target.transform.position - transform.position;
         float angle = (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         
