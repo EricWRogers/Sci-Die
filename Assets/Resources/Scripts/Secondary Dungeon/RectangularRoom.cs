@@ -5,10 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class RectangularRoom
 {
-    public int x;
-    public int y;
-    public int width;
-    public int height;
+    [SerializeField] private int x, y, width, height;
+
+    public int X { get => x; } 
+    public int Y { get => y; }
+    public int Width { get => width; }
+    public int Height { get => height; }
 
     public RectangularRoom(int x, int y, int width, int height, int count)
     {

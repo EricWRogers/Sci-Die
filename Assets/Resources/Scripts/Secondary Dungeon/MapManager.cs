@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MapManager : MonoBehaviour
+public class MapManager : MonoBehaviour 
 {
-    public static MapManager instance;
+  public static MapManager instance;
 
     [Header("Map Settings:")]
       
@@ -28,14 +28,20 @@ public class MapManager : MonoBehaviour
     [SerializeField] private TileBase bottomLeftCornerTile;
     [SerializeField] private TileBase bottomRightCornerTile;
     [SerializeField] private TileBase fogTile;
+
     [Header("Tilemaps:")]
     [SerializeField] private Tilemap floorMap;
     [SerializeField] private Tilemap obstacleMap;
     [SerializeField] private Tilemap fogMap;
+
     [Header("Features:")]
     [SerializeField] private List<Vector3Int> visibleTiles = new List<Vector3Int>();
     [SerializeField] private List<RectangularRoom> rooms = new List<RectangularRoom>();
-    [SerializeField] private Dictionary<Vector3Int, TileData> tiles = new Dictionary<Vector3Int, TileData>();
+    private Dictionary<Vector3Int, TileData> tiles = new Dictionary<Vector3Int, TileData>();
+    private Dictionary<Vector2Int, Node> nodes = new Dictionary<Vector2Int, Node>();
+
+    public int Width { get => width; }
+    public int Height { get => height; }
     public TileBase FloorTile { get => floorTile;}
     //public TileBase WallTile { get => wallTile;}
 
@@ -50,37 +56,37 @@ public class MapManager : MonoBehaviour
     public Tilemap FloorMap { get => floorMap; }
     public Tilemap ObstacleMap { get => obstacleMap; }
     public Tilemap FogMap { get => fogMap; }
-
     public List<RectangularRoom> Rooms { get => rooms; }
-
-    private void Awake()
+    public Dictionary<Vector2Int, Node> Nodes { get => nodes;  set => nodes = value; }
+  private void Awake() 
+  {
+    if (instance == null) 
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
+      instance = this;
+    } else {
+      Destroy(gameObject);
     }
-    // Start is called before the first frame update
-    private void Start()
-    {
-        ProcGen procGen = new ProcGen();
-        procGen.GenerateDungeon(width, height, roomMaxSize, roomMinSize, maxRooms, maxMonstersPerRoom, rooms);
+  }
 
-        AddTileMapToDictionary(floorMap);
-        AddTileMapToDictionary(obstacleMap);
+  private void Start() 
+  {
+    ProcGen procGen = new ProcGen();
+    procGen.GenerateDungeon(width, height, roomMaxSize, roomMinSize, maxRooms, maxMonstersPerRoom, rooms);
 
-        SetupFogMap();
+    AddTileMapToDictionary(floorMap);
+    AddTileMapToDictionary(obstacleMap);
 
-        Camera.main.transform.position = new Vector3(40, 20.25f, -10);
-        Camera.main.orthographicSize = 27;  //nice camera positions
+    SetupFogMap();
 
-    }
+    Camera.main.transform.position = new Vector3(40, 20.25f, -10);
+    Camera.main.orthographicSize = 27;
+  }
 
-    ///<summary>Return True if x and y are inside of the bounds of this map. </summary>
+  ///<summary>Return True if x and y are inside of the bounds of this map. </summary>
+  public bool InBounds(int x, int y) => 0 <= x && x < width && 0 <= y && y < height;
 
-    public bool InBounds(int x, int y) => 0 <= x && x < width && 0 <= y && y < height; //stops Player from leaving game map
-    public void CreateEntity(string entity, Vector2 position) 
-    {
+  public void CreateEntity(string entity, Vector2 position) 
+  {
     switch (entity) 
     {
       case "Player":
@@ -107,23 +113,24 @@ public class MapManager : MonoBehaviour
     }
   }
 
-    public void UpdateFogMap(List<Vector3Int> playerFOV) //takes in users fov and cycles each pos with invis tiles, setting a tiles is explored bool to true using a if statement with the condition of if its been explored
-    { 
+  public void UpdateFogMap(List<Vector3Int> playerFOV) 
+  {
     foreach (Vector3Int pos in visibleTiles) 
     {
-      if (!tiles[pos].isExplored) 
+      if (!tiles[pos].IsExplored) 
       {
-        tiles[pos].isExplored = true;
+        tiles[pos].IsExplored = true;
       }
 
-      tiles[pos].isVisible = false;
-      fogMap.SetColor(pos, new Color(1.0f, 1.0f, 1.0f, 0.5f));  //sets tile to gray
+      tiles[pos].IsVisible = false;
+      fogMap.SetColor(pos, new Color(1.0f, 1.0f, 1.0f, 0.5f));
     }
 
     visibleTiles.Clear();
 
-    foreach (Vector3Int pos in playerFOV) { //makes clear when visible tile true 4.
-      tiles[pos].isVisible = true;
+    foreach (Vector3Int pos in playerFOV) 
+    {
+      tiles[pos].IsVisible = true;
       fogMap.SetColor(pos, Color.clear);
       visibleTiles.Add(pos);
     }
@@ -150,12 +157,5 @@ public class MapManager : MonoBehaviour
       fogMap.SetTile(pos, fogTile);
       fogMap.SetTileFlags(pos, TileFlags.None);
     }
-  }
-
-    public class TileData
-  {
-      public bool isExplored = false;
-      public bool isVisible = false;
-      public bool isInteractable = false;  // Add custom properties as needed
   }
 }

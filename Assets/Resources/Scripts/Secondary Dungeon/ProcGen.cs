@@ -111,8 +111,6 @@ sealed class ProcGen
             {
                 
             }
-
-            PlaceEntities(newRoom, maxMonstersPerRoom);
             rooms.Add(newRoom);
         }
 
@@ -237,41 +235,5 @@ sealed class ProcGen
             MapManager.instance.ObstacleMap.SetTile(pos, wallTile);
         }
     } 
-    private void PlaceEntities(RectangularRoom newRoom, int maximumMonsters) 
-    {
-        int numberOfMonsters = Random.Range(0, maximumMonsters + 1);
-
-        for (int monster = 0; monster < numberOfMonsters;) 
-        {
-            int x = Random.Range(newRoom.x, newRoom.x + newRoom.width);
-            int y = Random.Range(newRoom.y, newRoom.y + newRoom.height);
-
-        if (x == newRoom.x || x == newRoom.x + newRoom.width - 1 || y == newRoom.y || y == newRoom.y + newRoom.height - 1) 
-        {
-            continue;
-        }
-
-        if (Random.value < 0.8f) 
-        {
-            MapManager.instance.CreateEntity("Orc", new Vector2(x, y));
-        } 
-        else 
-        {
-            MapManager.instance.CreateEntity("Troll", new Vector2(x, y));
-        }
-        /*else
-        {
-            MapManager.instance.CreateEntity("Goblin", new Vector2(x, y));
-        }
-        else
-        {
-            MapManager.instance.CreateEntity("Skeleton", new Vector2(x, y));
-        }
-        else
-        {
-            MapManager.instance.CreateEntity("Zombie", new Vector2(x, y));
-        }*/
-        monster++;
-        }
-    }
 }
+
