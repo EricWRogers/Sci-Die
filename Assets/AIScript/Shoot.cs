@@ -41,6 +41,11 @@ public class Shoot : MonoBehaviour
             topFirePoint.SetActive(false);
             bottomFirePoint.SetActive(false);
         }
+        else
+        {
+            topFirePoint.SetActive(true);
+            bottomFirePoint.SetActive(true);
+        }
 
         float distance = Vector3.Distance(transform.position, m_target.transform.position);
         if (distance <= attackDis)
