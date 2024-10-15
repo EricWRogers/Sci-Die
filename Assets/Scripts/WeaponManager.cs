@@ -9,6 +9,8 @@ public class WeaponManager : MonoBehaviour
 {
     public GameObject bullet;
 
+    public GameObject railgunReady;
+
     public Transform weapon;
 
     public float fireRate;
@@ -18,6 +20,10 @@ public class WeaponManager : MonoBehaviour
     public string activeGun;
 
     private float destroyTimer;
+
+    private float railgunCharge;
+
+    public bool isCharging = true;
 
     public WeaponAsset defaultWeaponAsset;
 
@@ -34,6 +40,13 @@ public class WeaponManager : MonoBehaviour
 
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
+        if (isCharging){
+            railgunCharge += Time.deltaTime;
+            if(railgunCharge >= 5){
+                isCharging = false;
+                railgunReady.SetActive(true);
+            }
+        }
         if((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
             if (activeGun == "RocketLauncher"){
                 if(time >= timeToNextFire){
@@ -49,15 +62,16 @@ public class WeaponManager : MonoBehaviour
                 }
             }
 
-            if (activeGun == "Railgun"){
-                if(Input.GetKeyUp(KeyCode.Mouse0)){
-                    Debug.Log("Released");
-                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
-                    destroyTimer += 1;
-                    if(destroyTimer == 3.0f){
-                        Destroy(go);
-                    }
+            if (activeGun == "Railgun" && railgunCharge >= 5){
+                GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
+                time = 0;
+                railgunCharge = 0;
+                isCharging = true;
+                railgunReady.SetActive(false);
+                destroyTimer += 1;
+                if(destroyTimer == 3.0f){
+                    Destroy(go);
+                    destroyTimer = 0;
                 }
             }
         }
