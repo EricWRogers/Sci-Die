@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,22 +9,43 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 moveDirection;
-    
-    public InputActionReference move;
 
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
+
     void Update()
     {
         if (isDashing)
         {
             return;
         }
-        moveDirection = move.action.ReadValue<Vector2>();
-        
+
+       
+        float moveX = 0f;
+        float moveY = 0f;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveY = 1f;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            moveY = -1f;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveX = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            moveX = 1f;
+        }
+
+        moveDirection = new Vector2(moveX, moveY).normalized;
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash());
@@ -38,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+
+        // Apply movement
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
@@ -45,11 +67,11 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        float orginalGravity = rb.gravityScale;
+        float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(moveDirection.x * dashingPower, moveDirection.y * dashingPower);
         yield return new WaitForSeconds(dashingTime);
-        rb.gravityScale = orginalGravity;
+        rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
