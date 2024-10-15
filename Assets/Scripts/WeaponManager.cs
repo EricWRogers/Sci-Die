@@ -35,9 +35,13 @@ public class WeaponManager : MonoBehaviour
     {
         UpdateWeapon(defaultWeaponAsset);
     }
-    void Update(){
 
+    private void Start()
+    {
 
+    }
+    void Update()
+    {
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
         if (isCharging){
