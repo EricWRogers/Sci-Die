@@ -47,25 +47,57 @@ MonoBehaviour:
   sounds:
   - name: RayGun
     clip: {fileID: 8300000, guid: c0ef8b27b954d084c93733718fe4756e, type: 3}
+    AudioGroup: {fileID: 0}
     volume: 0.4
     pitch: 1
     loop: 0
-    audioSource: {fileID: 0}
-  - name: MetalPIpe
-    clip: {fileID: 8300000, guid: 0b31946ec75a2324fa9bb132ac3f5fdb, type: 3}
-    volume: 0.4
-    pitch: 1
-    loop: 0
+    playOnAwake: 0
     audioSource: {fileID: 0}
   - name: RailGun
     clip: {fileID: 8300000, guid: c96028c52497b1944835f74246b26bf4, type: 3}
+    AudioGroup: {fileID: -2051593433635058746, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
     volume: 0.4
     pitch: 1
     loop: 0
+    playOnAwake: 0
     audioSource: {fileID: 0}
   - name: HitSoud
-    clip: {fileID: 8300000, guid: e9679dbced204184db141bfa21510ed0, type: 3}
+    clip: {fileID: 8300000, guid: 78c8a0b3be70de541b90a563093a89a8, type: 3}
+    AudioGroup: {fileID: -8462267793633727669, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
     volume: 0.4
     pitch: 1
     loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: 5462a915658a8c543be762ca14304533, type: 3}
+    AudioGroup: {fileID: -2051593433635058746, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Battle
+    clip: {fileID: 8300000, guid: 3efc2d658cb91944382fab5890fee8a8, type: 3}
+    AudioGroup: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Tinker
+    clip: {fileID: 8300000, guid: a968b0d3819e1644f9a99af365a67164, type: 3}
+    AudioGroup: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Escape
+    clip: {fileID: 8300000, guid: 932d545448dfc8c439e4dcc529307c46, type: 3}
+    AudioGroup: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
     audioSource: {fileID: 0}

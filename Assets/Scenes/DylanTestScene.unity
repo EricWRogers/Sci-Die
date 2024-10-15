@@ -5700,33 +5700,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8475179966750340081, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
-      propertyPath: sounds.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475179966750340081, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
-      propertyPath: sounds.Array.data[1].clip
+      propertyPath: sounds.Array.data[4].AudioGroup
       value: 
-      objectReference: {fileID: 8300000, guid: c96028c52497b1944835f74246b26bf4, type: 3}
+      objectReference: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
     - target: {fileID: 8475179966750340081, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
-      propertyPath: sounds.Array.data[1].name
-      value: RailGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475179966750340081, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
-      propertyPath: sounds.Array.data[2].clip
+      propertyPath: sounds.Array.data[5].AudioGroup
       value: 
-      objectReference: {fileID: 8300000, guid: e9679dbced204184db141bfa21510ed0, type: 3}
+      objectReference: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
     - target: {fileID: 8475179966750340081, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
-      propertyPath: sounds.Array.data[2].name
-      value: HitSoud
-      objectReference: {fileID: 0}
-    - target: {fileID: 8475179966750340081, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
-      propertyPath: sounds.Array.data[3].clip
+      propertyPath: sounds.Array.data[6].AudioGroup
       value: 
-      objectReference: {fileID: 8300000, guid: abca8623e5f4f174fb7b9388460b1ec0, type: 3}
-    - target: {fileID: 8475179966750340081, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
-      propertyPath: sounds.Array.data[3].name
-      value: Shotgun
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
     - target: {fileID: 8955622908045623990, guid: 5da747e7efef6e94890d96d1075fa837, type: 3}
       propertyPath: m_Name
       value: AudioManager

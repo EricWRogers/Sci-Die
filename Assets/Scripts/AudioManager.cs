@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager Instance;
+    private string currentlyPlaying;
 
 
     public void Awake()
@@ -32,6 +33,7 @@ public class AudioManager : MonoBehaviour
             s.audioSource.outputAudioMixerGroup = s.AudioGroup;
             s.audioSource.pitch = s.pitch;
             s.audioSource.loop = s.loop;
+            s.audioSource.playOnAwake = s.playOnAwake;
 
         }
     }
@@ -43,5 +45,29 @@ public class AudioManager : MonoBehaviour
         s.audioSource.Play();
 
         Debug.Log("PlayingAudio");
+    }
+
+    public void PlayMusic(string name)
+    {
+        
+        if (currentlyPlaying == null)
+        {
+            Sound s = Array.Find(sounds, s => s.name == name);
+            currentlyPlaying = name;
+            s.audioSource.Play();
+        }
+        else
+        {
+            Sound s = Array.Find(sounds, s => s.name == currentlyPlaying);
+            s.audioSource.Stop();
+            Sound a = Array.Find(sounds, s => s.name == name);
+
+            a.audioSource.Play();
+
+        }
+
+        
+        
+
     }
 }
