@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Gun
   - Floors
+  - Enemy
+  - Center
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,6 @@ TagManager:
   - Enemy
   - Wall
   - Floor
-  - 
-  - 
   - 
   - 
   - 

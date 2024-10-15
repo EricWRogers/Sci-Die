@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     private float bulletTime = 10;
     public float bulletSpeed = 10;
+    public float damage = 1;
     Rigidbody2D rb;
 
     private void Start()
@@ -29,6 +30,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.tag == ("Player"))
         {
             Debug.Log("Hit Player");
+            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
             Destroy(gameObject);
         }
 
