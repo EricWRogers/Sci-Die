@@ -18,11 +18,11 @@ public class Health : MonoBehaviour
     }
 
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
 
           currentHealth -= damage;
-          healthBar.UpdateHealthbar(currentHealth, maxHealth);
+          //healthBar.UpdateHealthbar(currentHealth, maxHealth);
           if (currentHealth <= 0)
           {
                outOfHealth.Invoke();

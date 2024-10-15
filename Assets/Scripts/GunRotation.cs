@@ -23,7 +23,15 @@ public class GunRotation : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Adjust the angle by adding 180 degrees if needed
-        transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+        if(transform.parent.transform.localScale.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+        }
+        
     }
 }
 
