@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Gun
   - Floors
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,6 @@ TagManager:
   - Enemy
   - Wall
   - Floor
-  - 
-  - 
   - 
   - 
   - 
