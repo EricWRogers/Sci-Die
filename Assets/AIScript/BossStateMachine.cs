@@ -20,9 +20,12 @@ public class BossStateMachine : SimpleStateMachine
     public List<GameObject> firepoints;
     public GameObject Bullet;
 
+    public float centerRotSpeed;
+
     private Vector3 m_dir;
     private float m_nextFire;
     private GameObject m_target;
+    private GameObject m_center;
 
     private void Awake()
     {
@@ -42,6 +45,8 @@ public class BossStateMachine : SimpleStateMachine
         rb = GetComponent<Rigidbody2D>();
         currentPoint = points[index].transform;
         m_target = GameObject.FindGameObjectWithTag("Player");
+        m_center = GameObject.FindGameObjectWithTag("Center");
+
     }
 
     // Update is called once per frame
@@ -62,21 +67,18 @@ public class BossStateMachine : SimpleStateMachine
         }
 
         Vector2 dir = currentPoint.position - transform.position;
-        if (currentPoint == points[index].transform)
+        rb.velocity = dir * speed;
+        /*if (currentPoint == points[index].transform || currentPoint == m_center)
         {
             rb.velocity = dir * speed;
-        }
+        }*/
     }
 
     public void RepeatMov(int _num)
     {
         if(counter != _num)
         {
-            Vector2 dir = currentPoint.position - transform.position;
-            if (currentPoint == points[index].transform)
-            {
-                rb.velocity = dir * speed;
-            }
+            
             if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == points[index].transform)
             {
                 if (counter % 2 == 0)
@@ -115,5 +117,21 @@ public class BossStateMachine : SimpleStateMachine
             return;
         }
 
+    }
+
+    public void CenterAttack()
+    {
+        currentPoint = m_center.transform;
+        if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == m_center.transform)
+        {
+            float rotAmout = centerRotSpeed * Time.deltaTime;
+            float curRot = transform.localRotation.eulerAngles.z;
+            transform.localRotation = Quaternion.Euler(new Vector3(0, 0, curRot + rotAmout));
+            Debug.Log("" + curRot);
+            if (transform.localRotation.z < 0)
+            {
+                return;
+            }
+        }
     }
 }

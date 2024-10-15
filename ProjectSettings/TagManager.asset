@@ -9,6 +9,7 @@ TagManager:
   - Gun
   - Floors
   - Enemy
+  - Center
   layers:
   - Default
   - TransparentFX

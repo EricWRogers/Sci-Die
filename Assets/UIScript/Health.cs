@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     {
 
           currentHealth -= damage;
-          healthBar.UpdateHealthbar(currentHealth, maxHealth);
+          //healthBar.UpdateHealthbar(currentHealth, maxHealth);
           if (currentHealth <= 0)
           {
                outOfHealth.Invoke();
