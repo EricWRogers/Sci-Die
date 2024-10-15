@@ -13,7 +13,7 @@ public class SimpleRandomWalkMapGen : AbstractDungeonGen
     {
         HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
         tilemapVisualizer.Clear();
-        tilemapVisualizer.paintFloorTiles(floorPositions);
+        tilemapVisualizer.PaintFloorTiles(floorPositions);
         WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
     }
 
