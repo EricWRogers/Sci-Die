@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDied : MonoBehaviour
+public class WinCondtion : MonoBehaviour
 {
+    public GameObject winScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,14 +15,14 @@ public class PlayerDied : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("escape"))
-        {
-            
-        }
         
     }
-    public void BackToMain()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        SceneManager.LoadScene("MainMenu");
+        if (col.gameObject.tag == "Player")
+        {
+
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
