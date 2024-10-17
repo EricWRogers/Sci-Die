@@ -6,22 +6,22 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // Movement Variables
-    public float moveSpeed = 5f; 
+    public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
     private Vector2 moveDirection;
     public InputActionReference move;
 
     // Combat and Upgrade Variables
-    public float damage = 10f;  
+    public float damage = 10f;
     public int dashCount = 1;
 
     // Dash Variables
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
+    public bool canDash = true;
+    public bool isDashing;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
 
     void Update()
     {
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canDash && dashCount > 0)
         {
             StartCoroutine(Dash());
-            dashCount--;  // Decrease dash count after dashing
+            isDashing = true;
         }
     }
 
