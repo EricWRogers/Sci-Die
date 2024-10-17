@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScrapManager : MonoBehaviour
 {
     public int scrapCount;
-    public Text scrapText;
+    public TMP_Text scrapText;
     // Start is called before the first frame update
     void Start()
     {
