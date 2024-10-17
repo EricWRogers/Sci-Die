@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class DestroyPickup : MonoBehaviour
 {
-    void OnTriggerStay2D(Collider2D other){
-        if(Input.GetKeyDown(KeyCode.E)){
-            Debug.Log("Pickup");
+    bool playerColliding = false;
+    void Update()
+    {
+        if(playerColliding && (Input.GetKeyDown(KeyCode.E))){
             Destroy(gameObject);
         }
     }
+    void OnTriggerStay2D(Collider2D other){
+        playerColliding = true;
+    }
+    
 }
