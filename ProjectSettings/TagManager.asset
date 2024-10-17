@@ -9,6 +9,8 @@ TagManager:
   - Gun
   - Floors
   - Enemy
+  - Center
+  - Pickup
   layers:
   - Default
   - TransparentFX
