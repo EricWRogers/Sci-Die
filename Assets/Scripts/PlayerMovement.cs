@@ -1,30 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     // Movement Variables
-    public float moveSpeed = 5f; 
+    public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
     private Vector2 moveDirection;
-    //public InputActionReference move;
+    public InputActionReference move;
 
     // Combat and Upgrade Variables
-    public float damage = 10f;  
+    public float damage = 10f;
     public int dashCount = 1;
 
     // Dash Variables
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
-
-    float moveY = 1f;
-    float moveX = 1f;
+    public bool canDash = true;
+    public bool isDashing;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
 
     void Update()
     {
@@ -32,31 +29,13 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         // Handle Movement Inputs
-        //moveDirection = move.action.ReadValue<Vector2>();
+        moveDirection = move.action.ReadValue<Vector2>();
 
         // Dash Action
         if (Input.GetKeyDown(KeyCode.Space) && canDash && dashCount > 0)
         {
             StartCoroutine(Dash());
-            dashCount--;  // Decrease dash count after dashing
-        }
-
-        if (Input.GetKey(KeyCode.W)) // Up (W key)
-        {
-            moveY = 1f;
-        }
-        else if (Input.GetKey(KeyCode.S)) // Down (S key)
-        {
-            moveY = -1f;
-        }
-
-        if (Input.GetKey(KeyCode.A)) // Left (A key)
-        {
-            moveX = -1f;
-        }
-        else if (Input.GetKey(KeyCode.D)) // Right (D key)
-        {
-            moveX = 1f;
+            isDashing = true;
         }
     }
 
@@ -84,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
-
     // Method to Increase Dash Count
     public void IncreaseDashCount(int value)
     {
@@ -96,8 +74,6 @@ public class PlayerMovement : MonoBehaviour
     {
         damage += value;
     }
-
-
 
     // Pickup Collision Detection
     void OnTriggerEnter2D(Collider2D other)
@@ -136,5 +112,4 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
-
 }
