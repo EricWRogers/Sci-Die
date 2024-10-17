@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrapCount: 0
-  scrapText: {fileID: 0}
+  scrapText: {fileID: 1468608045}
 --- !u!1 &425794367
 GameObject:
   m_ObjectHideFlags: 0
