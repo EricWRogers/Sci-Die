@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     
     public InputActionReference move;
 
+    public ScrapManager sm;
+
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 24f;
@@ -53,5 +55,14 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Scrap"))
+        {
+            Destroy(other.gameObject);
+            sm.scrapCount++;
+        }
     }
 }
