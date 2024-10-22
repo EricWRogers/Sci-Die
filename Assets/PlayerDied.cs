@@ -16,12 +16,8 @@ public class PlayerDied : MonoBehaviour
     {
         if (Input.GetKeyDown("escape"))
         {
-            
+            SceneManager.LoadScene("MainMenu");
         }
         
-    }
-    public void BackToMain()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 }

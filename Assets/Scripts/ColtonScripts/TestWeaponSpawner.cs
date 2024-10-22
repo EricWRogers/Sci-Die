@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public class PositionAndId
+{
+    public int id;
+    public Vector3 pos;
+}
 
 public class RockSpawner : MonoBehaviour
 {
@@ -72,9 +76,4 @@ public class RockSpawner : MonoBehaviour
     {
         
     }
-}
-public class PositionAndId : MonoBehaviour
-{
-    public int id;
-    public Vector3 pos;
 }
