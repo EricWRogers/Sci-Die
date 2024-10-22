@@ -55,6 +55,7 @@ public class AudioManager : MonoBehaviour
             Sound s = Array.Find(sounds, s => s.name == name);
             currentlyPlaying = name;
             s.audioSource.Play();
+            Debug.Log("playing music");
         }
         else
         {
