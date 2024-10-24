@@ -11,31 +11,43 @@ public class GunHaverScript : MonoBehaviour
     public WeaponAsset MachineGun;
     public WeaponAsset RocketLauncher;
     public WeaponAsset Railgun;
+    public bool isColliding = false;
+    string weaponTag;
     
     void Update()
     {
-        if (Input.GetKeyDown("1"))
+        if (isColliding == true && weaponTag == "Pickup1" && Input.GetKeyDown(KeyCode.E))
         {
             weaponManager.UpdateWeapon(Pistol);
-            Destroy(this.transform.parent);
+            Debug.Log("Pistol");
+            isColliding = false;
         }
 
-        if (Input.GetKeyDown("2")){
+        if (isColliding == true && weaponTag == "Pickup2" && Input.GetKeyDown(KeyCode.E)){
             weaponManager.UpdateWeapon(Shotgun);
-            Destroy(this.transform.parent);
+            Debug.Log("Shotgun");
+            isColliding = false;
         }
 
-        if (Input.GetKeyDown("3")){
+        if (isColliding == true && weaponTag == "Pickup3" && Input.GetKeyDown(KeyCode.E)){
             weaponManager.UpdateWeapon(MachineGun);
-            Destroy(this.transform.parent);
+            Debug.Log("Machine Gun");
+            isColliding = false;
         }
-        if (Input.GetKeyDown("4")){
+        if (isColliding == true && weaponTag == "Pickup4" && Input.GetKeyDown(KeyCode.E)){
             weaponManager.UpdateWeapon(RocketLauncher);
-            Destroy(this.transform.parent);
+            Debug.Log("Rocket Launcher");
+            isColliding = false;
         }
-        if(Input.GetKeyDown("5")){
+        if (isColliding == true && weaponTag == "Pickup5" && Input.GetKeyDown(KeyCode.E)){
             weaponManager.UpdateWeapon(Railgun);
-            Destroy(this.transform.parent);
+            Debug.Log("Railgun");
+            isColliding = false;
         }
+    }
+
+    void OnTriggerStay2D(Collider2D col){
+        isColliding = true;
+        weaponTag = col.transform.tag;
     }
 }
