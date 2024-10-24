@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Sci-Die.sln"
+    "dotnet.defaultSolution": "Sci-Die.sln",
+    "C_Cpp.default.compilerPath": "cl.exe"
 }

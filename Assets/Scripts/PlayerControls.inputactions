@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Move1",
+                    "type": "PassThrough",
+                    "id": "cd9ce98b-b887-4776-a198-55556ca327d8",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -128,56 +137,56 @@
                 },
                 {
                     "name": "2D Vector",
-                    "id": "2406ee20-d482-42ba-8941-5496b0c5e553",
+                    "id": "f92b0c38-fa8c-486e-b6f3-d58be9a76174",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Move1",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "6e4784e9-fd73-4fab-b6e7-09349f4e20fb",
-                    "path": "<XInputController>/leftStick/y",
+                    "id": "49e03cbb-e61c-4a7f-9597-aff878f1ad07",
+                    "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Move1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "a2bcf49e-9135-4b2e-88b7-2ee7550d2d27",
-                    "path": "<XInputController>/leftStick/y",
+                    "id": "23713163-3c3f-4085-9978-d7fbd8050c91",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Move1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "567360da-56de-4a7d-b906-112a8f03f683",
-                    "path": "<XInputController>/leftStick/x",
+                    "id": "399278e0-77ae-47d3-a7a7-cae0d1946416",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Move1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "d28c9f56-eb82-4235-b058-a50ae93971a5",
-                    "path": "<XInputController>/leftStick/x",
+                    "id": "07ec9148-8efd-4430-90e2-f1f09fdafc9c",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
-                    "action": "Move",
+                    "groups": "",
+                    "action": "Move1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
