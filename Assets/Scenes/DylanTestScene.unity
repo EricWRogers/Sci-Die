@@ -5493,7 +5493,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1893422534}
   m_SourcePrefab: {fileID: 100100000, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
 --- !u!1 &1377683116
 GameObject:
@@ -5930,6 +5933,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794447253}
   m_CullTransparentMesh: 1
+--- !u!1 &1893422533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 752886822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1893422534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893422533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3a873b8c5a0d94a85603f0c9f0e22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mousPos: {x: 0, y: 0}
+  attackKey: 0
+  attackPoint: {fileID: 0}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  attackCooldown: 0
+  attackDmg: 0
+  circleAttackRange: 0
+  squareAttackRange: {x: 0, y: 0}
+  attackAnim: {fileID: 0}
+  animTrigger: 
+  attackNext: 0
 --- !u!1001 &4393130546343029379
 PrefabInstance:
   m_ObjectHideFlags: 0

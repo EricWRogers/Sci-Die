@@ -1,9 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DroneWeapon : MonoBehaviour
 {
+
+    public Vector2 mousPos;
     public KeyCode attackKey;
     public Transform attackPoint;
     public LayerMask enemyLayers;
@@ -16,18 +21,25 @@ public class DroneWeapon : MonoBehaviour
     [HideInInspector] public float attackNext;
     private float m_angle;
 
-    public AudioSource attackSound;
 
+    public void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            OnAttackCircle();
+        }
+    }   
 
     public void OnAttackCircle()
     {
-        if (Input.GetKeyDown(attackKey) && Time.time >= attackNext)
+        if ( Time.time >= attackNext)
         {
+            mousPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             attackNext = Time.time + attackCooldown;
             attackAnim.SetTrigger(animTrigger);
-            attackSound.Play();
+        
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, circleAttackRange, enemyLayers);
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(mousPos, circleAttackRange, enemyLayers);
 
             foreach (Collider2D enemy in hitEnemies)
             {
@@ -44,7 +56,7 @@ public class DroneWeapon : MonoBehaviour
             attackNext = Time.time + attackCooldown;
             attackAnim.SetTrigger(animTrigger);
             Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, squareAttackRange, m_angle, enemyLayers);
-            attackSound.Play();
+
 
             foreach (Collider2D enemy in hitEnemies)
             {

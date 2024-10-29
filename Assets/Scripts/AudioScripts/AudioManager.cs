@@ -4,17 +4,26 @@ using UnityEngine;
 using JetBrains.Annotations;
 using System.Collections;
 using UnityEditor;
+using Unity.VisualScripting;
 
 public class AudioManager : MonoBehaviour
 {
+    public float fadeInTime = 3f;
+    public bool fadeIn;
+    public bool fadeOut;
     public Sound[] sounds;
     public static AudioManager Instance;
     private string currentlyPlaying;
+    private string nextSong;
     [SerializeField] private AudioMixer musicVolume;
+
+    public float delayTime = 0f;
+    public float time = 0f;
 
 
     public void Awake()
     {
+        
         //Keeps AudioMangaer between Scenes
         if (Instance == null)
         {
@@ -40,86 +49,115 @@ public class AudioManager : MonoBehaviour
 
         }
     }
+
+     void Update()
+    {
+                
+             
+            float musicVol = 0f;
+     
+        if (fadeOut)
+        {  
+            time += Time.deltaTime;
+            musicVol = Mathf.Lerp(1f, 0.01f, time/fadeInTime);
+            musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol )* 20f);
+            Debug.Log(musicVol.ToString());
+            
+    
+            
+        }
+        if (fadeIn )
+        {
+        
+
+              
+                time += Time.deltaTime;
+                musicVol = Mathf.Lerp(0.01f, 1f, time/fadeInTime);
+                musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol)* 20f);
+                
+              
+            
+      
+
+        }
+
+
+    }
     // Plays the sound you called and named
     public void PlaySound(string name)
     {
         Sound s =  Array.Find(sounds, s => s.name == name);
-
+            time = 0f;
         s.audioSource.Play();
 
-        Debug.Log("PlayingAudio");
+       
     }
 
     public void PlayMusic(string name)
     {
+    
         
         if (name != currentlyPlaying)
         {
+        
             if (currentlyPlaying == null)
             {
                 Sound s = Array.Find(sounds, s => s.name == name);
                 currentlyPlaying = name;
-  
+    
                 s.audioSource.Play();
-                Debug.Log("playing music");
+
+              
             }
             else
             {
-             
-                Sound s = Array.Find(sounds, s => s.name == currentlyPlaying);
+                
+                //Sound s = Array.Find(sounds, s => s.name == currentlyPlaying);
 
-            
-                s.audioSource.Stop();
+                fadeOut = true;
+                Invoke(nameof(FadeOut), fadeInTime);
+                //s.audioSource.Stop();
+                nextSong = name;
 
-                Sound a = Array.Find(sounds, s => s.name == name);
-                currentlyPlaying = name;
-              
+               
+                //Sound a = Array.Find(sounds, s => s.name == name);
+                //currentlyPlaying = name;
 
-               a.audioSource.Play();
+                
+                 //a.audioSource.Play();
+                //fadeIn = true;
+                //Invoke(nameof(FadeIn), fadeInTime);
+
+                
+
 
             }
         }
 
-      
-
-
     }
-    // Tried to Fade music in and out. music played but didnt fade or stop
-   /* private IEnumerator Fade(bool fadeIn, float duration, AudioSource source)
-    {
 
-        float time = 0f;
-        
-        float musicVol = 0f;
+
      
-        if (!fadeIn)
-        {
-            
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                musicVol = Mathf.Lerp(1f, 0.01f, duration/time);
-                musicVolume.SetFloat("MusicVolume", Mathf.Log(musicVol * 20f));
-                yield return null;
-            }
-            source.Stop();
-        }
-        else
-        {
-            source.Play();
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                musicVol = Mathf.Lerp(0.01f, 1f, duration/time);
-                musicVolume.SetFloat("MusicVolume", Mathf.Log(musicVol * 20f));
-                yield return null;
-            }
-      
 
-        }
-        yield break;
-
+    void FadeIn()
+    {
+        fadeIn = false;
+        time = 0f;
     }
-   */
+
+    void FadeOut()
+    {
+        Sound s = Array.Find(sounds, s => s.name == currentlyPlaying);
+        s.audioSource.Stop();
+        fadeOut = false;
+        Sound a = Array.Find(sounds, s => s.name == nextSong);
+        a.audioSource.Play();
+        fadeIn = true;
+        Invoke(nameof(FadeIn), fadeInTime);
+        time = 0f;
+        
+       currentlyPlaying = nextSong;
+        
+    }
 
 }
