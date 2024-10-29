@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         // Handle Movement Inputs
-        moveDirection = move.action.ReadValue<Vector2>();
+        //moveDirection = move.action.ReadValue<Vector2>();
 
         // Dash Action
         if (Input.GetKeyDown(KeyCode.Space) && canDash && dashCount > 0)
