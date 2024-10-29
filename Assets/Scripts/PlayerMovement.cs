@@ -22,6 +22,16 @@ public class PlayerMovement : MonoBehaviour
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
+    public HUDManager hudManager; // reference to HUDManager
+
+    void Start()
+    {
+        // Initial UI update to set dodge count
+        if (hudManager != null)
+        {
+            hudManager.UpdateDodgeCountUI();
+        }
+    }
 
     void Update()
     {
@@ -36,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Dash());
             dashCount--;  // Decrease dash count after dashing
+        }
+
+        if (hudManager != null)
+        {
+            hudManager.UpdateDodgeCountUI(); // Update UI with current dash count
         }
     }
 

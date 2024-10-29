@@ -7,33 +7,33 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
     // HUD UI Elements
-    public TextMeshProUGUI dodgeCountText;        // Text for displaying dodge count
-    public Slider weaponCooldownSlider;           // Slider for displaying weapon cooldown
-    public TextMeshProUGUI droneAttackText;       // Text for drone attack status
-    public TextMeshProUGUI weaponText;            // Text for displaying current weapon
-    public TextMeshProUGUI scrapCountText;        // Text for displaying scrap count
+    public TextMeshProUGUI dodgeCountText;
+    public Slider weaponCooldownSlider;
+    public TextMeshProUGUI droneAttackText;
+    public TextMeshProUGUI weaponText;
+    public TextMeshProUGUI scrapCountText;
 
     // Health and Dodge Properties
-    private int maxDodges = 3;                    // Maximum number of dodges
-    private int currentDodges;                    // Current dodge count
+    private int maxDodges = 3;
+    private int currentDodges;
 
     // Weapon Cooldown Properties
-    private float weaponCooldown = 5f;            // Cooldown time for weapon
+    private float weaponCooldown = 5f;
     private float currentWeaponCooldown = 0f;
     private bool isWeaponOnCooldown = false;
 
-    // Drone Attack and Scrap Count as Objects (placeholders for now)
-    public GameObject droneAttackObject;          // Placeholder for the actual drone attack object
-    public GameObject scrapObject;                // Placeholder for the actual scrap object
+    // Drone Attack and Scrap Count
+    public GameObject droneAttackObject;
+    public GameObject scrapObject;
 
-    private bool droneReady = true;               // If drone attack is ready
-    private string currentWeapon = "Laser Gun";   // Current weapon
-    private int scrapCount = 0;                   // Scrap collected by the player
+    private bool droneReady = true;
+    private string currentWeapon = "Laser Gun";
+    private int scrapCount = 0;
 
     void Start()
     {
         currentDodges = maxDodges;
-        weaponCooldownSlider.gameObject.SetActive(false); // Hide weapon cooldown slider initially
+        weaponCooldownSlider.gameObject.SetActive(false);
         UpdateDodgeCountUI();
         UpdateDroneAttackUI();
         UpdateWeaponUI();
@@ -46,24 +46,28 @@ public class HUDManager : MonoBehaviour
         if (isWeaponOnCooldown)
         {
             currentWeaponCooldown -= Time.deltaTime;
-            weaponCooldownSlider.value = currentWeaponCooldown / weaponCooldown; // Update the slider value
-            
+            weaponCooldownSlider.value = currentWeaponCooldown / weaponCooldown;
+
             if (currentWeaponCooldown <= 0)
             {
                 isWeaponOnCooldown = false;
                 currentWeaponCooldown = 0;
-                weaponCooldownSlider.gameObject.SetActive(false); // Hide the slider when cooldown is over
+                weaponCooldownSlider.gameObject.SetActive(false);
             }
         }
     }
 
     // Update dodge count UI
-    void UpdateDodgeCountUI()
+    public void UpdateDodgeCountUI()
     {
         if (dodgeCountText != null)
+        {
             dodgeCountText.text = "Dodges: " + currentDodges;
+        }
         else
+        {
             Debug.LogWarning("Dodge Count Text is not assigned!");
+        }
     }
 
     // Update scrap count UI
@@ -80,7 +84,7 @@ public class HUDManager : MonoBehaviour
     {
         isWeaponOnCooldown = true;
         currentWeaponCooldown = weaponCooldown;
-        weaponCooldownSlider.gameObject.SetActive(true); // Show the weapon cooldown slider
+        weaponCooldownSlider.gameObject.SetActive(true);
     }
 
     // Update scrap count when collecting scrap
@@ -90,12 +94,12 @@ public class HUDManager : MonoBehaviour
         UpdateScrapCountUI();
     }
 
-    // Perform drone attack (placeholder logic)
+    // Perform drone attack
     public void PerformDroneAttack()
     {
         if (droneAttackObject != null)
         {
-            droneAttackObject.SetActive(true); // Activate or trigger the drone attack
+            droneAttackObject.SetActive(true);
             droneReady = false;
             UpdateDroneAttackUI();
             StartCoroutine(ResetDroneAttack());
@@ -108,7 +112,7 @@ public class HUDManager : MonoBehaviour
 
     IEnumerator ResetDroneAttack()
     {
-        yield return new WaitForSeconds(10f); // Cooldown for drone attack
+        yield return new WaitForSeconds(10f);
         droneReady = true;
         UpdateDroneAttackUI();
     }
@@ -141,5 +145,11 @@ public class HUDManager : MonoBehaviour
     public void ApplyDamagePickup(float value)
     {
         Debug.Log($"Player damage increased by {value}");
+    }
+
+    // Toggle HUD visibility
+    public void ToggleHUDVisibility()
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 }
