@@ -8,23 +8,31 @@ using Unity.VisualScripting;
 
 public class AudioManager : MonoBehaviour
 {
-    public float fadeInTime = 3f;
+    [SerializeField] private AudioMixer musicVolume;
+    public static AudioManager Instance;
+
+    //Fade varables
+    public float fadeInTime;
     public bool fadeIn;
     public bool fadeOut;
+    public float time = 0f;
+
+   
+
     public Sound[] sounds;
-    public static AudioManager Instance;
+  
     private string currentlyPlaying;
     private string nextSong;
-    [SerializeField] private AudioMixer musicVolume;
 
-    public float delayTime = 0f;
-    public float time = 0f;
+    private float musicVol;
+
+
 
 
     public void Awake()
     {
         
-        //Keeps AudioMangaer between Scenes
+        //Create singleton of AudioManager
         if (Instance == null)
         {
             Instance = this;
@@ -37,7 +45,6 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         // Creates sources for each audio clip
-
         foreach (Sound s in sounds)
         {
             s.audioSource = gameObject.AddComponent<AudioSource>();
@@ -54,31 +61,20 @@ public class AudioManager : MonoBehaviour
     {
                 
              
-            float musicVol = 0f;
-     
+   
         if (fadeOut)
         {  
             time += Time.deltaTime;
-            musicVol = Mathf.Lerp(1f, 0.01f, time/fadeInTime);
-            musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol )* 20f);
-            Debug.Log(musicVol.ToString());
-            
-    
-            
+            musicVol = Mathf.Lerp(1f, 0.0001f, time/fadeInTime); 
+            musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol )* 20f); // math to adjust for mixer falloff on volume
+
         }
         if (fadeIn )
         {
-        
 
-              
                 time += Time.deltaTime;
-                musicVol = Mathf.Lerp(0.01f, 1f, time/fadeInTime);
-                musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol)* 20f);
-                
-              
-            
-      
-
+                musicVol = Mathf.Lerp(0.0001f, 1f, time/fadeInTime);
+                musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol)* 20f); // math to adjust for mixer falloff on volume
         }
 
 
@@ -89,16 +85,13 @@ public class AudioManager : MonoBehaviour
         Sound s =  Array.Find(sounds, s => s.name == name);
             time = 0f;
         s.audioSource.Play();
-
-       
     }
 
     public void PlayMusic(string name)
     {
-    
-        
         if (name != currentlyPlaying)
         {
+            time = 0f;
         
             if (currentlyPlaying == null)
             {
@@ -106,39 +99,17 @@ public class AudioManager : MonoBehaviour
                 currentlyPlaying = name;
     
                 s.audioSource.Play();
-
-              
             }
             else
             {
-                
-                //Sound s = Array.Find(sounds, s => s.name == currentlyPlaying);
-
                 fadeOut = true;
                 Invoke(nameof(FadeOut), fadeInTime);
-                //s.audioSource.Stop();
+           
                 nextSong = name;
-
-               
-                //Sound a = Array.Find(sounds, s => s.name == name);
-                //currentlyPlaying = name;
-
-                
-                 //a.audioSource.Play();
-                //fadeIn = true;
-                //Invoke(nameof(FadeIn), fadeInTime);
-
-                
-
-
             }
         }
 
-    }
-
-
-     
-
+    } 
     void FadeIn()
     {
         fadeIn = false;
@@ -147,16 +118,18 @@ public class AudioManager : MonoBehaviour
 
     void FadeOut()
     {
-        Sound s = Array.Find(sounds, s => s.name == currentlyPlaying);
+        
+        Sound s = Array.Find(sounds, s => s.name == currentlyPlaying);// finds current song audiosorce
         s.audioSource.Stop();
         fadeOut = false;
-        Sound a = Array.Find(sounds, s => s.name == nextSong);
+
+        Sound a = Array.Find(sounds, s => s.name == nextSong); // finds the next song audiosorce
         a.audioSource.Play();
+
+        time = 0f;
         fadeIn = true;
         Invoke(nameof(FadeIn), fadeInTime);
-        time = 0f;
-        
-       currentlyPlaying = nextSong;
+        currentlyPlaying = nextSong;
         
     }
 

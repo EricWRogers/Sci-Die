@@ -13,10 +13,10 @@ public class DroneWeapon : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemyLayers;
     public float attackCooldown;
-    public int attackDmg;
+    public float attackDmg;
     public float circleAttackRange;
     public Vector2 squareAttackRange;
-    public Animator attackAnim;
+    
     public string animTrigger;
     [HideInInspector] public float attackNext;
     private float m_angle;
@@ -24,9 +24,11 @@ public class DroneWeapon : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKey(KeyCode.Mouse0)&& attackNext < Time.time)
         {
+            attackNext = Time.time + attackCooldown;
             OnAttackCircle();
+            Invoke(nameof(ScissorAttack), .5f);
         }
     }   
 
@@ -35,17 +37,7 @@ public class DroneWeapon : MonoBehaviour
         if ( Time.time >= attackNext)
         {
             mousPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            attackNext = Time.time + attackCooldown;
-            attackAnim.SetTrigger(animTrigger);
-        
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(mousPos, circleAttackRange, enemyLayers);
-
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<Health>().TakeDamage(attackDmg);
-
-            }
         }
     }
     public void OnAttackSquare()
@@ -53,8 +45,16 @@ public class DroneWeapon : MonoBehaviour
 
         if (Input.GetKeyDown(attackKey) && Time.time >= attackNext)
         {
-            attackNext = Time.time + attackCooldown;
-            attackAnim.SetTrigger(animTrigger);
+
+
+        }
+
+
+    }
+    private void ScissorAttack()
+    {
+            
+            
             Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, squareAttackRange, m_angle, enemyLayers);
 
 
@@ -62,6 +62,19 @@ public class DroneWeapon : MonoBehaviour
             {
                 enemy.GetComponent<Health>().TakeDamage(attackDmg);
             }
+        
+    }
+
+
+    private void ScythAttack()
+    {
+   
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, circleAttackRange, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+
         }
     }
 
