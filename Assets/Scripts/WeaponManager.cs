@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SuperPupSystems.Helper;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,8 @@ public class WeaponManager : MonoBehaviour
     public GameObject railgunReady;
 
     public Transform weapon;
+
+    private PlayerControls controls;
 
     public float fireRate;
     
@@ -31,11 +34,23 @@ public class WeaponManager : MonoBehaviour
     public WeaponManager(){
 
     }
-
     void Awake()
+        {
+            UpdateWeapon(defaultWeaponAsset);
+            controls = new PlayerControls();
+            controls.Player.Dash.performed += ctx => Update();
+        }
+    private void OnEnable()
     {
-        UpdateWeapon(defaultWeaponAsset);
+        controls.Player.Enable();
     }
+
+    private void OnDisable()
+    {
+        controls.Player.Disable();
+    }
+
+    
 
     private void Start()
     {
@@ -55,13 +70,14 @@ public class WeaponManager : MonoBehaviour
                 railgunReady.SetActive(true);
             }
         }
-        if(!droneActive){
-            if((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
-                if (activeGun == "RocketLauncher"){
-                    if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
-                        time = 0;
-                    }
+
+        bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
+
+        if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
+            if (activeGun == "RocketLauncher"){
+                if(time >= timeToNextFire){
+                    Instantiate(bullet, weapon.position, weapon.rotation);
+                    time = 0;
                 }
             
                 if (activeGun == "Shotgun"){
@@ -85,12 +101,13 @@ public class WeaponManager : MonoBehaviour
                 }
             }
 
-            if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0)) && time >= 0){
-                if(activeGun == "Pistol"){
-                    if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
-                        time = 0;
-                    }
+ 
+
+        if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
+            if(activeGun == "Pistol"){
+                if(time >= timeToNextFire){
+                    Instantiate(bullet, weapon.position, weapon.rotation);
+                    time = 0;
                 }
                 if(activeGun == "MachineGun"){
                     if(time >= timeToNextFire){

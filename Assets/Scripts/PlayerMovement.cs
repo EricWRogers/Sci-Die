@@ -1,42 +1,57 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     // Movement Variables
-    public float moveSpeed = 5f; 
+    public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
     private Vector2 moveDirection;
-    public InputActionReference move;
+    private PlayerControls controls;
 
     // Combat and Upgrade Variables
-    public float damage = 10f;  
+    public float damage = 10f;
     public int dashCount = 1;
 
     // Dash Variables
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
+    public bool canDash = true;
+    public bool isDashing;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+
+    private void Awake()
+    {
+        // Initialize the controls
+        controls = new PlayerControls();
+
+        // Set up the movement input callback
+        controls.Player.Move.performed += ctx => moveDirection = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += ctx => moveDirection = Vector2.zero;
+
+        // Set up the dash input callback
+        controls.Player.Dash.performed += ctx => AttemptDash(); 
+    }
+
+    private void OnEnable()
+    {
+        // Enable the input action map
+        controls.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        // Disable the input action map
+        controls.Player.Disable();
+    }
 
     void Update()
     {
+        // No need to check for dash input here anymore
         if (isDashing)
             return;
-
-        // Handle Movement Inputs
-        moveDirection = move.action.ReadValue<Vector2>();
-
-        // Dash Action
-        if (Input.GetKeyDown(KeyCode.Space) && canDash && dashCount > 0)
-        {
-            StartCoroutine(Dash());
-            dashCount--;  // Decrease dash count after dashing
-        }
     }
 
     void FixedUpdate()
@@ -48,17 +63,32 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
+    // Attempt to perform a dash if conditions are met
+    private void AttemptDash()
+    {
+        if (canDash && dashCount > 0)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
     // Dash Coroutine
     private IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
+        dashCount--;
+
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(moveDirection.x * dashingPower, moveDirection.y * dashingPower);
+
         yield return new WaitForSeconds(dashingTime);
+
         rb.gravityScale = originalGravity;
         isDashing = false;
+
+        // Cooldown to reset dash ability
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
