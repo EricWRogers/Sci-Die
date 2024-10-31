@@ -141,7 +141,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 2f847ddf9a1908e49a03a5e6f31107b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -319,6 +319,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hurt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7922358620755125518}
+        m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
+        m_MethodName: FlashRed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6797537555491965594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +355,7 @@ MonoBehaviour:
   middleFirePoint: {fileID: 5936979798808815766}
   bottomFirePoint: {fileID: 3265050421848349315}
   Bullet: {fileID: 3555092075681369672, guid: 1e12e051a2330eb47b7acff852a4710a, type: 3}
-  enemyGun: 0
+  enemyGun: 2
 --- !u!114 &7398669331438284318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,3 +399,5 @@ MonoBehaviour:
   maxSpeed: 0
   speed: 200
   nextWaypointDistance: 3
+  flashTime: 0
+  image: {fileID: 2260405895043915885}

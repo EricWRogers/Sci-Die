@@ -37,6 +37,10 @@ public class BossStateMachine : SimpleStateMachine
 
     public GameObject Lasers;
 
+    public float flashTime;
+    Color origionalColor;
+    public SpriteRenderer image;
+
     private void Awake()
     {
         states.Add(stageOne);
@@ -58,6 +62,7 @@ public class BossStateMachine : SimpleStateMachine
         m_target = GameObject.FindGameObjectWithTag("Player");
         m_center = GameObject.FindGameObjectWithTag("Center");
         health = GetComponent<Health>();
+        origionalColor = image.color;
 
     }
 
@@ -159,5 +164,14 @@ public class BossStateMachine : SimpleStateMachine
                 return;
             }
         }
+    }
+    public void FlashRed()
+    {
+        image.color = Color.red;
+        Invoke("ResetColor", flashTime);
+    }
+    public void ResetColor()
+    {
+        image.color = origionalColor;
     }
 }

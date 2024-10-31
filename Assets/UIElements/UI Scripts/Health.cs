@@ -9,21 +9,25 @@ public class Health : MonoBehaviour
     public float maxHealth = 6; // Max health set to 6 for 3 hearts
     HealthCounter healthCounter;
     public UnityEvent outOfHealth;
+    public UnityEvent hurt;
 
     void Start()
     {
         healthCounter = GetComponent<HealthCounter>();
         currentHealth = maxHealth; // Start with full health (3 hearts)
         //healthCounter.UpdateHealthCounter(currentHealth); // Initialize hearts
+        if (hurt == null)
+            hurt = new UnityEvent();
     }
 
     void Update()
     {
         // Test: Press 'F' to take 1 damage
-        if (Input.GetKeyDown(KeyCode.F))
+        /*if (Input.GetKeyDown(KeyCode.F))
         {
             TakeDamage(1f); // Take 1 damage per press
         }
+        */
     }
 
     public void TakeDamage(float damage)
@@ -34,6 +38,10 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             outOfHealth.Invoke(); // Trigger "out of health" event if health is 0
+        }
+        else
+        {
+            hurt.Invoke();
         }
     }
 
