@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Move.canceled += ctx => moveDirection = Vector2.zero;
 
         // Set up the dash input callback
-        controls.Player.Dash.performed += ctx => AttemptDash();
+        controls.Player.Dash.performed += ctx => AttemptDash(); 
     }
 
     private void OnEnable()
