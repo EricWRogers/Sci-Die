@@ -48,6 +48,9 @@ public class GunHaverScript : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col){
         isColliding = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D col){
         weaponTag = col.transform.tag;
     }
 }

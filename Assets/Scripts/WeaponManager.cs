@@ -24,6 +24,7 @@ public class WeaponManager : MonoBehaviour
     private float railgunCharge;
 
     public bool isCharging = true;
+    public bool droneActive = false;
 
     public WeaponAsset defaultWeaponAsset;
 
@@ -42,6 +43,9 @@ public class WeaponManager : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Q)){
+            droneActive = !droneActive;
+        }
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
         if (isCharging){
@@ -51,49 +55,51 @@ public class WeaponManager : MonoBehaviour
                 railgunReady.SetActive(true);
             }
         }
-        if((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
-            if (activeGun == "RocketLauncher"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
+        if(!droneActive){
+            if((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && (Input.GetKeyDown(KeyCode.Mouse0))){
+                if (activeGun == "RocketLauncher"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
                 }
-            }
             
-            if (activeGun == "Shotgun"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
+                if (activeGun == "Shotgun"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
+                }
+
+                if (activeGun == "Railgun" && railgunCharge >= 5){
+                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
                     time = 0;
+                    railgunCharge = 0;
+                    isCharging = true;
+                    railgunReady.SetActive(false);
+                    destroyTimer += 1;
+                    if(destroyTimer == 3.0f){
+                        Destroy(go);
+                        destroyTimer = 0;
+                    }
                 }
             }
 
-            if (activeGun == "Railgun" && railgunCharge >= 5){
-                GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
-                time = 0;
-                railgunCharge = 0;
-                isCharging = true;
-                railgunReady.SetActive(false);
-                destroyTimer += 1;
-                if(destroyTimer == 3.0f){
-                    Destroy(go);
-                    destroyTimer = 0;
+            if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0)) && time >= 0){
+                if(activeGun == "Pistol"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
                 }
-            }
-        }
-
-        if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0)) && time >= 0){
-            if(activeGun == "Pistol"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
+                if(activeGun == "MachineGun"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
                 }
-            }
-            if(activeGun == "MachineGun"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
-                }
-            }
                 
+            }
         }
         
     }
