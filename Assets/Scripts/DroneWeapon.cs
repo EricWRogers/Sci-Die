@@ -16,7 +16,10 @@ public class DroneWeapon : MonoBehaviour
     public float attackDmg;
     public float circleAttackRange;
     public Vector2 squareAttackRange;
-    
+
+    public float scythTime;
+    public bool scythAttacking;
+    public float currentAttackTime = 0;
     public string animTrigger;
     [HideInInspector] public float attackNext;
     private float m_angle;
@@ -27,30 +30,28 @@ public class DroneWeapon : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0)&& attackNext < Time.time)
         {
             attackNext = Time.time + attackCooldown;
-            OnAttackCircle();
-            Invoke(nameof(ScissorAttack), .5f);
+            scythAttacking = true;
+            //Invoke(nameof(ScissorAttack), .5f);
         }
+
+        if (scythAttacking)
+        {
+            currentAttackTime += Time.deltaTime;
+
+            if (scythTime > currentAttackTime)
+            {
+                ScythAttack();
+            }
+            else{
+                scythAttacking = false;
+                currentAttackTime = 0f;
+            }
+        }
+        
     }   
 
-    public void OnAttackCircle()
-    {
-        if ( Time.time >= attackNext)
-        {
-            mousPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-        }
-    }
-    public void OnAttackSquare()
-    {
-
-        if (Input.GetKeyDown(attackKey) && Time.time >= attackNext)
-        {
 
 
-        }
-
-
-    }
     private void ScissorAttack()
     {
             
