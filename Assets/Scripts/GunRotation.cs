@@ -6,6 +6,7 @@ public class GunRotation : MonoBehaviour
     private Camera mainCam;
     private PlayerControls controls;
     private Vector2 aimDirection;
+    private Transform spriteTransform;
 
     private void Awake()
     {
@@ -29,8 +30,9 @@ public class GunRotation : MonoBehaviour
 
     private void Start()
     {
-        // Get the main camera
+        // Get the main camera and the sprite's transform
         mainCam = Camera.main;
+        spriteTransform = transform; // Assuming this script is on the sprite's GameObject
     }
 
     void Update()
@@ -52,15 +54,12 @@ public class GunRotation : MonoBehaviour
 
         // Calculate the angle in degrees and apply the rotation
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Adjust the angle based on the parent's scale direction
-        if (transform.parent.transform.localScale.x > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
+        // Flip the sprite based on the aim direction
+        if (direction.x < 0)
+            spriteTransform.localScale = new Vector3(1, -1, -1); // Flip to left
         else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, angle + 180);
-        }
+            spriteTransform.localScale = new Vector3(1, 1, 1); // Reset to right
     }
 }

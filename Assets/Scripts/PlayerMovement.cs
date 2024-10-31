@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
 
+
     private void Awake()
     {
         // Initialize the controls
@@ -32,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Move.canceled += ctx => moveDirection = Vector2.zero;
 
         // Set up the dash input callback
-        controls.Player.Dash.performed += ctx => AttemptDash(); 
+        controls.Player.Dash.performed += ctx => AttemptDash();
+
     }
 
     private void OnEnable()
@@ -52,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         // No need to check for dash input here anymore
         if (isDashing)
             return;
+
     }
 
     void FixedUpdate()
