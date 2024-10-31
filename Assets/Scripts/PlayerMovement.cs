@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        dashCount--;
+//        dashCount--;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
