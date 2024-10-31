@@ -25,10 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // Initial UI update to set dodge count
+        // Initial UI update to set dash count
         if (hudManager != null)
         {
-            hudManager.UpdateDodgeCountUI();
+            hudManager.UpdateDashCountUI();
         }
     }
 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (hudManager != null)
         {
-            hudManager.UpdateDodgeCountUI(); // Update UI with current dash count
+            hudManager.UpdateDashCountUI(); // Update UI with current dash count
         }
     }
 

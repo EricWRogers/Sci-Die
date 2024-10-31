@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8149488613587162068}
   m_Layer: 5
-  m_Name: DodgeManager
+  m_Name: DashManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 9063494074001431689}
   - component: {fileID: 4070779156588890073}
   m_Layer: 5
-  m_Name: DodgeCount
+  m_Name: DashCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1068,12 +1068,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5ee0ced57e2b343bfad13992b18d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodgeCountText: {fileID: 4070779156588890073}
+  dashCountText: {fileID: 4070779156588890073}
   weaponCooldownSlider: {fileID: 6672776832324172673}
   droneAttackText: {fileID: 4380372257373030785}
   weaponText: {fileID: 7158924684584148428}
   scrapCountText: {fileID: 6825287591065462261}
-  healthText: {fileID: 0}
+  maxDash: 3
+  playerMovement: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
   droneAttackObject: {fileID: 0}
   scrapObject: {fileID: 0}
 --- !u!1 &6650748380595052334

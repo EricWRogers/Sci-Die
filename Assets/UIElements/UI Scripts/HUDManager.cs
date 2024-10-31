@@ -7,15 +7,15 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
     // HUD UI Elements
-    public TextMeshProUGUI dodgeCountText;
+    public TextMeshProUGUI dashCountText;
     public Slider weaponCooldownSlider;
     public TextMeshProUGUI droneAttackText;
     public TextMeshProUGUI weaponText;
     public TextMeshProUGUI scrapCountText;
 
-    // Health and Dodge Properties
-    private int maxDodges = 3;
-    private int currentDodges;
+    // Health and Dash Properties
+    public int maxDash = 3;
+    public PlayerMovement playerMovement;  // Reference to PlayerMovement script to access dash count
 
     // Weapon Cooldown Properties
     private float weaponCooldown = 5f;
@@ -27,14 +27,18 @@ public class HUDManager : MonoBehaviour
     public GameObject scrapObject;
 
     private bool droneReady = true;
-    private string currentWeapon = "Laser Gun";
+    private string currentWeapon = "Pistol";
     private int scrapCount = 0;
 
     void Start()
     {
-        currentDodges = maxDodges;
+        if (dashCountText == null)
+        {
+            Debug.LogWarning("Dash Count Text is not assigned in the HUDManager!");
+        }
+
         weaponCooldownSlider.gameObject.SetActive(false);
-        UpdateDodgeCountUI();
+        UpdateDashCountUI();  // Initial update to display dash count
         UpdateDroneAttackUI();
         UpdateWeaponUI();
         UpdateScrapCountUI();
@@ -42,6 +46,8 @@ public class HUDManager : MonoBehaviour
 
     void Update()
     {
+        UpdateDashCountUI();  // Regularly update dash count in the UI
+
         // Weapon cooldown logic
         if (isWeaponOnCooldown)
         {
@@ -57,16 +63,16 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    // Update dodge count UI
-    public void UpdateDodgeCountUI()
+    // Update dash count UI
+    public void UpdateDashCountUI()
     {
-        if (dodgeCountText != null)
+        if (playerMovement != null && dashCountText != null)
         {
-            dodgeCountText.text = "Dodges: " + currentDodges;
+            dashCountText.text = "Dash: " + playerMovement.dashCount;
         }
-        else
+        else if (dashCountText == null)
         {
-            Debug.LogWarning("Dodge Count Text is not assigned!");
+            Debug.LogWarning("Dash Count Text is not assigned in the HUDManager!");
         }
     }
 
@@ -138,8 +144,11 @@ public class HUDManager : MonoBehaviour
     // Apply pickups
     public void ApplyDashCountPickup(int value)
     {
-        currentDodges += value;
-        UpdateDodgeCountUI();
+        if (playerMovement != null)
+        {
+            playerMovement.IncreaseDashCount(value);
+            UpdateDashCountUI();
+        }
     }
 
     public void ApplyDamagePickup(float value)
