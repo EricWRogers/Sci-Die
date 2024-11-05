@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class buttoninfo : MonoBehaviour
 {
     public int ItemID;
-    public Text PriceTxt;
-    public Text QuantityTxt;
+    public TMP_Text PriceTxt;
+    public TMP_Text QuantityTxt;
     public GameObject ShopManager;
     
-    // Update is called once per frame
-    void Start()
+    
+    void Update()
     {
         
         PriceTxt.text = "Price: $" + ShopManager.GetComponent<ShopManagerScript>().shopItems[2, ItemID].ToString();

@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     
     public InputActionReference move;
 
-    public ScrapManager sm;
-
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 24f;
@@ -62,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Scrap"))
         {
             Destroy(other.gameObject);
-            sm.scrapCount++;
+            
         }
     }
 }
