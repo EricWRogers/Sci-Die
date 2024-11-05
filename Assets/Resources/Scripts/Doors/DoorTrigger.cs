@@ -30,7 +30,7 @@ public class DoorTrigger : MonoBehaviour
             room.ActivateEnemies(); // Activate enemies in the room
 
             // Start a coroutine to handle the delayed door closure
-            StartCoroutine(CloseAllDoorsWithDelay(0.5f)); // Delay of 0.5 seconds
+            StartCoroutine(CloseAllDoorsWithDelay(1.0f)); // Delay of 0.5 seconds
         }
     }
 
