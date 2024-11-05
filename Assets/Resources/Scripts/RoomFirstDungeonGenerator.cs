@@ -54,7 +54,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGen
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
     }
 
-    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
+    /*private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
     {
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         for (int i = 0; i < roomsList.Count; i++)
@@ -72,7 +72,36 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGen
             }
         }
         return floor;
+    }*/
+
+    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
+    {
+        HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+        for (int i = 0; i < roomsList.Count; i++)
+        {
+            var roomBounds = roomsList[i];
+            var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
+            var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
+            foreach (var position in roomFloor)
+            {
+                if (position.x >= (roomBounds.xMin + offset) && position.x <= (roomBounds.xMax - offset) && 
+                    position.y >= (roomBounds.yMin + offset) && position.y <= (roomBounds.yMax - offset))
+                {
+                    floor.Add(position);
+                }
+            }
+            
+            // Add a pillar at the room's center
+            floor.Add(roomCenter);  // 1x1 pillar
+            
+            // For a 2x2 pillar, include these additional positions:
+            floor.Add(roomCenter + Vector2Int.up);
+            floor.Add(roomCenter + Vector2Int.right);
+            floor.Add(roomCenter + Vector2Int.up + Vector2Int.right);
+        }
+        return floor;
     }
+
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
     {
@@ -91,7 +120,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGen
         return corridors;
     }
 
-    private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
+    /*private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
     {
         HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
         var position = currentRoomCenter;
@@ -121,6 +150,49 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGen
             corridor.Add(position);
         }
         return corridor;
+    }*/
+
+    private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
+    {
+        HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
+        var position = currentRoomCenter;
+        corridor.Add(position);
+
+        while (position.y != destination.y)
+        {
+            if (destination.y > position.y)
+            {
+                position += Vector2Int.up;
+            }
+            else if (destination.y < position.y)
+            {
+                position += Vector2Int.down;
+            }
+            
+            corridor.Add(position);
+            // Adding extra width by adding adjacent tiles
+            corridor.Add(position + Vector2Int.left);
+            corridor.Add(position + Vector2Int.right);
+        }
+
+        while (position.x != destination.x)
+        {
+            if (destination.x > position.x)
+            {
+                position += Vector2Int.right;
+            }
+            else if (destination.x < position.x)
+            {
+                position += Vector2Int.left;
+            }
+
+            corridor.Add(position);
+            // Adding extra width by adding adjacent tiles
+            corridor.Add(position + Vector2Int.up);
+            corridor.Add(position + Vector2Int.down);
+        }
+
+        return corridor;
     }
 
     private Vector2Int FindClosestPointTo(Vector2Int currentRoomCenter, List<Vector2Int> roomCenters)
@@ -139,7 +211,7 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGen
         return closest;
     }
 
-    private HashSet<Vector2Int> CreateSimpleRooms(List<BoundsInt> roomsList)
+    /*private HashSet<Vector2Int> CreateSimpleRooms(List<BoundsInt> roomsList)
     {
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         foreach (var room in roomsList)
@@ -155,5 +227,38 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkMapGen
 
         }
         return floor;
+    }*/
+
+    private HashSet<Vector2Int> CreateSimpleRooms(List<BoundsInt> roomsList)
+    {
+        HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+        HashSet<Vector2Int> pillars = new HashSet<Vector2Int>(); // Collect pillar positions
+
+        foreach (var room in roomsList)
+        {
+            for (int col = offset; col < room.size.x - offset; col++)
+            {
+                for (int row = offset; row < room.size.y - offset; row++)
+                {
+                    Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
+                    floor.Add(position);
+                }
+            }
+
+            // Add a pillar at the center of each room
+            Vector2Int roomCenter = new Vector2Int(Mathf.RoundToInt(room.center.x), Mathf.RoundToInt(room.center.y));
+            pillars.Add(roomCenter);
+
+            // Optional: Add a 2x2 pillar if desired add more thats always fun
+            pillars.Add(roomCenter + Vector2Int.up);
+            pillars.Add(roomCenter + Vector2Int.right);
+            pillars.Add(roomCenter + Vector2Int.up + Vector2Int.right);
+        }
+
+        tilemapVisualizer.PaintFloorTiles(floor);
+        tilemapVisualizer.PaintPillarTiles(pillars); // Paint pillar tiles separately
+
+        return floor;
     }
+
 }

@@ -8,7 +8,6 @@ public class StageTwo : SimpleState
     public override void OnStart()
     {
         base.OnStart();
-        ((BossStateMachine)stateMachine).timer.StartTimer(((BossStateMachine)stateMachine).attackTime, false);
     }
 
     public override void UpdateState(float _dt)

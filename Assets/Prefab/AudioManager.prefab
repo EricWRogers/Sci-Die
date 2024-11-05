@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e402ec9b07a8eb46b03c7833bc56335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicVolume: {fileID: 24100000, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+  fadeInTime: 4
+  fadeIn: 0
+  fadeOut: 0
+  time: 0
   sounds:
   - name: RayGun
     clip: {fileID: 8300000, guid: c0ef8b27b954d084c93733718fe4756e, type: 3}
