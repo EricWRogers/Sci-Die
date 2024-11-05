@@ -1,54 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [Header("Health Settings")]
-    public float maxHealth = 100f;             
-    private float currentHealth;               
-
-    [Header("UI Elements")]
-    public Slider healthSlider;                
+    public float currentHealth;
+    public float maxHealth = 6; // Max health set to 6 for 3 hearts
+    HealthCounter healthCounter;
+    public UnityEvent outOfHealth;
 
     void Start()
     {
-        currentHealth = maxHealth;             
-        UpdateHealthSlider();                  
+        healthCounter = GetComponent<HealthCounter>();
+        currentHealth = maxHealth; // Start with full health (3 hearts)
+        healthCounter.UpdateHealthCounter(currentHealth); // Initialize hearts
     }
 
-    // Method to take damage
+    void Update()
+    {
+        // Test: Press 'F' to take 1 damage
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            TakeDamage(1f); // Take 1 damage per press
+        }
+    }
+
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;               
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); 
-        UpdateHealthSlider();                  
-
+        currentHealth -= damage;
+        currentHealth = Mathf.Max(currentHealth, 0); // Prevent health from going below 0
+        healthCounter.UpdateHealthCounter(currentHealth); // Update hearts
         if (currentHealth <= 0)
         {
-            Die();                             
+            outOfHealth.Invoke(); // Trigger "out of health" event if health is 0
         }
     }
 
-    // Method to update the health slider
-    private void UpdateHealthSlider()
+    public void Heal(float amount)
     {
-        if (healthSlider != null)
-        {
-            healthSlider.value = currentHealth / maxHealth; 
-        }
-        else
-        {
-            Debug.LogWarning("Health slider is not assigned!");
-        }
-    }
-
-    // Method to handle enemy death
-    private void Die()
-    {
-        // Destroy or disable the enemy game object
-        Destroy(gameObject);
-        
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth); // Heal but don't exceed max health
+        healthCounter.UpdateHealthCounter(currentHealth); // Update hearts
     }
 }
