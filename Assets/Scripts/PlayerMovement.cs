@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
+    public Animator animator;
 
 
     private void Awake()
@@ -64,7 +66,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply movement to Rigidbody2D
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+
+        animator.SetFloat("xVel", Mathf.Abs(rb.velocity.x));
     }
+
 
     // Attempt to perform a dash if conditions are met
     private void AttemptDash()

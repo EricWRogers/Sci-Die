@@ -390,6 +390,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2001379218252169745, guid: eb276fbf7e7477d48b1af0dd311906cd, type: 3}
     - target: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1652386414}
+    - target: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: dashCount
       value: 20
       objectReference: {fileID: 0}
@@ -402,7 +406,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1093885793}
+      addedObject: {fileID: 1652386414}
   m_SourcePrefab: {fileID: 100100000, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
 --- !u!1 &381353840
 GameObject:
@@ -531,24 +535,24 @@ MonoBehaviour:
   spaceBetweenRocks: 1
   rockSpawnerDeadZone: 0
   tryToPlaceCount: 5
---- !u!1 &944492967 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
-  m_PrefabInstance: {fileID: 161943456}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1093885783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
   m_PrefabInstance: {fileID: 161943456}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1093885793
+--- !u!1 &1652386404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1652386414
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944492967}
+  m_GameObject: {fileID: 1652386404}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7ebc73d7efc08e14a87913314c2725d1, type: 2}
