@@ -9,13 +9,9 @@ public class GunHaverScript : MonoBehaviour
     public WeaponAsset Pistol;
     public WeaponAsset Shotgun;
     public WeaponAsset MachineGun;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    public WeaponAsset RocketLauncher;
+    public WeaponAsset Railgun;
+    
     void Update()
     {
         if (Input.GetKeyDown("1"))
@@ -31,6 +27,14 @@ public class GunHaverScript : MonoBehaviour
 
         if (Input.GetKeyDown("3")){
             weaponManager.UpdateWeapon(MachineGun);
+            Destroy(this.transform.parent);
+        }
+        if (Input.GetKeyDown("4")){
+            weaponManager.UpdateWeapon(RocketLauncher);
+            Destroy(this.transform.parent);
+        }
+        if(Input.GetKeyDown("5")){
+            weaponManager.UpdateWeapon(Railgun);
             Destroy(this.transform.parent);
         }
     }

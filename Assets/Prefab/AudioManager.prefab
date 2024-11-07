@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8955622908045623990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61249838451510605}
+  - component: {fileID: 8475179966750340081}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &61249838451510605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955622908045623990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.090869, y: 9.224628, z: -0.18818188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8475179966750340081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955622908045623990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e402ec9b07a8eb46b03c7833bc56335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicVolume: {fileID: 24100000, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+  fadeInTime: 4
+  fadeIn: 0
+  fadeOut: 0
+  time: 0
+  sounds:
+  - name: RayGun
+    clip: {fileID: 8300000, guid: c0ef8b27b954d084c93733718fe4756e, type: 3}
+    AudioGroup: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: RailGun
+    clip: {fileID: 8300000, guid: c96028c52497b1944835f74246b26bf4, type: 3}
+    AudioGroup: {fileID: -2051593433635058746, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: HitSoud
+    clip: {fileID: 8300000, guid: 78c8a0b3be70de541b90a563093a89a8, type: 3}
+    AudioGroup: {fileID: -8462267793633727669, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: 5462a915658a8c543be762ca14304533, type: 3}
+    AudioGroup: {fileID: -2051593433635058746, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Battle
+    clip: {fileID: 8300000, guid: 3efc2d658cb91944382fab5890fee8a8, type: 3}
+    AudioGroup: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Tinker
+    clip: {fileID: 8300000, guid: a968b0d3819e1644f9a99af365a67164, type: 3}
+    AudioGroup: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
+  - name: Escape
+    clip: {fileID: 8300000, guid: 932d545448dfc8c439e4dcc529307c46, type: 3}
+    AudioGroup: {fileID: 3735375713114943988, guid: 6ce5ffc9255dce442be35e688fb8a588, type: 2}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioSource: {fileID: 0}
