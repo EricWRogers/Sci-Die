@@ -1,17 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    public GameObject winScreen; // Assign the Win Screen UI in the Inspector
-    public GameObject loseScreen; // Assign the Lose Screen UI in the Inspector
-    public GameObject hud; // Assign the entire HUD UI object here
-    public Health playerHealth; // Reference to the Player's Health script
+    public GameObject winScreen;
+    public GameObject loseScreen;
+    public GameObject hud;
+    public Health playerHealth;
 
     private bool gameEnded = false;
 
     void Start()
     {
-        playerHealth.outOfHealth.AddListener(ShowLoseScreen); // Subscribe to the player's outOfHealth event
+        playerHealth.outOfHealth.AddListener(ShowLoseScreen); // Subscribe to player health
     }
 
     // Called by enemies when they are defeated
@@ -30,9 +31,8 @@ public class GameOverManager : MonoBehaviour
 
         gameEnded = true;
         winScreen.SetActive(true);
-        loseScreen.SetActive(false);
-        hud.SetActive(false); // Hide the entire HUD
-        Time.timeScale = 0f; // Optional: Stop game time
+        hud.SetActive(true);
+        Time.timeScale = 0f; // Pause game
     }
 
     public void ShowLoseScreen()
@@ -41,18 +41,23 @@ public class GameOverManager : MonoBehaviour
 
         gameEnded = true;
         loseScreen.SetActive(true);
-        winScreen.SetActive(false);
-        hud.SetActive(false); // Hide the entire HUD
-        Time.timeScale = 0f; // Optional: Stop game time
+        hud.SetActive(true);
+        Time.timeScale = 0f; // Pause game
     }
 
-    // Call this method to reset the game if needed
-    public void ResetGame()
+    // Retry button functionality
+    public void RetryGame()
     {
-        gameEnded = false;
-        winScreen.SetActive(false);
-        loseScreen.SetActive(false);
-        hud.SetActive(true); // Show the HUD again
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; // Unpause game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload current scene
+    }
+
+    // Quit button functionality
+    public void QuitGame()
+    {
+        Application.Quit(); // Closes the game application
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; // Stop play mode in the editor
+        #endif
     }
 }
