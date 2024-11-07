@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Center
   - Pickup
+  - Scrap
+  - Event
   layers:
   - Default
   - TransparentFX
