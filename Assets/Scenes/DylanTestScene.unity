@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb5b3fcf9bd8124b95262a1a0a1c8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 10
+  currentHealth: 10000
+  maxHealth: 10000
   outOfHealth:
     m_PersistentCalls:
       m_Calls: []
@@ -5409,7 +5409,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1893422545}
+      addedObject: {fileID: 1893422534}
   m_SourcePrefab: {fileID: 100100000, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
 --- !u!4 &984231342 stripped
 Transform:
@@ -5856,7 +5856,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
   m_PrefabInstance: {fileID: 752886822}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1893422545
+--- !u!114 &1893422534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5872,7 +5872,7 @@ MonoBehaviour:
   railgunReady: {fileID: 0}
   weapon: {fileID: 0}
   fireRate: 0
-  activeGun: 
+  activeGun: ScissorDrone
   isCharging: 1
   attackPoint: {fileID: 984231342}
   attackDmg: 0
@@ -5880,7 +5880,8 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
-  defaultWeaponAsset: {fileID: 11400000, guid: 828e5f9827079a941a7e194d02ed397d, type: 2}
+  scythAttacking: 0
+  defaultWeaponAsset: {fileID: 11400000, guid: ffb0c54fa3e0e604cafd663236ae0a52, type: 2}
 --- !u!1001 &4393130546343029379
 PrefabInstance:
   m_ObjectHideFlags: 0

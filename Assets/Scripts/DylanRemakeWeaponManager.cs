@@ -32,6 +32,10 @@ public class DylanRemakeWeaponManager : MonoBehaviour
     public int attackDmg;
     public float m_angle;
     public LayerMask enemyLayers;
+    public bool scythAttacking;
+    private Vector3 attackDirection;
+    private float attackDirectionStrength;
+    private float currentTime;
 
     public WeaponAsset defaultWeaponAsset;
 
@@ -122,11 +126,35 @@ public class DylanRemakeWeaponManager : MonoBehaviour
         }
         if (activeGun == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
         {
-            Debug.Log("ScissorDroneIf");
+      
             Invoke(nameof(ScissorAttack), .5f);
             time = 0;
         }
-        
+        if (activeGun == "ScythDrone" && fireInput && timeToNextFire < Time.time)
+        {
+           currentTime = Time.time;
+            Invoke(nameof(ScythAttacking), 2f);
+            scythAttacking = true;
+            time = 0;
+            attackDirection = ((attackPoint.position - transform.position).normalized);
+        }
+
+
+        if (scythAttacking)
+        {
+            ScythAttack();
+            if (currentTime > Time.time - 1f)
+            {
+                attackDirectionStrength += 0.5f;
+            }
+            else
+            {
+                attackDirectionStrength -= 0.5f;
+            }
+ 
+            
+        }
+
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
     {
@@ -147,5 +175,22 @@ public class DylanRemakeWeaponManager : MonoBehaviour
                 enemy.GetComponent<Health>().TakeDamage(attackDmg);
             }
         
+    }
+    private void ScythAttack()
+    {
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position+(attackDirection* attackDirectionStrength), 0.75f, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+
+        }
+    }
+
+    private void ScythAttacking()
+    {
+        scythAttacking = false;
+        attackDirectionStrength = 0;
     }
 }
