@@ -93,6 +93,15 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Scrap"))
+        {
+            Destroy(other.gameObject);
+            
+        }
+    }
+
     // Method to Increase Dash Count
     public void IncreaseDashCount(int value)
     {
