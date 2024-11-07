@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Pickup Collision Detection
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Pickup"))
         {
@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(other.gameObject); // Destroy the pick-up after use
             }
         }
-    }
+    }*/
 
     // Apply the effect of the pickup
     void ApplyPickup(PickUp pickup)
