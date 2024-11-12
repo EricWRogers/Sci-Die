@@ -27,7 +27,7 @@ public class DylanRemakeWeaponManager : MonoBehaviour
     private float railgunCharge;
 
     public bool isCharging = true;
-    //Dylan Vars
+    //Drone Vars
     public Transform attackPoint;
     public int attackDmg;
     public float m_angle;
@@ -36,6 +36,7 @@ public class DylanRemakeWeaponManager : MonoBehaviour
     private Vector3 attackDirection;
     private float attackDirectionStrength;
     private float currentTime;
+    public Animator animator;
 
     public WeaponAsset defaultWeaponAsset;
 
@@ -126,8 +127,9 @@ public class DylanRemakeWeaponManager : MonoBehaviour
         }
         if (activeGun == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
         {
-      
+            
             Invoke(nameof(ScissorAttack), .5f);
+            animator.SetTrigger("Attack");
             time = 0;
         }
         if (activeGun == "ScythDrone" && fireInput && timeToNextFire < Time.time)
@@ -145,11 +147,11 @@ public class DylanRemakeWeaponManager : MonoBehaviour
             ScythAttack();
             if (currentTime > Time.time - 1f)
             {
-                attackDirectionStrength += 0.5f;
+                attackDirectionStrength += 1f;
             }
             else
             {
-                attackDirectionStrength -= 0.5f;
+                attackDirectionStrength -= 1f;
             }
  
             
