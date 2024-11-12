@@ -7,14 +7,14 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
     // HUD UI Elements
-    public TextMeshProUGUI dashCountText;
+    //public TextMeshProUGUI dashCountText;
     public Slider weaponCooldownSlider;
     public TextMeshProUGUI droneAttackText;
     public TextMeshProUGUI weaponText;
     public TextMeshProUGUI scrapCountText;
 
     // Health and Dash Properties
-    public int maxDash = 3;
+    //public int maxDash = 3;
     public PlayerMovement playerMovement;  // Reference to PlayerMovement script to access dash count
 
     // Weapon Cooldown Properties
@@ -32,13 +32,13 @@ public class HUDManager : MonoBehaviour
 
     void Start()
     {
-        if (dashCountText == null)
+        /*if (dashCountText == null)
         {
             Debug.LogWarning("Dash Count Text is not assigned in the HUDManager!");
-        }
+        }*/
 
         weaponCooldownSlider.gameObject.SetActive(false);
-        UpdateDashCountUI();  // Initial update to display dash count
+        //UpdateDashCountUI();  // Initial update to display dash count
         UpdateDroneAttackUI();
         UpdateWeaponUI();
         UpdateScrapCountUI();
@@ -46,7 +46,7 @@ public class HUDManager : MonoBehaviour
 
     void Update()
     {
-        UpdateDashCountUI();  // Regularly update dash count in the UI
+        //UpdateDashCountUI();  // Regularly update dash count in the UI
 
         // Weapon cooldown logic
         if (isWeaponOnCooldown)
@@ -64,7 +64,7 @@ public class HUDManager : MonoBehaviour
     }
 
     // Update dash count UI
-    public void UpdateDashCountUI()
+    /*public void UpdateDashCountUI()
     {
         if (playerMovement != null && dashCountText != null)
         {
@@ -74,7 +74,7 @@ public class HUDManager : MonoBehaviour
         {
             Debug.LogWarning("Dash Count Text is not assigned in the HUDManager!");
         }
-    }
+    }*/
 
     // Update scrap count UI
     void UpdateScrapCountUI()
@@ -142,14 +142,14 @@ public class HUDManager : MonoBehaviour
     }
 
     // Apply pickups
-    public void ApplyDashCountPickup(int value)
+   /* public void ApplyDashCountPickup(int value)
     {
         if (playerMovement != null)
         {
             playerMovement.IncreaseDashCount(value);
             UpdateDashCountUI();
         }
-    }
+    }*/
 
     public void ApplyDamagePickup(float value)
     {

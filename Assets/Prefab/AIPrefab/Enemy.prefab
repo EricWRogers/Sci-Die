@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 3448847987444685970}
   - component: {fileID: 5836583800781461945}
   - component: {fileID: 6508304172922151293}
-  - component: {fileID: 59977526431033740}
   - component: {fileID: 6797537555491965594}
   - component: {fileID: 7398669331438284318}
   - component: {fileID: 7922358620755125518}
@@ -290,35 +289,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0328097, y: 1.4934534}
   m_EdgeRadius: 0
---- !u!114 &59977526431033740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8375697276283394324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb5b3fcf9bd8124b95262a1a0a1c8c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 5
-  outOfHealth:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8375697276283394324}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6797537555491965594
 MonoBehaviour:
   m_ObjectHideFlags: 0

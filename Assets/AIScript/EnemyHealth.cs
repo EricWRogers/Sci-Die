@@ -4,9 +4,9 @@ using UnityEngine.UI;  // If you're using a UI slider to show health
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;  // Set maximum health for the enemy
+    public float maxHealth = 100f;  // maximum health for the enemy
     private float currentHealth;    // Current health of the enemy
-    public Slider healthSlider;     // Reference to a slider (if you want to display health)
+    public Slider healthSlider;     // Reference to a slider
     public GameObject enemyDeathEffect; // Optional: Add a visual effect (like an explosion) when the enemy dies
 
     // Optional: This event will be triggered when the enemy dies

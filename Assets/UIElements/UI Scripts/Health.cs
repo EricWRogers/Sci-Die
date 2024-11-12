@@ -37,7 +37,6 @@ public class Health : MonoBehaviour
         else if (CompareTag("Enemy"))
         {
             gameObject.SetActive(false); // Deactivate enemy on defeat
-            FindObjectOfType<GameOverManager>().CheckWinCondition(); // Notify GameOverManager
         }
     }
 
