@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     {
         healthCounter = GetComponent<HealthCounter>();
         currentHealth = maxHealth; // Start with full health (3 hearts)
-        //healthCounter.UpdateHealthCounter(currentHealth); // Initialize hearts
+        healthCounter.UpdateHealthCounter(currentHealth); // Initialize hearts
     }
 
     void Update()
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0); // Prevent health from going below 0
-        //healthCounter.UpdateHealthCounter(currentHealth); // Update hearts
+        healthCounter.UpdateHealthCounter(currentHealth); // Update hearts
         if (currentHealth <= 0)
         {
             outOfHealth.Invoke(); // Trigger "out of health" event if health is 0
@@ -40,6 +40,6 @@ public class Health : MonoBehaviour
     public void Heal(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth); // Heal but don't exceed max health
-        //healthCounter.UpdateHealthCounter(currentHealth); // Update hearts
+        healthCounter.UpdateHealthCounter(currentHealth); // Update hearts
     }
 }
