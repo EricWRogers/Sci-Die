@@ -16,7 +16,7 @@ public class DropScrap : MonoBehaviour
 
         for (int i = 0; i < scrapCount; i++)
         {
-            //Instantiate(scrapPrefab, new Vector2(scrapPosition.x, scrapPosition.y) );
+            Instantiate(scrapPrefab, transform.position, transform.rotation);
         }
     }
     
