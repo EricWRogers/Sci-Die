@@ -18,26 +18,23 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnDestroy()
     {
-        GlobalDoorManager.UnregisterDoor(this); // Unregister this door when destroyed
+        GlobalDoorManager.UnregisterDoor(this);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !playerInside)
         {
-            playerInside = true; // Player has entered the room
-
+            playerInside = true;
             room.ActivateEnemies(); // Activate enemies in the room
-
-            // Start a coroutine to handle the delayed door closure
-            StartCoroutine(CloseAllDoorsWithDelay(0.5f)); // Delay of 0.5 seconds
+            StartCoroutine(CloseAllDoorsWithDelay(1.5f)); // Delay for doors to close after player enters
         }
     }
 
     private System.Collections.IEnumerator CloseAllDoorsWithDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); // Wait for the specified delay
-        GlobalDoorManager.CloseAllDoors(); // Close all registered doors globally
+        yield return new WaitForSeconds(delay);
+        room.CloseAllDoors(); // Close doors in the current room
     }
 
     public void OpenDoor()
@@ -46,7 +43,7 @@ public class DoorTrigger : MonoBehaviour
         if (doorCollider != null)
         {
             doorCollider.enabled = true;
-            doorCollider.isTrigger = true; // Allow player to pass through
+            doorCollider.isTrigger = true;
         }
     }
 
@@ -56,7 +53,7 @@ public class DoorTrigger : MonoBehaviour
         if (doorCollider != null)
         {
             doorCollider.enabled = true;
-            doorCollider.isTrigger = false; // Block player from passing through
+            doorCollider.isTrigger = false;
         }
     }
 }
