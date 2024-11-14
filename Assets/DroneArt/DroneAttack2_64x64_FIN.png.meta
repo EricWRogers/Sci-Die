@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba6d08223b313b94dbf91393a87f96ef
+guid: 511d1b5d714d5e7438b96db8cc7e071c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,12 +110,75 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DroneAttack164x64_0
+      name: DroneAttack2_64x64_FIN_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4f78dce0ef4354fbbaec5da73854f5
+      internalID: 16915488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DroneAttack2_64x64_FIN_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d07a1a7abde24743856dda321259566
+      internalID: 1013851184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DroneAttack2_64x64_FIN_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f8b4dfc90545a49a9b71b805988c6f
+      internalID: 1275805903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DroneAttack2_64x64_FIN_3
       rect:
         serializedVersion: 2
         x: 0
         y: 256
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,40 +187,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee36fcdd09f60544aa62f581781437be
-      internalID: 1292011155
+      spriteID: aabaf421199981743abd852a79231fb2
+      internalID: -1857364301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e758cb528b5a4bf459d6739e837bcedb
-      internalID: 257636367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_2
+      name: DroneAttack2_64x64_FIN_4
       rect:
         serializedVersion: 2
         x: 128
         y: 256
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,40 +208,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16cc87a97b5e4aa4a864bb01e681a5b5
-      internalID: -576720170
+      spriteID: 202e0042e5e23aa4892690d4606b246f
+      internalID: 1406956026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f77c07057622fc45842b3090d53192f
-      internalID: 1986569572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_4
+      name: DroneAttack2_64x64_FIN_5
       rect:
         serializedVersion: 2
         x: 256
         y: 256
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,19 +229,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fb00decbbbeb5a45aab49b3d1f56e28
-      internalID: 387304088
+      spriteID: db4991d74d4351c4bb3aff0aa55568c8
+      internalID: -280738448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_5
+      name: DroneAttack2_64x64_FIN_6
       rect:
         serializedVersion: 2
         x: 0
         y: 192
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -229,40 +250,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e57114d4bf4c5944b4ac267759126b9
-      internalID: 321592015
+      spriteID: 2cd19507aca07574a9e73c21e692ab3b
+      internalID: -1763992916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a8654cf741f9af43975493fd2ffa720
-      internalID: -1402704967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_7
+      name: DroneAttack2_64x64_FIN_7
       rect:
         serializedVersion: 2
         x: 128
         y: 192
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -271,40 +271,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af6f5661419cffb409ac09099bb3003e
-      internalID: -1925993633
+      spriteID: 94cd8467b64e8944f8e0b568f46a11ce
+      internalID: -2102071430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_8
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8e7f0fc3bae92d4e84a2824ba7aad06
-      internalID: -1901835129
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_9
+      name: DroneAttack2_64x64_FIN_8
       rect:
         serializedVersion: 2
         x: 256
         y: 192
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -313,19 +292,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2e3ac1e3d289a24f82e424096a8a69f
-      internalID: -1254038514
+      spriteID: 9a84306d1c7bbd04dbf5b43d2912cbf2
+      internalID: -29440969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_10
+      name: DroneAttack2_64x64_FIN_9
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -334,40 +313,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f2b22e3ee2c06d438ba9bd56a688b67
-      internalID: 532156561
+      spriteID: 248b8a2c33b697f4fa5fdbf5043cf423
+      internalID: 1838598258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_11
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32684be60268f094ba79e319307cc30b
-      internalID: 1432627667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_12
+      name: DroneAttack2_64x64_FIN_10
       rect:
         serializedVersion: 2
         x: 128
         y: 128
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -376,40 +334,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa8e02774673c31409382506525e0be5
-      internalID: -951355357
+      spriteID: e794ca7e7cd9e48408518dc719c85e5b
+      internalID: 1984922712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_13
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e449e9353e0ce17448f8cb473d4c4308
-      internalID: -1955454142
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_14
+      name: DroneAttack2_64x64_FIN_11
       rect:
         serializedVersion: 2
         x: 256
         y: 128
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -418,19 +355,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a9aa727a06ed4d46a8e3ea2cb1a070e
-      internalID: -1322221392
+      spriteID: c56c9f77d38e4ea438cfcbe2715e2ad5
+      internalID: -1736340271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_15
+      name: DroneAttack2_64x64_FIN_12
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -439,40 +376,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 477489569c96a2d4d97e1f3698b4ed9c
-      internalID: 1380398797
+      spriteID: 101a8ba7dcba8af4ebe24ec767fa14d5
+      internalID: -779639664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_16
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78dc28ce682e31647844d139cf99f1e6
-      internalID: 499710938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_17
+      name: DroneAttack2_64x64_FIN_13
       rect:
         serializedVersion: 2
         x: 128
         y: 64
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -481,40 +397,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb311b1f192344c479afbf169e254b5a
-      internalID: 16904831
+      spriteID: 14e352aa7fbf1a448bb4d7eea1f56962
+      internalID: -1606978344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_18
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9b22f1f5671b24344beaafd698f6d98b
-      internalID: -899093906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DroneAttack164x64_19
+      name: DroneAttack2_64x64_FIN_14
       rect:
         serializedVersion: 2
         x: 256
         y: 64
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -523,19 +418,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 279c59071876d6948bdf27b6f38baaac
-      internalID: 2034134580
+      spriteID: 4bf1fb7f18ad1dc49a07469f36354bce
+      internalID: 643404235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DroneAttack164x64_20
+      name: DroneAttack2_64x64_FIN_15
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -544,8 +439,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1941f78b967b4624193df38993679476
-      internalID: -1440258168
+      spriteID: ec82d6d80212b0a448a971bbef074d7c
+      internalID: 108959724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DroneAttack2_64x64_FIN_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa9afa0b929d1ca46b6ba42fcda57cb9
+      internalID: 886887992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DroneAttack2_64x64_FIN_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408867df7e3db114188c6c03a21103c1
+      internalID: 741815060
       vertices: []
       indices: 
       edges: []
@@ -561,27 +498,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DroneAttack164x64_0: 1292011155
-      DroneAttack164x64_1: 257636367
-      DroneAttack164x64_10: 532156561
-      DroneAttack164x64_11: 1432627667
-      DroneAttack164x64_12: -951355357
-      DroneAttack164x64_13: -1955454142
-      DroneAttack164x64_14: -1322221392
-      DroneAttack164x64_15: 1380398797
-      DroneAttack164x64_16: 499710938
-      DroneAttack164x64_17: 16904831
-      DroneAttack164x64_18: -899093906
-      DroneAttack164x64_19: 2034134580
-      DroneAttack164x64_2: -576720170
-      DroneAttack164x64_20: -1440258168
-      DroneAttack164x64_3: 1986569572
-      DroneAttack164x64_4: 387304088
-      DroneAttack164x64_5: 321592015
-      DroneAttack164x64_6: -1402704967
-      DroneAttack164x64_7: -1925993633
-      DroneAttack164x64_8: -1901835129
-      DroneAttack164x64_9: -1254038514
+      DroneAttack2_64x64_FIN_0: 16915488
+      DroneAttack2_64x64_FIN_1: 1013851184
+      DroneAttack2_64x64_FIN_10: 1984922712
+      DroneAttack2_64x64_FIN_11: -1736340271
+      DroneAttack2_64x64_FIN_12: -779639664
+      DroneAttack2_64x64_FIN_13: -1606978344
+      DroneAttack2_64x64_FIN_14: 643404235
+      DroneAttack2_64x64_FIN_15: 108959724
+      DroneAttack2_64x64_FIN_16: 886887992
+      DroneAttack2_64x64_FIN_17: 741815060
+      DroneAttack2_64x64_FIN_2: 1275805903
+      DroneAttack2_64x64_FIN_3: -1857364301
+      DroneAttack2_64x64_FIN_4: 1406956026
+      DroneAttack2_64x64_FIN_5: -280738448
+      DroneAttack2_64x64_FIN_6: -1763992916
+      DroneAttack2_64x64_FIN_7: -2102071430
+      DroneAttack2_64x64_FIN_8: -29440969
+      DroneAttack2_64x64_FIN_9: 1838598258
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

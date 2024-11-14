@@ -129,6 +129,15 @@ public class DylanRemakeWeaponManager : MonoBehaviour
         {
             
             Invoke(nameof(ScissorAttack), .5f);
+
+            animator.SetTrigger("Attack");
+            time = 0;
+        }
+        if (activeGun == "SpearDrone" && fireInput && timeToNextFire < Time.time)
+        {
+
+            Invoke(nameof(SpearDrone), .5f);
+
             animator.SetTrigger("Attack");
             time = 0;
         }
@@ -177,6 +186,16 @@ public class DylanRemakeWeaponManager : MonoBehaviour
                 enemy.GetComponent<Health>().TakeDamage(attackDmg);
             }
         
+    }
+    void SpearDrone()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(2, 2), m_angle, enemyLayers);
+
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+        }
     }
     private void ScythAttack()
     {
