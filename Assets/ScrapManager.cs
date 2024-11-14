@@ -18,6 +18,6 @@ public class ScrapManager : MonoBehaviour
     
     void Update()
     {
-        ScrapCountTXT.text = "Scrap Count: " + scrapCount.ToString();
+        ScrapTXT.text = "Scrap Count: " + scrapCount.ToString();
     }
 }

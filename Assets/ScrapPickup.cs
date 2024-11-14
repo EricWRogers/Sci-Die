@@ -14,7 +14,7 @@ public class ScrapPickup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("scrap"))
         {
-            Destroy(other.Scrap);
+            Destroy(other);
             
             
         }
