@@ -1,4 +1,5 @@
 using SuperPupSystems.StateMachine;
+using SuperPupSystems.Helper;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,11 @@ public class BossStateMachine : SimpleStateMachine
 {
     //states
     public StageOne stageOne;
+    public StageTwo stageTwo;
 
     //var
+    public Health health;
+    public Timer timer;
     public Rigidbody2D rb;
     public Transform currentPoint;
     public int index = 0;
@@ -26,10 +30,17 @@ public class BossStateMachine : SimpleStateMachine
     private float m_nextFire;
     private GameObject m_target;
     private GameObject m_center;
+    public bool centerAttacking = false;
+    public bool halfHealth = false;
+
+    public float attackTime;
+
+    public GameObject Lasers;
 
     private void Awake()
     {
         states.Add(stageOne);
+        states.Add(stageTwo);
 
         foreach(SimpleState state in states)
         {
@@ -46,6 +57,7 @@ public class BossStateMachine : SimpleStateMachine
         currentPoint = points[index].transform;
         m_target = GameObject.FindGameObjectWithTag("Player");
         m_center = GameObject.FindGameObjectWithTag("Center");
+        health = GetComponent<Health>();
 
     }
 
@@ -72,6 +84,15 @@ public class BossStateMachine : SimpleStateMachine
         {
             rb.velocity = dir * speed;
         }*/
+
+        if(health.currentHealth <= health.maxHealth * .5f)
+        {
+            halfHealth = true;
+        }
+        else
+        {
+            halfHealth = false;
+        }
     }
 
     public void RepeatMov(int _num)
@@ -124,12 +145,17 @@ public class BossStateMachine : SimpleStateMachine
         currentPoint = m_center.transform;
         if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == m_center.transform)
         {
+            centerAttacking = true;
             float rotAmout = centerRotSpeed * Time.deltaTime;
             float curRot = transform.localRotation.eulerAngles.z;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, curRot + rotAmout));
             Debug.Log("" + curRot);
-            if (transform.localRotation.z < 0)
+            if (curRot > 355)
             {
+                centerAttacking = false;
+                timer.AddTime(attackTime);
+                currentPoint = points[index].transform;
+                transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 return;
             }
         }
