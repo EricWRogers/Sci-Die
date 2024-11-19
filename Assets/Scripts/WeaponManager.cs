@@ -13,6 +13,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject railgunReady;
 
     public Transform weapon;
+    public GameObject [] bulletSpawns;
 
     private PlayerControls controls;
 
@@ -27,8 +28,10 @@ public class WeaponManager : MonoBehaviour
     private float railgunCharge;
 
     public bool isCharging = true;
+    public bool droneActive = false;
 
     public WeaponAsset defaultWeaponAsset;
+    public GameObject currentWeapon;
 
     public WeaponManager(){
 
@@ -49,14 +52,10 @@ public class WeaponManager : MonoBehaviour
         controls.Player.Disable();
     }
 
-    
-
-    private void Start()
-    {
-
-    }
-    void Update()
-    {
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Q)){
+            droneActive = !droneActive;
+        }
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
         if (isCharging){
@@ -69,58 +68,54 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-        if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
-            if (activeGun == "RocketLauncher"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
+        if(!droneActive){
+            if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
+                if (activeGun == "Shotgun"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.transform.position, weapon.transform.rotation);
+                        time = 0;
+                    }
+                }
+                if (activeGun == "RocketLauncher"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
+                }
+                if (activeGun == "Railgun" && railgunCharge >= 5){
+                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
                     time = 0;
+                    railgunCharge = 0;
+                    isCharging = true;
+                    railgunReady.SetActive(false);
+                    destroyTimer += 1;
+                    if(destroyTimer == 3.0f){
+                        Destroy(go);
+                        destroyTimer = 0;
+                    }
                 }
             }
-            
-            if (activeGun == "Shotgun"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
+            if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
+                if(activeGun == "Pistol"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
                 }
-            }
-
-            if (activeGun == "Railgun" && railgunCharge >= 5){
-                GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
-                time = 0;
-                railgunCharge = 0;
-                isCharging = true;
-                railgunReady.SetActive(false);
-                destroyTimer += 1;
-                if(destroyTimer == 3.0f){
-                    Destroy(go);
-                    destroyTimer = 0;
+                if(activeGun == "MachineGun"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
                 }
             }
         }
-
- 
-
-        if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
-            if(activeGun == "Pistol"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
-                }
-            }
-            if(activeGun == "MachineGun"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
-                }
-            }
-                
-        }
-        
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
     {
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
+        currentWeapon = m_weaponAsset.weaponPrefab;
     }
 }
