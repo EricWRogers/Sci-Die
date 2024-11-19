@@ -33,7 +33,7 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnDestroy()
     {
-        GlobalDoorManager.UnregisterDoor(this); // Unregister this door when destroyed
+        GlobalDoorManager.UnregisterDoor(this);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

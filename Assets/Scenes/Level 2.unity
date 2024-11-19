@@ -1523,9 +1523,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: be0eb992f63f82243bd5f479c35e7688, type: 3}
 --- !u!1 &688003286
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6509563493280995400, guid: be0eb992f63f82243bd5f479c35e7688, type: 3}
+  m_PrefabInstance: {fileID: 161395255}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
