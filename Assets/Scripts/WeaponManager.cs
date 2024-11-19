@@ -74,22 +74,22 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-        if(!droneActive || !isShopping){
+        if(!droneActive && !isShopping){
             if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
                 if (activeGun == "Shotgun"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.transform.position, weapon.transform.rotation);
+                        Instantiate(bullet, bulletSpawns[3].transform.position, bulletSpawns[3].transform.rotation);
                         time = 0;
                     }
                 }
                 if (activeGun == "RocketLauncher"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[1].transform.position, bulletSpawns[1].transform.rotation);
                         time = 0;
                     }
                 }
                 if (activeGun == "Railgun" && railgunCharge >= 5){
-                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
+                    GameObject go = Instantiate(bullet, bulletSpawns[2].transform.position, bulletSpawns[2].transform.rotation);
                     time = 0;
                     railgunCharge = 0;
                     isCharging = true;
@@ -104,13 +104,13 @@ public class WeaponManager : MonoBehaviour
             if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
                 if(activeGun == "Pistol"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[0].transform.position, bulletSpawns[0].transform.rotation);
                         time = 0;
                     }
                 }
                 if(activeGun == "MachineGun"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[4].transform.position, bulletSpawns[4].transform.rotation);
                         time = 0;
                     }
                 }
