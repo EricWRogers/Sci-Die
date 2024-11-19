@@ -13,6 +13,7 @@ TagManager:
   - Scrap
   - Event
   - Pickup
+  - DoorChildCollider
   layers:
   - Default
   - TransparentFX
