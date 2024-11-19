@@ -417,62 +417,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 844582431540011616, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
+      propertyPath: scrapPrefab
       value: 
-      objectReference: {fileID: 1722283610}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1722283609}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: dropScrap
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DropScrap, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 59977526431033740, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: outOfHealth.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260405895043915885, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260405895043915885, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260405895043915885, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1595712017}
     - target: {fileID: 3448847987444685970, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.72
@@ -513,21 +461,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4032926944240451704, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8375697276283394324, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8375697276283394324, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8375697276283394324, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1722283610}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
 --- !u!1 &334057553
 GameObject:
@@ -2013,26 +1958,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 18685767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1722283609 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8375697276283394324, guid: a6352fa0a4718164284ab27b7aceff98, type: 3}
-  m_PrefabInstance: {fileID: 188815853}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1722283610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722283609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474f516638a49bb478c81c9dbca835d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxScrap: 3
-  minScrap: 2
-  scrapPrefab: {fileID: 1595712017}
 --- !u!1 &1813128357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,7 +2904,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1896640702}
-  - {fileID: 531527392}
   - {fileID: 2029401103}
   - {fileID: 18685767}
   - {fileID: 139268845}
@@ -2987,3 +2911,4 @@ SceneRoots:
   - {fileID: 1914051679}
   - {fileID: 1575916239}
   - {fileID: 1595712021}
+  - {fileID: 531527392}
