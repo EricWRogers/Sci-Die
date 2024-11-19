@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: MachineGun
   m_EditorClassIdentifier: 
   bullet: {fileID: 5612888681132326751, guid: 895b848e2810daa45bd2339ac5fd7f01, type: 3}
+  weaponPrefab: {fileID: 5713756357900406171, guid: 6baf9b24ded83a94abe951d8d5bb4494, type: 3}
   activeGun: MachineGun
   fireRate: 10

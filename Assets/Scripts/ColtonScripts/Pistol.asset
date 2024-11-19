@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   bullet: {fileID: 5612888681132326751, guid: 895b848e2810daa45bd2339ac5fd7f01, type: 3}
+  weaponPrefab: {fileID: 6600656527088612044, guid: cfdbb8bf38e977049ae19cba67262ff4, type: 3}
   activeGun: Pistol
   fireRate: 5
-  timeLeft: 3

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   bullet: {fileID: 7642351716866407521, guid: a6c81257feeb3af49a6a04d910e1d233, type: 3}
+  weaponPrefab: {fileID: 8406193011907797612, guid: 5730c934ebbca03479c6e9bfc42e8dba, type: 3}
   activeGun: Shotgun
   fireRate: 2
