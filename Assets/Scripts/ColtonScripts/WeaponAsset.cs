@@ -10,4 +10,6 @@ public class WeaponAsset : ScriptableObject
     public GameObject bulletSpawner;
     public string activeGun;
     public float fireRate;
+
+    public int attackDmg;
 }

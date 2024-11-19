@@ -29,6 +29,14 @@ public class WeaponManager : MonoBehaviour
 
     public bool isCharging = true;
     public bool droneActive = false;
+//Drone Vars
+     public Transform droneAttackPoint;
+    public int attackDmg;
+    public float m_angle;
+    public LayerMask enemyLayers;
+    
+    public Animator Droneanimator;
+
 
     public WeaponAsset defaultWeaponAsset;
     public GameObject currentWeapon;
@@ -109,6 +117,24 @@ public class WeaponManager : MonoBehaviour
                     }
                 }
             }
+                    if (activeGun == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
+        {
+            
+            Invoke(nameof(ScissorAttack), .5f);
+
+            Droneanimator.SetTrigger("ScissorAttack");
+            time = 0;
+        }
+        if (activeGun == "SpearDrone" && fireInput && timeToNextFire < Time.time)
+        {
+
+            Invoke(nameof(SpearDrone), .5f);
+
+            Droneanimator.SetTrigger("SpearAttack");
+            time = 0;
+        }
+ 
+
         }
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
@@ -117,5 +143,29 @@ public class WeaponManager : MonoBehaviour
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
         currentWeapon = m_weaponAsset.weaponPrefab;
+    }
+
+        private void ScissorAttack()
+    {
+              Debug.Log("ScissorDronedamage");
+            
+            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(droneAttackPoint.position, new Vector2(2,2), m_angle, enemyLayers);
+
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<Health>().TakeDamage(attackDmg);
+            }
+        
+    }
+    void SpearDrone()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(droneAttackPoint.position, new Vector2(4, 6), m_angle, enemyLayers);
+
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+        }
     }
 }

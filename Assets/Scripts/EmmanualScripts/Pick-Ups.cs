@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public enum PickupType { Health, Damage, DashCount }
+    public enum PickupType { Health, Damage, /*DashCount*/ }
     public PickupType type;  
     public float value;
 
@@ -34,6 +34,7 @@ public class PickUp : MonoBehaviour
     void ApplyPickup(PlayerMovement player)
     {
         Health playerHealth = player.GetComponent<Health>();
+        HUDManager hudManager = FindObjectOfType<HUDManager>();  // Get the HUDManager to update UI
 
         switch (type)
         {
@@ -41,16 +42,19 @@ public class PickUp : MonoBehaviour
                 if (playerHealth != null) 
                 {
                     playerHealth.Heal(value);  // Heal player using Health script
+                    // No HUD update needed for health
                 }
                 break;
 
             case PickupType.Damage:
                 player.IncreaseDamage(value);  // Increase player's damage
+                hudManager.ApplyDamagePickup(value);  // Update HUD for damage
                 break;
 
-            case PickupType.DashCount:
+            /*case PickupType.DashCount:
                 player.IncreaseDashCount((int)value);  // Increase player's dash count
-                break;
+                hudManager.ApplyDashCountPickup((int)value);  // Update HUD for dash count
+                break;*/
         }
     }
 }
