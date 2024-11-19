@@ -17,15 +17,6 @@ public class Health : MonoBehaviour
         healthCounter.UpdateHealthCounter(currentHealth); // Initialize hearts
     }
 
-    void Update()
-    {
-        // Test: Press 'F' to take 1 damage
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(1f); // Take 1 damage per press
-        }
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -33,7 +24,19 @@ public class Health : MonoBehaviour
         healthCounter.UpdateHealthCounter(currentHealth); // Update hearts
         if (currentHealth <= 0)
         {
-            outOfHealth.Invoke(); // Trigger "out of health" event if health is 0
+            HandleOutOfHealth();
+        }
+    }
+
+    private void HandleOutOfHealth()
+    {
+        if (CompareTag("Player"))
+        {
+            outOfHealth.Invoke(); // Player's out-of-health triggers lose condition
+        }
+        else if (CompareTag("Enemy"))
+        {
+            gameObject.SetActive(false); // Deactivate enemy on defeat
         }
     }
 
