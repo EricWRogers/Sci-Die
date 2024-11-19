@@ -29,15 +29,13 @@ public class WeaponManager : MonoBehaviour
 
     public bool isCharging = true;
     public bool droneActive = false;
+    public bool isShopping = false;
 //Drone Vars
      public Transform droneAttackPoint;
     public int attackDmg;
     public float m_angle;
     public LayerMask enemyLayers;
-    
     public Animator Droneanimator;
-
-
     public WeaponAsset defaultWeaponAsset;
     public GameObject currentWeapon;
 
@@ -76,7 +74,7 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-        if(!droneActive){
+        if(!droneActive || !isShopping){
             if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
                 if (activeGun == "Shotgun"){
                     if(time >= timeToNextFire){
@@ -135,6 +133,8 @@ public class WeaponManager : MonoBehaviour
         }
  
 
+        } else {
+            
         }
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
