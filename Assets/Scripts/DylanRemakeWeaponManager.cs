@@ -36,7 +36,7 @@ public class DylanRemakeWeaponManager : MonoBehaviour
     private Vector3 attackDirection;
     private float attackDirectionStrength;
     private float currentTime;
-    public Animator animator;
+    public Animator Droneanimator;
 
     public WeaponAsset defaultWeaponAsset;
 
@@ -130,7 +130,7 @@ public class DylanRemakeWeaponManager : MonoBehaviour
             
             Invoke(nameof(ScissorAttack), .5f);
 
-            animator.SetTrigger("Attack");
+            Droneanimator.SetTrigger("ScissorAttack");
             time = 0;
         }
         if (activeGun == "SpearDrone" && fireInput && timeToNextFire < Time.time)
@@ -138,7 +138,7 @@ public class DylanRemakeWeaponManager : MonoBehaviour
 
             Invoke(nameof(SpearDrone), .5f);
 
-            animator.SetTrigger("Attack");
+            Droneanimator.SetTrigger("SpearAttack");
             time = 0;
         }
         if (activeGun == "ScythDrone" && fireInput && timeToNextFire < Time.time)
@@ -189,7 +189,7 @@ public class DylanRemakeWeaponManager : MonoBehaviour
     }
     void SpearDrone()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(2, 2), m_angle, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, new Vector2(4, 6), m_angle, enemyLayers);
 
 
         foreach (Collider2D enemy in hitEnemies)
