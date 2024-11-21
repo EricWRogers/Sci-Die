@@ -1,16 +1,31 @@
+using System.Linq;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DoorTrigger : MonoBehaviour
 {
     public Room room; // Reference to the room this door belongs to
     private Collider2D doorCollider;
     private SpriteRenderer doorRenderer;
+    private GameObject[] childColliders; // Array to hold all child colliders
     private bool playerInside = false;
 
     private void Start()
     {
         doorCollider = GetComponent<Collider2D>();
         doorRenderer = GetComponent<SpriteRenderer>();
+
+        // Find all child objects tagged as "DoorChildCollider"
+        childColliders = GetComponentsInChildren<Transform>(true) // Include inactive objects
+            .Where(t => t.CompareTag("DoorChildCollider"))
+            .Select(t => t.gameObject)
+            .ToArray();
+
+        if (childColliders.Length == 0)
+        {
+            Debug.LogWarning("DoorTrigger: No child colliders with tag 'DoorChildCollider' found.");
+        }
 
         OpenDoor(); // Start with the door open
         GlobalDoorManager.RegisterDoor(this); // Register this door globally
@@ -25,38 +40,48 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !playerInside)
         {
-            playerInside = true; // Player has entered the room
-
+            playerInside = true;
             room.ActivateEnemies(); // Activate enemies in the room
-
-            // Start a coroutine to handle the delayed door closure
-            StartCoroutine(CloseAllDoorsWithDelay(1.0f)); // Delay of 0.5 seconds
+            StartCoroutine(CloseAllDoorsWithDelay(0.0f)); // Delay for door closure
         }
     }
 
     private System.Collections.IEnumerator CloseAllDoorsWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay); // Wait for the specified delay
-        GlobalDoorManager.CloseAllDoors(); // Close all registered doors globally
+        GlobalDoorManager.CloseDoorsForRoom(room); // Close doors in this room only
     }
 
     public void OpenDoor()
     {
         if (doorRenderer != null) doorRenderer.enabled = false;
+
         if (doorCollider != null)
         {
-            doorCollider.enabled = true;
+            doorCollider.enabled = true; // Re-enable main door collider
             doorCollider.isTrigger = true; // Allow player to pass through
+        }
+
+        foreach (GameObject child in childColliders)
+        {
+            if (child != null)
+                child.SetActive(false); // Deactivate all child colliders when the door is open
         }
     }
 
     public void CloseDoor()
     {
         if (doorRenderer != null) doorRenderer.enabled = true;
+
         if (doorCollider != null)
         {
-            doorCollider.enabled = true;
-            doorCollider.isTrigger = false; // Block player from passing through
+            doorCollider.enabled = false; // Disable main door collider when closed
+        }
+
+        foreach (GameObject child in childColliders)
+        {
+            if (child != null)
+                child.SetActive(true); // Activate all child colliders when the door is closed
         }
     }
 }
