@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject railgunReady;
 
     public Transform weapon;
-    public GameObject bulletSpawn;
+    public GameObject [] bulletSpawns;
 
     private PlayerControls controls;
 
@@ -36,6 +36,7 @@ public class WeaponManager : MonoBehaviour
     public LayerMask enemyLayers;
     
     public Animator Droneanimator;
+    public bool isshopping = false;
 
 
     public WeaponAsset defaultWeaponAsset;
@@ -76,7 +77,8 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-        if(!droneActive){
+
+        if(!droneActive && !isshopping){
             if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
                 if (activeGun == "Shotgun"){
                     if(time >= timeToNextFire){
@@ -142,7 +144,6 @@ public class WeaponManager : MonoBehaviour
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
-        bulletSpawn = m_weaponAsset.bulletSpawner;
         currentWeapon = m_weaponAsset.weaponPrefab;
     }
 
