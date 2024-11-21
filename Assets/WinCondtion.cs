@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class WinCondtion : MonoBehaviour
 {
-    
+    public string scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class WinCondtion : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
 
-            SceneManager.LoadScene("BossOne");
+            SceneManager.LoadScene(scene);
         }
     }
 }

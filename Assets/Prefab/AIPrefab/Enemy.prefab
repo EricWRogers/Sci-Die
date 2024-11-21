@@ -369,9 +369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474f516638a49bb478c81c9dbca835d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScrap: 3
-  minScrap: 2
-  scrapPrefab: {fileID: 0}
+  maxScrap: 4
+  minScrap: 1
+  scrapPrefab: {fileID: 3638408847439029476, guid: 7e77953bca2ff9d4c95987792f3c8d10, type: 3}
 --- !u!114 &5940924523705971447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +394,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: DropScrap, Assembly-CSharp
         m_MethodName: dropScrap
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8375697276283394324}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
