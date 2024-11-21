@@ -93,6 +93,15 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Scrap"))
+        {
+            Destroy(other.gameObject);
+            
+        }
+    }
+
     // Method to Increase Dash Count
     /*public void IncreaseDashCount(int value)
     {
@@ -106,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Pickup Collision Detection
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Pickup"))
         {
@@ -117,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(other.gameObject); // Destroy the pick-up after use
             }
         }
-    }
+    }*/
 
     // Apply the effect of the pickup
     void ApplyPickup(PickUp pickup)
