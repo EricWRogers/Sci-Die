@@ -523,10 +523,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1816221771497866730, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cbc0e6e0a1482754e9d92bbc86658c68, type: 3}
     - target: {fileID: 2306735567381469770, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -539,10 +535,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
-    - target: {fileID: 2335157438406447583, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cbc0e6e0a1482754e9d92bbc86658c68, type: 3}
     - target: {fileID: 2643069697448795161, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -599,18 +591,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6502148992636937303, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
-      propertyPath: fullHeart
-      value: 
-      objectReference: {fileID: 21300000, guid: cbc0e6e0a1482754e9d92bbc86658c68, type: 3}
-    - target: {fileID: 6502148992636937303, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
-      propertyPath: halfHeart
-      value: 
-      objectReference: {fileID: 21300000, guid: de569239bbd8ab14a87ca345d38cddee, type: 3}
-    - target: {fileID: 6502148992636937303, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
-      propertyPath: emptyHeart
-      value: 
-      objectReference: {fileID: 21300000, guid: 51c65d3151199f4469f014ee97accfc4, type: 3}
     - target: {fileID: 6553260298182619140, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -655,10 +635,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
-    - target: {fileID: 8186544627802005724, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cbc0e6e0a1482754e9d92bbc86658c68, type: 3}
     - target: {fileID: 9063642393521851176, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
       propertyPath: m_Pivot.x
       value: 0
