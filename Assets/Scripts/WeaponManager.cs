@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject railgunReady;
 
     public Transform weapon;
-    public GameObject bulletSpawn;
+    public GameObject [] bulletSpawns;
 
     private PlayerControls controls;
 
@@ -29,15 +29,13 @@ public class WeaponManager : MonoBehaviour
 
     public bool isCharging = true;
     public bool droneActive = false;
+    public bool isShopping = false;
 //Drone Vars
      public Transform droneAttackPoint;
     public int attackDmg;
     public float m_angle;
     public LayerMask enemyLayers;
-    
     public Animator Droneanimator;
-
-
     public WeaponAsset defaultWeaponAsset;
     public GameObject currentWeapon;
 
@@ -76,22 +74,22 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-        if(!droneActive){
+        if(!droneActive && !isShopping){
             if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
                 if (activeGun == "Shotgun"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.transform.position, weapon.transform.rotation);
+                        Instantiate(bullet, bulletSpawns[3].transform.position, bulletSpawns[3].transform.rotation);
                         time = 0;
                     }
                 }
                 if (activeGun == "RocketLauncher"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[1].transform.position, bulletSpawns[1].transform.rotation);
                         time = 0;
                     }
                 }
                 if (activeGun == "Railgun" && railgunCharge >= 5){
-                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
+                    GameObject go = Instantiate(bullet, bulletSpawns[2].transform.position, bulletSpawns[2].transform.rotation);
                     time = 0;
                     railgunCharge = 0;
                     isCharging = true;
@@ -106,13 +104,13 @@ public class WeaponManager : MonoBehaviour
             if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
                 if(activeGun == "Pistol"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[0].transform.position, bulletSpawns[0].transform.rotation);
                         time = 0;
                     }
                 }
                 if(activeGun == "MachineGun"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[4].transform.position, bulletSpawns[4].transform.rotation);
                         time = 0;
                     }
                 }
@@ -135,6 +133,8 @@ public class WeaponManager : MonoBehaviour
         }
  
 
+        } else {
+            
         }
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
@@ -142,7 +142,6 @@ public class WeaponManager : MonoBehaviour
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
-        bulletSpawn = m_weaponAsset.bulletSpawner;
         currentWeapon = m_weaponAsset.weaponPrefab;
     }
 
