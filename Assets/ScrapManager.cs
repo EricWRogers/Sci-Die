@@ -8,7 +8,7 @@ public class ScrapManager : MonoBehaviour
 {
     public int scrapCount;
     public TMP_Text ScrapTXT;
-    public ScrapManager sm;
+    //public ScrapManager sm;
     
     void Start()
     {
