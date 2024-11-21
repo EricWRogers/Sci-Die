@@ -133,9 +133,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  fullHeart: {fileID: 21300000, guid: 6d1377a7ccaff5b49b3d8124e6aaf997, type: 3}
-  halfHeart: {fileID: 21300000, guid: 3a6d2e29d0bb6d3478508b06a66509c8, type: 3}
-  emptyHeart: {fileID: 21300000, guid: 86e7e2cf4474dc5468b0864aa7a122f4, type: 3}
+  fullHeart: {fileID: 21300000, guid: cbc0e6e0a1482754e9d92bbc86658c68, type: 3}
+  halfHeart: {fileID: 21300000, guid: de569239bbd8ab14a87ca345d38cddee, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 51c65d3151199f4469f014ee97accfc4, type: 3}
 --- !u!114 &5529042806709152103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +180,6 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 8492847230265520258}
   damage: 10
-  dashCount: 20
   canDash: 1
   isDashing: 0
   dashingPower: 24

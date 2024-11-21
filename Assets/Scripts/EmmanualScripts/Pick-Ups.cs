@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public enum PickupType { Health, Damage, DashCount }
+    public enum PickupType { Health, Damage, /*DashCount*/ }
     public PickupType type;  
     public float value;
 
@@ -51,10 +51,10 @@ public class PickUp : MonoBehaviour
                 hudManager.ApplyDamagePickup(value);  // Update HUD for damage
                 break;
 
-            case PickupType.DashCount:
+            /*case PickupType.DashCount:
                 player.IncreaseDashCount((int)value);  // Increase player's dash count
                 hudManager.ApplyDashCountPickup((int)value);  // Update HUD for dash count
-                break;
+                break;*/
         }
     }
 }
