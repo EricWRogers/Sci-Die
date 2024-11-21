@@ -38,7 +38,13 @@ public class WeaponManager : MonoBehaviour
     public LayerMask enemyLayers;
     public Animator Droneanimator;
     public WeaponAsset defaultWeaponAsset;
+    public string currentDrone = "ScissorAttack";
     public GameObject currentWeapon;
+    //Swap Vars
+    public GameObject droneBase;
+    private GameObject currentGun;
+
+    public List<GameObject> allGuns;
 
     public WeaponManager(){
 
@@ -48,6 +54,8 @@ public class WeaponManager : MonoBehaviour
             UpdateWeapon(defaultWeaponAsset);
             controls = new PlayerControls();
             controls.Player.Dash.performed += ctx => Update();
+
+            currentGun = allGuns[0];
         }
     private void OnEnable()
     {
@@ -62,6 +70,14 @@ public class WeaponManager : MonoBehaviour
     void Update(){
         if(Input.GetKeyDown(KeyCode.Q)){
             droneActive = !droneActive;
+            if(droneActive){
+                droneBase.SetActive(true);
+                currentGun.SetActive(false);
+            }
+            else{
+                currentGun.SetActive(true);
+                droneBase.SetActive(false);
+            }
         }
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
@@ -116,26 +132,25 @@ public class WeaponManager : MonoBehaviour
                     }
                 }
             }
-                    if (activeGun == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
-        {
-            
-            Invoke(nameof(ScissorAttack), .5f);
-
-            Droneanimator.SetTrigger("ScissorAttack");
-            time = 0;
         }
-        if (activeGun == "SpearDrone" && fireInput && timeToNextFire < Time.time)
-        {
 
-            Invoke(nameof(SpearDrone), .5f);
-
-            Droneanimator.SetTrigger("SpearAttack");
-            time = 0;
-        }
- 
-
-        } else {
+        if(droneActive && !isShopping){
+            if (currentDrone == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
+            {
             
+                Invoke(nameof(ScissorAttack), 0.5f);
+
+                Droneanimator.SetTrigger("ScissorAttack");
+                time = 0;
+            }
+            if (currentDrone == "SpearDrone" && fireInput && timeToNextFire < Time.time)
+            {
+
+                Invoke(nameof(SpearDrone), 0.5f);
+
+                Droneanimator.SetTrigger("SpearAttack");
+                time = 0;
+            }
         }
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
