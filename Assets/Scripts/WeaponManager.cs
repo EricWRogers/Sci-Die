@@ -13,7 +13,6 @@ public class WeaponManager : MonoBehaviour
     public GameObject railgunReady;
 
     public Transform weapon;
-    public GameObject [] gunPrefabs;
     public GameObject [] bulletSpawns;
 
     private PlayerControls controls;
@@ -32,17 +31,16 @@ public class WeaponManager : MonoBehaviour
     public bool droneActive = false;
     public bool isShopping = false;
 //Drone Vars
-     public Transform droneAttackPoint;
+    public Transform droneAttackPoint;
     public int attackDmg;
     public float m_angle;
     public LayerMask enemyLayers;
     public Animator Droneanimator;
     public WeaponAsset defaultWeaponAsset;
-    public string currentDrone = "ScissorAttack";
-    public GameObject currentWeapon;
+    public string currentDrone = "ScissorDrone";
     //Swap Vars
     public GameObject droneBase;
-    private GameObject currentGun;
+    public GameObject currentGun;
 
     public List<GameObject> allGuns;
 
@@ -51,7 +49,7 @@ public class WeaponManager : MonoBehaviour
     }
     void Awake()
         {
-            UpdateWeapon(defaultWeaponAsset);
+            UpdateWeapon(defaultWeaponAsset, 0);
             controls = new PlayerControls();
             controls.Player.Dash.performed += ctx => Update();
 
@@ -153,12 +151,14 @@ public class WeaponManager : MonoBehaviour
             }
         }
     }
-    public void UpdateWeapon(WeaponAsset m_weaponAsset)
+    public void UpdateWeapon(WeaponAsset m_weaponAsset, int x)
     {
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
-        currentWeapon = m_weaponAsset.weaponPrefab;
+        currentGun.SetActive(false);
+        currentGun = allGuns[x];
+        currentGun.SetActive(true);
     }
 
         private void ScissorAttack()

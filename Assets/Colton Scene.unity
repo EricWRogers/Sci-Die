@@ -374,6 +374,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: currentGun
+      value: 
+      objectReference: {fileID: 1809712854}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: currentDrone
+      value: ScissorDrone
+      objectReference: {fileID: 0}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: railgunReady
       value: 
       objectReference: {fileID: 3758769302354967657, guid: b42110541d355c8459f3a3d7c0176776, type: 3}
@@ -1122,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2453064127942742069, guid: cfdbb8bf38e977049ae19cba67262ff4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.72
+      value: 18.86
       objectReference: {fileID: 0}
     - target: {fileID: 2453064127942742069, guid: cfdbb8bf38e977049ae19cba67262ff4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1352,11 +1360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4737883033413338722, guid: 5730c934ebbca03479c6e9bfc42e8dba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.73
+      value: 18.52
       objectReference: {fileID: 0}
     - target: {fileID: 4737883033413338722, guid: 5730c934ebbca03479c6e9bfc42e8dba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.59
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 4737883033413338722, guid: 5730c934ebbca03479c6e9bfc42e8dba, type: 3}
       propertyPath: m_LocalPosition.z
