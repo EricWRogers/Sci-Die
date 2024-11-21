@@ -2592,6 +2592,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1727166727645175525, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2121695749972567885, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
