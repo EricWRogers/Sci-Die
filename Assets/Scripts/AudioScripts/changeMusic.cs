@@ -15,14 +15,10 @@ public class changeMusic : MonoBehaviour
 
     void Awake(){
         audioObject = GameObject.Find("AudioManager");
-
         audioManager = audioObject.GetComponent<AudioManager>();
     }
 
-    public void OnTriggerEnter2D()
-    {
+    public void OnTriggerEnter2D(){
         audioManager.PlayMusic(musicName);
-        Debug.Log("Trigger enter ");
-
     }
 }

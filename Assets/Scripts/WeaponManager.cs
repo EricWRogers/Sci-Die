@@ -13,6 +13,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject railgunReady;
 
     public Transform weapon;
+    public GameObject bulletSpawn;
 
     private PlayerControls controls;
 
@@ -27,8 +28,18 @@ public class WeaponManager : MonoBehaviour
     private float railgunCharge;
 
     public bool isCharging = true;
+    public bool droneActive = false;
+//Drone Vars
+     public Transform droneAttackPoint;
+    public int attackDmg;
+    public float m_angle;
+    public LayerMask enemyLayers;
+    
+    public Animator Droneanimator;
+
 
     public WeaponAsset defaultWeaponAsset;
+    public GameObject currentWeapon;
 
     public WeaponManager(){
 
@@ -49,14 +60,10 @@ public class WeaponManager : MonoBehaviour
         controls.Player.Disable();
     }
 
-    
-
-    private void Start()
-    {
-
-    }
-    void Update()
-    {
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Q)){
+            droneActive = !droneActive;
+        }
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
         if (isCharging){
@@ -69,58 +76,97 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-        if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
-            if (activeGun == "RocketLauncher"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
+        if(!droneActive){
+            if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
+                if (activeGun == "Shotgun"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.transform.position, weapon.transform.rotation);
+                        time = 0;
+                    }
+                }
+                if (activeGun == "RocketLauncher"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
+                }
+                if (activeGun == "Railgun" && railgunCharge >= 5){
+                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
                     time = 0;
+                    railgunCharge = 0;
+                    isCharging = true;
+                    railgunReady.SetActive(false);
+                    destroyTimer += 1;
+                    if(destroyTimer == 3.0f){
+                        Destroy(go);
+                        destroyTimer = 0;
+                    }
                 }
             }
+            if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
+                if(activeGun == "Pistol"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
+                }
+                if(activeGun == "MachineGun"){
+                    if(time >= timeToNextFire){
+                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        time = 0;
+                    }
+                }
+            }
+                    if (activeGun == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
+        {
             
-            if (activeGun == "Shotgun"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
-                }
-            }
+            Invoke(nameof(ScissorAttack), .5f);
 
-            if (activeGun == "Railgun" && railgunCharge >= 5){
-                GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
-                time = 0;
-                railgunCharge = 0;
-                isCharging = true;
-                railgunReady.SetActive(false);
-                destroyTimer += 1;
-                if(destroyTimer == 3.0f){
-                    Destroy(go);
-                    destroyTimer = 0;
-                }
-            }
+            Droneanimator.SetTrigger("ScissorAttack");
+            time = 0;
         }
+        if (activeGun == "SpearDrone" && fireInput && timeToNextFire < Time.time)
+        {
 
+            Invoke(nameof(SpearDrone), .5f);
+
+            Droneanimator.SetTrigger("SpearAttack");
+            time = 0;
+        }
  
 
-        if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
-            if(activeGun == "Pistol"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
-                }
-            }
-            if(activeGun == "MachineGun"){
-                if(time >= timeToNextFire){
-                    Instantiate(bullet, weapon.position, weapon.rotation);
-                    time = 0;
-                }
-            }
-                
         }
-        
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset)
     {
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
+        bulletSpawn = m_weaponAsset.bulletSpawner;
+        currentWeapon = m_weaponAsset.weaponPrefab;
+    }
+
+        private void ScissorAttack()
+    {
+              Debug.Log("ScissorDronedamage");
+            
+            Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(droneAttackPoint.position, new Vector2(2,2), m_angle, enemyLayers);
+
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<Health>().TakeDamage(attackDmg);
+            }
+        
+    }
+    void SpearDrone()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(droneAttackPoint.position, new Vector2(4, 6), m_angle, enemyLayers);
+
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+        }
     }
 }
