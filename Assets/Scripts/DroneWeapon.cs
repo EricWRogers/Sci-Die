@@ -25,6 +25,17 @@ public class DroneWeapon : MonoBehaviour
     private float m_angle;
 
 
+//Swap Vars
+    public GameObject droneBase;
+    private GameObject currentGun;
+
+    public List<GameObject> allGuns;
+
+
+    void Start(){
+        currentGun = allGuns[0];
+    }
+
     public void Update()
     {
         if (Input.GetKey(KeyCode.Mouse0)&& attackNext < Time.time)
@@ -38,6 +49,7 @@ public class DroneWeapon : MonoBehaviour
         if (scythAttacking)
         {
                 ScythAttack();
+                
                 
                 Debug.Log("Calling ScythAttack");
         }
@@ -73,17 +85,14 @@ public class DroneWeapon : MonoBehaviour
         }
     }
 
-    private void ScythAttacking()
-    {
+    private void ScythAttacking(){
         scythAttacking = false;
     }
 
-private void SpearAttack(){
-                Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, squareAttackRange, m_angle, enemyLayers);
+    private void SpearAttack(){
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position, squareAttackRange, m_angle, enemyLayers);
 
-
-            foreach (Collider2D enemy in hitEnemies)
-            {
+        foreach (Collider2D enemy in hitEnemies){
                 enemy.GetComponent<Health>().TakeDamage(attackDmg);
             }
 }

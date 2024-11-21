@@ -29,27 +29,31 @@ public class WeaponManager : MonoBehaviour
 
     public bool isCharging = true;
     public bool droneActive = false;
+    public bool isShopping = false;
 //Drone Vars
-     public Transform droneAttackPoint;
+    public Transform droneAttackPoint;
     public int attackDmg;
     public float m_angle;
     public LayerMask enemyLayers;
-    
     public Animator Droneanimator;
-    public bool isshopping = false;
-
-
     public WeaponAsset defaultWeaponAsset;
-    public GameObject currentWeapon;
+    public string currentDrone = "ScissorDrone";
+    //Swap Vars
+    public GameObject droneBase;
+    public GameObject currentGun;
+
+    public List<GameObject> allGuns;
 
     public WeaponManager(){
 
     }
     void Awake()
         {
-            UpdateWeapon(defaultWeaponAsset);
+            UpdateWeapon(defaultWeaponAsset, 0);
             controls = new PlayerControls();
             controls.Player.Dash.performed += ctx => Update();
+
+            currentGun = allGuns[0];
         }
     private void OnEnable()
     {
@@ -64,6 +68,14 @@ public class WeaponManager : MonoBehaviour
     void Update(){
         if(Input.GetKeyDown(KeyCode.Q)){
             droneActive = !droneActive;
+            if(droneActive){
+                droneBase.SetActive(true);
+                currentGun.SetActive(false);
+            }
+            else{
+                currentGun.SetActive(true);
+                droneBase.SetActive(false);
+            }
         }
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
@@ -77,23 +89,22 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-
-        if(!droneActive && !isshopping){
+        if(!droneActive && !isShopping){
             if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
                 if (activeGun == "Shotgun"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.transform.position, weapon.transform.rotation);
+                        Instantiate(bullet, bulletSpawns[3].transform.position, bulletSpawns[3].transform.rotation);
                         time = 0;
                     }
                 }
                 if (activeGun == "RocketLauncher"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[1].transform.position, bulletSpawns[1].transform.rotation);
                         time = 0;
                     }
                 }
                 if (activeGun == "Railgun" && railgunCharge >= 5){
-                    GameObject go = Instantiate(bullet, weapon.position, weapon.rotation);
+                    GameObject go = Instantiate(bullet, bulletSpawns[2].transform.position, bulletSpawns[2].transform.rotation);
                     time = 0;
                     railgunCharge = 0;
                     isCharging = true;
@@ -108,43 +119,46 @@ public class WeaponManager : MonoBehaviour
             if ((activeGun == "Pistol" || activeGun == "MachineGun") && (Input.GetKey(KeyCode.Mouse0) || controls.Player.Fire.ReadValue<float>() > 0) && time >= 0){
                 if(activeGun == "Pistol"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[0].transform.position, bulletSpawns[0].transform.rotation);
                         time = 0;
                     }
                 }
                 if(activeGun == "MachineGun"){
                     if(time >= timeToNextFire){
-                        Instantiate(bullet, weapon.position, weapon.rotation);
+                        Instantiate(bullet, bulletSpawns[4].transform.position, bulletSpawns[4].transform.rotation);
                         time = 0;
                     }
                 }
             }
-                    if (activeGun == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
-        {
+        }
+
+        if(droneActive && !isShopping){
+            if (currentDrone == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
+            {
             
-            Invoke(nameof(ScissorAttack), .5f);
+                Invoke(nameof(ScissorAttack), 0.5f);
 
-            Droneanimator.SetTrigger("ScissorAttack");
-            time = 0;
-        }
-        if (activeGun == "SpearDrone" && fireInput && timeToNextFire < Time.time)
-        {
+                Droneanimator.SetTrigger("ScissorAttack");
+                time = 0;
+            }
+            if (currentDrone == "SpearDrone" && fireInput && timeToNextFire < Time.time)
+            {
 
-            Invoke(nameof(SpearDrone), .5f);
+                Invoke(nameof(SpearDrone), 0.5f);
 
-            Droneanimator.SetTrigger("SpearAttack");
-            time = 0;
-        }
- 
-
+                Droneanimator.SetTrigger("SpearAttack");
+                time = 0;
+            }
         }
     }
-    public void UpdateWeapon(WeaponAsset m_weaponAsset)
+    public void UpdateWeapon(WeaponAsset m_weaponAsset, int x)
     {
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
-        currentWeapon = m_weaponAsset.weaponPrefab;
+        currentGun.SetActive(false);
+        currentGun = allGuns[x];
+        currentGun.SetActive(true);
     }
 
         private void ScissorAttack()

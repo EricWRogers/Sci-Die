@@ -172,7 +172,6 @@ public class DylanRemakeWeaponManager : MonoBehaviour
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;
-        attackDmg = m_weaponAsset.attackDmg;
     }
     private void ScissorAttack()
     {

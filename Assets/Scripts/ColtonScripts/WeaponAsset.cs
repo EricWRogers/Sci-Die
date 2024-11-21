@@ -6,10 +6,6 @@ using UnityEngine;
 public class WeaponAsset : ScriptableObject
 {
     public GameObject bullet;
-    public GameObject weaponPrefab;
-    public GameObject bulletSpawner;
     public string activeGun;
     public float fireRate;
-
-    public int attackDmg;
 }
