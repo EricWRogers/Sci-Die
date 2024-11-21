@@ -382,9 +382,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: gunPrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: bulletSpawns.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: gunPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1809712854}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: gunPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 920534925}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: gunPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 812044496}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: gunPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 572725802}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: gunPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1458984614}
     - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: bulletSpawns.Array.data[0]
       value: 
@@ -652,6 +676,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &572725802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2942469472806641963, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &628438822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +753,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1476685812}
   m_SourcePrefab: {fileID: 100100000, guid: b55acc8640c51724ea1d3ae4da4bee99, type: 3}
+--- !u!1 &812044496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6303618347882732037, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &920534925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6598949417310698985, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1093885783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
@@ -904,6 +943,11 @@ BoxCollider2D:
 --- !u!1 &1413611416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 270235064753263637, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1458984614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3996675103518410124, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
   m_PrefabInstance: {fileID: 161943456}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1476685809 stripped
@@ -1128,6 +1172,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1558869597}
   m_SourcePrefab: {fileID: 100100000, guid: cfdbb8bf38e977049ae19cba67262ff4, type: 3}
+--- !u!1 &1809712854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2549127692821716325, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1815347056 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}

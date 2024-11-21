@@ -13,6 +13,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject railgunReady;
 
     public Transform weapon;
+    public GameObject [] gunPrefabs;
     public GameObject [] bulletSpawns;
 
     private PlayerControls controls;
