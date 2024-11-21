@@ -29,6 +29,7 @@ public class WeaponManager : MonoBehaviour
 
     public bool isCharging = true;
     public bool droneActive = false;
+    public bool isshopping = false;
 
     public WeaponAsset defaultWeaponAsset;
     public GameObject currentWeapon;
@@ -68,7 +69,8 @@ public class WeaponManager : MonoBehaviour
 
         bool fireInput = Input.GetKeyDown(KeyCode.Mouse0) || controls.Player.Fire.triggered;
 
-        if(!droneActive){
+
+        if(!droneActive && !isshopping){
             if ((activeGun == "RocketLauncher" || activeGun == "Shotgun" || activeGun == "Railgun") && fireInput){
                 if (activeGun == "Shotgun"){
                     if(time >= timeToNextFire){
