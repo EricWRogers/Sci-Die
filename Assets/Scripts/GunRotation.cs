@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class GunRotation : MonoBehaviour
@@ -6,12 +7,12 @@ public class GunRotation : MonoBehaviour
     private Camera mainCam;
     private PlayerControls controls;
     private Vector2 aimDirection;
-    private Transform spriteTransform;
-
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         // Initialize the controls
         controls = new PlayerControls();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         // Set up the aim input callback for right stick
         controls.Player.Aim.performed += ctx => aimDirection = ctx.ReadValue<Vector2>();
@@ -32,7 +33,7 @@ public class GunRotation : MonoBehaviour
     {
         // Get the main camera and the sprite's transform
         mainCam = Camera.main;
-        spriteTransform = transform; // Assuming this script is on the sprite's GameObject
+        
     }
 
     void Update()
@@ -58,8 +59,12 @@ public class GunRotation : MonoBehaviour
 
         // Flip the sprite based on the aim direction
         if (direction.x < 0)
-            spriteTransform.localScale = new Vector3(1, -1, -1); // Flip to left
+        {
+            spriteRenderer.flipY = true;
+        }
         else
-            spriteTransform.localScale = new Vector3(1, 1, 1); // Reset to right
+        {
+            spriteRenderer.flipY = false;
+        }
     }
 }

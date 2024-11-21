@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashingCooldown = 1f;
     public Animator animator;
 
+    // Add reference to the SpriteRenderer of the main player sprite
+    public SpriteRenderer playerSpriteRenderer;
+
 
     private void Awake()
     {
@@ -36,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Set up the dash input callback
         controls.Player.Dash.performed += ctx => AttemptDash();
+
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
 
     }
 
@@ -57,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
         if (isDashing)
             return;
 
+        // Flip the sprite based on horizontal movement
+        FlipSprite();
     }
 
     void FixedUpdate()
@@ -85,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-//        dashCount--;
+        //        dashCount--;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -150,4 +158,19 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
+
+    // Method to flip the sprite based on the movement direction
+    private void FlipSprite()
+    {
+        if (moveDirection.x > 0) // Moving right
+        {
+            playerSpriteRenderer.flipX = false;
+        }
+        else if (moveDirection.x < 0) // Moving left
+        {
+            playerSpriteRenderer.flipX = true;
+        }
+        
+    }
+
 }

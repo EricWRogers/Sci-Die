@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!212 &11205409 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6224450332004377013, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &94484522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -369,6 +374,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6224450332004377013, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7558077882962614092, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -381,6 +390,10 @@ PrefabInstance:
       propertyPath: aim
       value: 
       objectReference: {fileID: 6918369886490905029, guid: eb276fbf7e7477d48b1af0dd311906cd, type: 3}
+    - target: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: arm
+      value: 
+      objectReference: {fileID: 1759853648}
     - target: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: dash
       value: 
@@ -397,8 +410,21 @@ PrefabInstance:
       propertyPath: dashCount
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: gunSpriteRenderer
+      value: 
+      objectReference: {fileID: 11205409}
+    - target: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: playerSpriteRenderer
+      value: 
+      objectReference: {fileID: 11205409}
+    - target: {fileID: 8611407024916331267, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_TagString
+      value: Arm
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6952101595429354342, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       insertIndex: -1
@@ -566,6 +592,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1759853648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8611407024916331267, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1884477017
 GameObject:
   m_ObjectHideFlags: 0
