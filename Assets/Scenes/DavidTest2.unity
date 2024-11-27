@@ -168,6 +168,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6d1377a7ccaff5b49b3d8124e6aaf997, type: 3}
+    - target: {fileID: 3800407585987421846, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800407585987421846, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6553260298182619140, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -302,6 +310,10 @@ PrefabInstance:
       propertyPath: railgunReady
       value: 
       objectReference: {fileID: 3758769302354967657, guid: b42110541d355c8459f3a3d7c0176776, type: 3}
+    - target: {fileID: 644492538561863964, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: ScrapTXT
+      value: 
+      objectReference: {fileID: 315906481}
     - target: {fileID: 1727166727645175525, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -417,7 +429,7 @@ PrefabInstance:
     - target: {fileID: 7676720683462351514, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: playerSpriteRenderer
       value: 
-      objectReference: {fileID: 11205409}
+      objectReference: {fileID: 1652386424}
     - target: {fileID: 8611407024916331267, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_TagString
       value: Arm
@@ -434,6 +446,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1652386414}
   m_SourcePrefab: {fileID: 100100000, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+--- !u!114 &315906481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6825287591065462261, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
+  m_PrefabInstance: {fileID: 94484522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &381353840
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +468,6 @@ GameObject:
   - component: {fileID: 381353843}
   - component: {fileID: 381353842}
   - component: {fileID: 381353841}
-  - component: {fileID: 381353844}
   m_Layer: 0
   m_Name: REAL Gun Haver
   m_TagString: Untagged
@@ -471,6 +493,7 @@ MonoBehaviour:
   MachineGun: {fileID: 11400000, guid: 9e17f72e85e610a41946b172a15c6a38, type: 2}
   RocketLauncher: {fileID: 11400000, guid: 368e482fe8e63d74190d210a5a21368c, type: 2}
   Railgun: {fileID: 11400000, guid: 1d10ddd68e3655c41b140410fb815b22, type: 2}
+  isColliding: 0
 --- !u!212 &381353842
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -538,29 +561,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &381353844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 381353840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60c680294d1cf8f4b93cf45fb0c7fb75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 6837949426120284389, guid: 855a9f28870c3174e953e1742f4b86fb, type: 3}
-  - {fileID: 9024065175637855009, guid: bee4263201f2fea4da0f5576f7ca2ede, type: 3}
-  - {fileID: 8510517151870421506, guid: 6a251d46aec66784b82cad45aa1f28c4, type: 3}
-  - {fileID: 7849986452376815177, guid: 05f023e55ff944b4b8c35978bf8b2d8f, type: 3}
-  - {fileID: 2897289564822056168, guid: 32aafcdd1bedc6c42bd4dea36c9c63fb, type: 3}
-  numberOfRocks: 5
-  spaceRange: 10
-  spaceBetweenRocks: 1
-  rockSpawnerDeadZone: 0
-  tryToPlaceCount: 5
 --- !u!4 &1093885783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
@@ -592,6 +592,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1652386424 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1727166727645175525, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 161943456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1759853648 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8611407024916331267, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}

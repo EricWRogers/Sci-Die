@@ -9,12 +9,11 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
-    private Vector2 moveDirection;
+    public Vector2 moveDirection;
     private PlayerControls controls;
 
     // Combat and Upgrade Variables
     public float damage = 10f;
-    //public int dashCount = 1;
 
     // Dash Variables
     public bool canDash = true;
@@ -26,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Add reference to the SpriteRenderer of the main player sprite
     public SpriteRenderer playerSpriteRenderer;
+
 
 
     private void Awake()
@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Dash.performed += ctx => AttemptDash();
 
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
 
 
     }
@@ -93,8 +94,6 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        //        dashCount--;
-        //dashCount--;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -118,12 +117,6 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
-
-    // Method to Increase Dash Count
-    /*public void IncreaseDashCount(int value)
-    {
-        dashCount += value;
-    }*/
 
     // Method to Increase Damage
     public void IncreaseDamage(float value)
