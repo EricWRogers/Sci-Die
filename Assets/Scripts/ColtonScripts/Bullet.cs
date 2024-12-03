@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == ("Enemy"))
         {
             Debug.Log("Hit Enemy");
-            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
 
             Destroy(gameObject);
         }
