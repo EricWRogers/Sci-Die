@@ -60,11 +60,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // No need to check for dash input here anymore
-        if (isDashing)
-            return;
-
-        // Flip the sprite based on horizontal movement
         FlipSprite();
     }
 
@@ -98,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(moveDirection.x * dashingPower, moveDirection.y * dashingPower);
+        GetComponent<CapsuleCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(dashingTime);
 
@@ -107,6 +103,9 @@ public class PlayerMovement : MonoBehaviour
         // Cooldown to reset dash ability
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        GetComponent<CapsuleCollider2D>().enabled = true;
+
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)

@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[2]
       value: 
       objectReference: {fileID: 94484523}
+    - target: {fileID: 2224974067813426849, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2862534334878116167, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_Actions
       value: 
@@ -341,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 2862534334878116167, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_DefaultActionMap
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996675103518410124, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_Name
@@ -388,6 +396,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6224450332004377013, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6224450332004377013, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303618347882732037, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7558077882962614092, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
