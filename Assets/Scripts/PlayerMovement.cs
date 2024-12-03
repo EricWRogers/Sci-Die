@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Combat and Upgrade Variables
     public float damage = 10f;
-    public int dashCount = 1;
+    //public int dashCount = 1;
 
     // Dash Variables
     public bool canDash = true;
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     // Attempt to perform a dash if conditions are met
     private void AttemptDash()
     {
-        if (canDash && dashCount > 0)
+        if (canDash)
         {
             StartCoroutine(Dash());
         }
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        dashCount--;
+        //dashCount--;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -93,11 +93,20 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Scrap"))
+        {
+            Destroy(other.gameObject);
+            
+        }
+    }
+
     // Method to Increase Dash Count
-    public void IncreaseDashCount(int value)
+    /*public void IncreaseDashCount(int value)
     {
         dashCount += value;
-    }
+    }*/
 
     // Method to Increase Damage
     public void IncreaseDamage(float value)
@@ -106,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Pickup Collision Detection
-    void OnTriggerEnter2D(Collider2D other)
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Pickup"))
         {
@@ -117,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(other.gameObject); // Destroy the pick-up after use
             }
         }
-    }
+    }*/
 
     // Apply the effect of the pickup
     void ApplyPickup(PickUp pickup)
@@ -137,9 +146,9 @@ public class PlayerMovement : MonoBehaviour
                 IncreaseDamage(pickup.value);  // Increase player's damage
                 break;
 
-            case PickUp.PickupType.DashCount:
+            /*case PickUp.PickupType.DashCount:
                 IncreaseDashCount((int)pickup.value);  // Increase player's dash count
-                break;
+                break;*/
         }
     }
 }
