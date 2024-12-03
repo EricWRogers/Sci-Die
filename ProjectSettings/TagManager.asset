@@ -12,6 +12,8 @@ TagManager:
   - Center
   - Pickup
   - DoorChildCollider
+  - RedLight
+  - GreenLight
   layers:
   - Default
   - TransparentFX
