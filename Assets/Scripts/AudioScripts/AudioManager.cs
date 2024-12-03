@@ -69,9 +69,7 @@ public class AudioManager : MonoBehaviour
             musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol )* 20f); // math to adjust for mixer falloff on volume
 
         }
-        if (fadeIn )
-        {
-
+        if (fadeIn) {
                 time += Time.deltaTime;
                 musicVol = Mathf.Lerp(0.0001f, 1f, time/fadeInTime);
                 musicVolume.SetFloat("MusicVolume", Mathf.Log10(musicVol)* 20f); // math to adjust for mixer falloff on volume
@@ -80,8 +78,7 @@ public class AudioManager : MonoBehaviour
 
     }
     // Plays the sound you called and named
-    public void PlaySound(string name)
-    {
+    public void PlaySound(string name){
         Sound s =  Array.Find(sounds, s => s.name == name);
             time = 0f;
         s.audioSource.Play();
@@ -89,10 +86,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string name)
     {
-        if (name != currentlyPlaying)
-        {
+        if (name != currentlyPlaying){
             time = 0f;
-        
+
             if (currentlyPlaying == null)
             {
                 Sound s = Array.Find(sounds, s => s.name == name);

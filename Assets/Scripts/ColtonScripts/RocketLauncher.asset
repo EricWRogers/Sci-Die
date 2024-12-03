@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RocketLauncher
   m_EditorClassIdentifier: 
   bullet: {fileID: 1735745669497101676, guid: 47fdcf0fedd69fe4d9b5b9916c1be798, type: 3}
+  weaponPrefab: {fileID: 7502424576604366141, guid: b55acc8640c51724ea1d3ae4da4bee99, type: 3}
   activeGun: RocketLauncher
   fireRate: 1
