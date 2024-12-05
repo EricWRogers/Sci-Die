@@ -550,6 +550,10 @@ PrefabInstance:
       propertyPath: ScrapTXT
       value: 
       objectReference: {fileID: 7375394}
+    - target: {fileID: 644492538561863964, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: scrapCount
+      value: 8888
+      objectReference: {fileID: 0}
     - target: {fileID: 2224974067813426849, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_IsActive
       value: 0
