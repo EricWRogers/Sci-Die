@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,6 +44,14 @@ public class GunRotation : MonoBehaviour
 
         Vector3 direction;
 
+        GameObject Starter = this.gameObject.transform.GetChild(0).gameObject;
+        GameObject G2 = this.gameObject.transform.GetChild(1).gameObject;
+        GameObject Rail2 = this.gameObject.transform.GetChild(2).gameObject;
+        GameObject Shotty = this.gameObject.transform.GetChild(3).gameObject;
+        GameObject Smg = this.gameObject.transform.GetChild(4).gameObject;
+        GameObject Drone = this.gameObject.transform.GetChild(6).gameObject;
+
+
         if (aimDirection.magnitude > 0.1f)
         {
             direction = new Vector3(aimDirection.x, aimDirection.y, 0).normalized;
@@ -58,6 +67,14 @@ public class GunRotation : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         spriteRenderer.flipY = direction.x < 0;
+
+        Starter.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        G2.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Rail2.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Shotty.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Smg.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Drone.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+
     }
 
     private void UpdatePositionBasedOnMovement()

@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Drone",
                     "type": "Button",
                     "id": "f46f3c3b-af76-4caa-95fe-1f1a5a4d2e24",
                     "expectedControlType": "Button",
@@ -176,11 +176,11 @@
                 {
                     "name": "",
                     "id": "fda820cc-058a-47ca-bcb9-5a8b244f6c37",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Drone",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
