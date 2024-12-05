@@ -14,7 +14,7 @@ public class ShopManagerScript : MonoBehaviour
     public Button buttonOne;
     public Button buttonTwo;
     public Button buttonThree;
-
+    public int gunRando = 3;
 
 
     void Start()
@@ -59,11 +59,15 @@ public class ShopManagerScript : MonoBehaviour
 
     public void Purchase()
     {
-        GameObject ButtonRef = GameObject.Find("EventSystem").GetComponent<EventSystem>().currentSelectedGameObject;
+        //gunRando = Random.Range(0,4);
+        GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
         if (m_scrapManager.scrapCount >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID])
         {
-            m_scrapManager.scrapCount -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
+            scrap -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
+            if (gunRando == 0){
+                gameObject.GetComponent<WeaponManager>().UpdateWeapon(gameObject.GetComponent<GunHaverScript>().Shotgun, 3);
+            }
 
             //Updating Text every time item is purchased
 

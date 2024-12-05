@@ -67,14 +67,17 @@ public class WeaponManager : MonoBehaviour
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.Q)){
-            droneActive = !droneActive;
-            if(droneActive){
+            if(!droneActive){
                 droneBase.SetActive(true);
                 currentGun.SetActive(false);
+                droneActive = !droneActive;
             }
             else{
+             if(Droneanimator.GetCurrentAnimatorStateInfo(0).IsName("DroneIdle")){
                 currentGun.SetActive(true);
                 droneBase.SetActive(false);
+                droneActive = !droneActive;
+             }
             }
         }
         time += Time.deltaTime;
