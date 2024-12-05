@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,15 +7,20 @@ public class GunRotation : MonoBehaviour
     private Camera mainCam;
     private PlayerControls controls;
     private Vector2 aimDirection;
+    private SpriteRenderer spriteRenderer;
+    private Transform playerTransform; // Reference to the player's transform
+    private Vector3 offset = new Vector3(-.132f, .143f, 0); // Default gun offset
 
     private void Awake()
     {
-        // Initialize the controls
         controls = new PlayerControls();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        // Set up the aim input callback for right stick
         controls.Player.Aim.performed += ctx => aimDirection = ctx.ReadValue<Vector2>();
         controls.Player.Aim.canceled += ctx => aimDirection = Vector2.zero;
+
+        // Get the player's transform
+        playerTransform = transform.parent; // Assuming gun is a child of the player
     }
 
     private void OnEnable()
@@ -29,38 +35,67 @@ public class GunRotation : MonoBehaviour
 
     private void Start()
     {
-        // Get the main camera
         mainCam = Camera.main;
     }
 
     void Update()
     {
+        UpdatePositionBasedOnMovement();
+
         Vector3 direction;
 
-        // If the right stick is moved, use it for aiming
+        GameObject Starter = this.gameObject.transform.GetChild(0).gameObject;
+        GameObject G2 = this.gameObject.transform.GetChild(1).gameObject;
+        GameObject Rail2 = this.gameObject.transform.GetChild(2).gameObject;
+        GameObject Shotty = this.gameObject.transform.GetChild(3).gameObject;
+        GameObject Smg = this.gameObject.transform.GetChild(4).gameObject;
+        GameObject Drone = this.gameObject.transform.GetChild(6).gameObject;
+
+
         if (aimDirection.magnitude > 0.1f)
         {
             direction = new Vector3(aimDirection.x, aimDirection.y, 0).normalized;
         }
         else
         {
-            // Otherwise, use the mouse position for aiming
             Vector3 mousePos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            mousePos.z = 0; // Ensure we're working in 2D space
+            mousePos.z = 0;
             direction = (mousePos - transform.position).normalized;
         }
 
-        // Calculate the angle in degrees and apply the rotation
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Adjust the angle based on the parent's scale direction
-        if (transform.parent.transform.localScale.x > 0)
+        spriteRenderer.flipY = direction.x < 0;
+
+        Starter.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        G2.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Rail2.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Shotty.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Smg.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+        Drone.GetComponent<SpriteRenderer>().flipY = direction.x < 0;
+
+    }
+
+    private void UpdatePositionBasedOnMovement()
+    {
+        if (playerTransform == null) return;
+
+        // Check the player's movement direction and update the gun's offset
+        var playerMovement = playerTransform.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
         {
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+            if (playerMovement.moveDirection.x > 0)
+            {
+                offset = new Vector3(-.132f, .143f, 0); // Right side
+            }
+            else if (playerMovement.moveDirection.x < 0)
+            {
+                offset = new Vector3(.132f, .143f, 0); // Left side
+            }
+
+            // Update the gun's position relative to the player
+            transform.localPosition = offset;
         }
     }
 }
