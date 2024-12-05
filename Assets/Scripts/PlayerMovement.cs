@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,12 +9,11 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
-    private Vector2 moveDirection;
+    public Vector2 moveDirection;
     private PlayerControls controls;
 
     // Combat and Upgrade Variables
     public float damage = 10f;
-    //public int dashCount = 1;
 
     // Dash Variables
     public bool canDash = true;
@@ -21,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
+    public Animator animator;
+
+    // Add reference to the SpriteRenderer of the main player sprite
+    public SpriteRenderer playerSpriteRenderer;
+
+
 
     private void Awake()
     {
@@ -32,7 +38,12 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Move.canceled += ctx => moveDirection = Vector2.zero;
 
         // Set up the dash input callback
-        controls.Player.Dash.performed += ctx => AttemptDash(); 
+        controls.Player.Dash.performed += ctx => AttemptDash();
+
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
+
+
     }
 
     private void OnEnable()
@@ -49,9 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // No need to check for dash input here anymore
-        if (isDashing)
-            return;
+        FlipSprite();
     }
 
     void FixedUpdate()
@@ -61,7 +70,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Apply movement to Rigidbody2D
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+
+        animator.SetFloat("xVel", Mathf.Abs(rb.velocity.x));
     }
+
 
     // Attempt to perform a dash if conditions are met
     private void AttemptDash()
@@ -77,11 +89,11 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        //dashCount--;
 
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(moveDirection.x * dashingPower, moveDirection.y * dashingPower);
+        GetComponent<CapsuleCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(dashingTime);
 
@@ -91,6 +103,9 @@ public class PlayerMovement : MonoBehaviour
         // Cooldown to reset dash ability
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        GetComponent<CapsuleCollider2D>().enabled = true;
+
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -101,12 +116,6 @@ public class PlayerMovement : MonoBehaviour
             
         }
     }
-
-    // Method to Increase Dash Count
-    /*public void IncreaseDashCount(int value)
-    {
-        dashCount += value;
-    }*/
 
     // Method to Increase Damage
     public void IncreaseDamage(float value)
@@ -151,4 +160,19 @@ public class PlayerMovement : MonoBehaviour
                 break;*/
         }
     }
+
+    // Method to flip the sprite based on the movement direction
+    private void FlipSprite()
+    {
+        if (moveDirection.x > 0) // Moving right
+        {
+            playerSpriteRenderer.flipX = false;
+        }
+        else if (moveDirection.x < 0) // Moving left
+        {
+            playerSpriteRenderer.flipX = true;
+        }
+        
+    }
+
 }
