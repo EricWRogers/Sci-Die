@@ -156,6 +156,7 @@ public class WeaponManager : MonoBehaviour
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset, int x)
     {
+        Debug.Log("Called");
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;

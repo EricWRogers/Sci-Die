@@ -385,7 +385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1072485850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,13 +546,21 @@ PrefabInstance:
       propertyPath: isshopping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 644492538561863964, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: ScrapTXT
+      value: 
+      objectReference: {fileID: 7375394}
+    - target: {fileID: 2224974067813426849, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -599,6 +607,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+--- !u!114 &1506462745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1094957807005980894, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 1455431957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96948568e18317d499afd68561224506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1721550137 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3533546527819793150, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
@@ -704,6 +723,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4776543254147774856, guid: a7b086e06c34cfe44873e650cf099f40, type: 3}
+      propertyPath: ghs
+      value: 
+      objectReference: {fileID: 1506462745}
     - target: {fileID: 4776543254147774856, guid: a7b086e06c34cfe44873e650cf099f40, type: 3}
       propertyPath: ScrapTXT
       value: 
