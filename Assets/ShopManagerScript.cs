@@ -9,8 +9,8 @@ public class ShopManagerScript : MonoBehaviour
 {
 
     public int[,] shopItems = new int[4,4];
-    public float scrap;
     public TMP_Text ScrapTXT;
+    private ScrapManager m_scrapManager;
     public Button buttonOne;
     public Button buttonTwo;
     public Button buttonThree;
@@ -19,7 +19,8 @@ public class ShopManagerScript : MonoBehaviour
 
     void Start()
     {
-        ScrapTXT.text = "Scrap:" + scrap;
+        m_scrapManager = GameObject.FindWithTag("Player").GetComponent<ScrapManager>();
+        //ScrapTXT.text = "Scrap:" + scrap;
 
         //Shop Item ID's
         shopItems[1, 0] = 1;
@@ -58,16 +59,16 @@ public class ShopManagerScript : MonoBehaviour
 
     public void Purchase()
     {
-        GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
+        GameObject ButtonRef = GameObject.Find("EventSystem").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        if (scrap >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID])
+        if (m_scrapManager.scrapCount >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID])
         {
-            scrap -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
+            m_scrapManager.scrapCount -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
 
             //Updating Text every time item is purchased
 
             shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID]++;
-            ScrapTXT.text = "Scrap Amount:" + scrap;
+            //ScrapTXT.text = "Scrap Amount:" + scrap;
             ButtonRef.GetComponent<buttoninfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
 
 

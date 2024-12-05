@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3448847987444685970
 Transform:
   m_ObjectHideFlags: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
   middleFirePoint: {fileID: 5936979798808815766}
   bottomFirePoint: {fileID: 3265050421848349315}
   Bullet: {fileID: 3555092075681369672, guid: 1e12e051a2330eb47b7acff852a4710a, type: 3}
-  enemyGun: 0
+  enemyGun: 2
 --- !u!114 &7398669331438284318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxScrap: 4
   minScrap: 1
-  scrapPrefab: {fileID: 3638408847439029476, guid: 7e77953bca2ff9d4c95987792f3c8d10, type: 3}
+  scrapPrefab: {fileID: 2002609117172566100, guid: aad9784f6ea202a488391a69787a5c46, type: 3}
 --- !u!114 &5940924523705971447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5111907483629365741, guid: a0b55b43f27074649833eed3bc4bd3a0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
