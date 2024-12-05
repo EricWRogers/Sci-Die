@@ -66,7 +66,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Q)){
+        if(Input.GetKeyDown(KeyCode.Q) || controls.Player.Drone.triggered){
             if(!droneActive){
                 droneBase.SetActive(true);
                 currentGun.SetActive(false);
