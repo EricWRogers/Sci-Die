@@ -67,14 +67,17 @@ public class WeaponManager : MonoBehaviour
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.Q) || controls.Player.Drone.triggered){
-            droneActive = !droneActive;
-            if(droneActive){
+            if(!droneActive){
                 droneBase.SetActive(true);
                 currentGun.SetActive(false);
+                droneActive = !droneActive;
             }
             else{
+             if(Droneanimator.GetCurrentAnimatorStateInfo(0).IsName("DroneIdle")){
                 currentGun.SetActive(true);
                 droneBase.SetActive(false);
+                droneActive = !droneActive;
+             }
             }
         }
         time += Time.deltaTime;
@@ -153,6 +156,7 @@ public class WeaponManager : MonoBehaviour
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset, int x)
     {
+        Debug.Log("Called");
         bullet = m_weaponAsset.bullet;
         activeGun = m_weaponAsset.activeGun;
         fireRate = m_weaponAsset.fireRate;

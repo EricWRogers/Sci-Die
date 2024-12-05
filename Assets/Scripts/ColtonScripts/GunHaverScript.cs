@@ -19,7 +19,6 @@ public class GunHaverScript : MonoBehaviour
         if (isColliding == true && weaponTag == "Pickup1" && Input.GetKeyDown(KeyCode.E))
         {
             weaponManager.UpdateWeapon(Pistol, 0);
-            Debug.Log("Pistol");
             isColliding = false;
         }
 
