@@ -20,6 +20,8 @@ TagManager:
   - Pickup4
   - Pickup5
   - DoorChildCollider
+  - RedLight
+  - GreenLight
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ using TMPro;
 
 public class ScrapManager : MonoBehaviour
 {
-    public int scrapCount;
+    public int scrapCount = 10000;
     public TMP_Text ScrapTXT;
     //public ScrapManager sm;
     
