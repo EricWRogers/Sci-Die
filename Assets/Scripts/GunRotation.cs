@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class GunRotation : MonoBehaviour
 {
-    private Camera mainCam;
+    public Camera mainCam;
     private PlayerControls controls;
     private Vector2 aimDirection;
     private SpriteRenderer spriteRenderer;
