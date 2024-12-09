@@ -72,7 +72,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4206008375096475946}
-  - {fileID: 6906921477698483302}
   - {fileID: 1865798929544156615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,7 +115,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2012faaa18957664b9d7cde72368a862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -207,6 +206,9 @@ MonoBehaviour:
   outOfHealth:
     m_PersistentCalls:
       m_Calls: []
+  hurt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7676720683462351514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a80fb12322bb75418db416016e0d68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   rb: {fileID: 8492847230265520258}
   moveDirection: {x: 0, y: 0}
   damage: 10

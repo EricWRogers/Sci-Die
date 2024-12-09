@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rb;
 
     public float flashTime;
-    Color origionalColor;
+    //Color origionalColor;
     public SpriteRenderer image;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
         m_target = GameObject.FindGameObjectWithTag("Player");
 
         InvokeRepeating("UpdatePath", 0f, .5f);
-        origionalColor = image.color;
+        //origionalColor = image.color;
     }
 
     void UpdatePath()
@@ -84,6 +84,6 @@ public class EnemyAI : MonoBehaviour
     }
     public void ResetColor()
     {
-        image.color = origionalColor;
+        //image.color = origionalColor;
     }
 }
