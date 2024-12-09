@@ -1277,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &273260401
 Transform:
   m_ObjectHideFlags: 0
@@ -1388,7 +1388,7 @@ Transform:
   m_GameObject: {fileID: 337303596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.1, y: 58.8, z: 1.1949488}
+  m_LocalPosition: {x: 20.2, y: 54.9, z: 1.1949488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2569,7 +2569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &803728055
 Transform:
   m_ObjectHideFlags: 0
@@ -2602,7 +2602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &844420496
 Transform:
   m_ObjectHideFlags: 0
@@ -4052,6 +4052,10 @@ PrefabInstance:
       propertyPath: ScrapTXT
       value: 
       objectReference: {fileID: 1292027014}
+    - target: {fileID: 644492538561863964, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: scrapCount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2121695749972567885, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
@@ -4910,7 +4914,7 @@ GameObject:
   - component: {fileID: 1714577004}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: Event
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4980,7 +4984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1731286921
 Transform:
   m_ObjectHideFlags: 0
@@ -5762,11 +5766,11 @@ PrefabInstance:
       objectReference: {fileID: 2027153498}
     - target: {fileID: 690284732587791564, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
       propertyPath: m_TagString
-      value: Event
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2214342582175318692, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
       propertyPath: m_TagString
-      value: Event
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2454588061390874383, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5902,7 +5906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7173293478398608846, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
       propertyPath: m_TagString
-      value: Event
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7447412316887554794, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

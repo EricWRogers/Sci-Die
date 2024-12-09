@@ -11,7 +11,7 @@ public class BossStateMachine : SimpleStateMachine
     public StageTwo stageTwo;
 
     //var
-    public Health health;
+    public EnemyHealth health;
     public Timer timer;
     public Rigidbody2D rb;
     public Transform currentPoint;
@@ -61,7 +61,7 @@ public class BossStateMachine : SimpleStateMachine
         currentPoint = points[index].transform;
         m_target = GameObject.FindGameObjectWithTag("Player");
         m_center = GameObject.FindGameObjectWithTag("Center");
-        health = GetComponent<Health>();
+        health = GetComponent<EnemyHealth>();
         origionalColor = image.color;
 
     }
