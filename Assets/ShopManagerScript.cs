@@ -19,6 +19,10 @@ public class ShopManagerScript : MonoBehaviour
     public GunHaverScript ghs;
     public int gunRando;
 
+    public WeaponAsset ScissorAttack;
+    public WeaponAsset SpearAttack;
+    public WeaponAsset ScythAttack;
+
 
     void Start()
     {
@@ -63,6 +67,7 @@ public class ShopManagerScript : MonoBehaviour
 
     public void Purchase()
     {
+         int droneRando = Random.Range(2,3);
         gunRando = Random.Range(0,4);
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
@@ -87,8 +92,20 @@ public class ShopManagerScript : MonoBehaviour
             //ScrapTXT.text = "Scrap Amount:" + scrap;
             ButtonRef.GetComponent<buttoninfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
 
+            
 
 
+        }
+        if(ButtonRef.GetComponent<buttoninfo>().ItemID == 2){
+            m_scrapManager.scrapCount -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
+            if(droneRando  == 2){
+                 player.GetComponent<WeaponManager>().UpdateDrone(SpearAttack);
+            }
+
+            else{
+                player.GetComponent<WeaponManager>().UpdateDrone(ScythAttack);
+            }
+           
 
         }
     }

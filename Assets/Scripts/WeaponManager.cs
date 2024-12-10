@@ -181,6 +181,12 @@ public class WeaponManager : MonoBehaviour
         currentGun.SetActive(true);
     }
 
+    public void UpdateDrone(WeaponAsset m_weponAsset){
+        currentDrone = m_weponAsset.activeGun;
+        fireRate = m_weponAsset.fireRate;
+        attackDmg = m_weponAsset.attackDmg;
+    }
+
         private void ScissorAttack()
     {
               Debug.Log("ScissorDronedamage");

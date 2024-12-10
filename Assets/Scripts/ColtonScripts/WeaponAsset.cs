@@ -8,4 +8,6 @@ public class WeaponAsset : ScriptableObject
     public GameObject bullet;
     public string activeGun;
     public float fireRate;
+
+    public int attackDmg;
 }
