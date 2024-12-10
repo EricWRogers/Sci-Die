@@ -21,6 +21,7 @@ public class WinScript : MonoBehaviour
     // Method to quit the game
     public void QuitGame()
     {
-        Application.Quit(); // Close the application
+        Time.timeScale = 1; // Reset time scale to normal
+        SceneManager.LoadScene("MainMenu"); // Load the MainMenu scene
     }
 }

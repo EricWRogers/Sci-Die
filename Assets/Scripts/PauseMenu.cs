@@ -27,7 +27,6 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
-
     }
 
     public void PauseGame()
@@ -49,10 +48,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
+
     public void QuitGame()
     {
-        Application.Quit();
+        Time.timeScale = 1f; // Ensure the game is unpaused
+        SceneManager.LoadScene("MainMenu"); // Load the MainMenu scene
     }
-
-
 }
