@@ -777,6 +777,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 163726612}
+--- !u!1 &103194196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103194198}
+  - component: {fileID: 103194197}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &103194197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103194196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815d9ca6109483148b1c37b74d69dbb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 11400000, guid: 9638b080b547fb148a2e0be5c044d35f, type: 2}
+  gunNum: 0
+  droneAttack: {fileID: 11400000, guid: 828e5f9827079a941a7e194d02ed397d, type: 2}
+  scrap: 0
+--- !u!4 &103194198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103194196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.057304, y: 25.665989, z: -0.40032846}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &124241294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1018,9 +1066,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1392234862}
     - target: {fileID: 4776543254147774856, guid: a7b086e06c34cfe44873e650cf099f40, type: 3}
+      propertyPath: ScythAttack
+      value: 
+      objectReference: {fileID: 11400000, guid: ffb0c54fa3e0e604cafd663236ae0a52, type: 2}
+    - target: {fileID: 4776543254147774856, guid: a7b086e06c34cfe44873e650cf099f40, type: 3}
+      propertyPath: SpearAttack
+      value: 
+      objectReference: {fileID: 11400000, guid: f60a31855e2b0ab4abfa3a27d2229fb0, type: 2}
+    - target: {fileID: 4776543254147774856, guid: a7b086e06c34cfe44873e650cf099f40, type: 3}
       propertyPath: buttonThree
       value: 
       objectReference: {fileID: 711874684}
+    - target: {fileID: 4776543254147774856, guid: a7b086e06c34cfe44873e650cf099f40, type: 3}
+      propertyPath: ScissorAttack
+      value: 
+      objectReference: {fileID: 11400000, guid: 828e5f9827079a941a7e194d02ed397d, type: 2}
     - target: {fileID: 7718872435711165338, guid: a7b086e06c34cfe44873e650cf099f40, type: 3}
       propertyPath: m_Name
       value: ShopManager
@@ -1388,7 +1448,7 @@ Transform:
   m_GameObject: {fileID: 337303596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.2, y: 54.9, z: 1.1949488}
+  m_LocalPosition: {x: 43.4, y: 12.1, z: 1.1949488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4054,7 +4114,7 @@ PrefabInstance:
       objectReference: {fileID: 1292027014}
     - target: {fileID: 644492538561863964, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: scrapCount
-      value: 20
+      value: 888
       objectReference: {fileID: 0}
     - target: {fileID: 2121695749972567885, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: hearts.Array.data[0]
@@ -4068,6 +4128,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[2]
       value: 
       objectReference: {fileID: 1503636925}
+    - target: {fileID: 3054079526206824617, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4533625970502388986, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5902,6 +5966,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6781160861199041593, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173293478398608846, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7173293478398608846, guid: f4b3885ca0834ab40a7aa6383a3b6491, type: 3}
@@ -7797,6 +7865,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 103194198}
   - {fileID: 513898098}
   - {fileID: 1593902426}
   - {fileID: 888549610}

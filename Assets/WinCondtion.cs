@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class WinCondtion : MonoBehaviour
 {
+    private GameManger m_gameManager;
     public string scene;
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_gameManager = GameObject.Find("GameManager").GetComponent<GameManger>();
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class WinCondtion : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-
+            m_gameManager.GetVaribles();
             SceneManager.LoadScene(scene);
         }
     }

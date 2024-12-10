@@ -42,6 +42,10 @@ public class WeaponManager : MonoBehaviour
     //Swap Vars
     public GameObject droneBase;
     public GameObject currentGun;
+    [HideInInspector] public int curGunNum;
+    [HideInInspector] public WeaponAsset curWeaponAsset;
+    [HideInInspector] public WeaponAsset curDroneAssest;
+    public GameManger gameManger;
 
     public List<GameObject> allGuns;
 
@@ -52,12 +56,14 @@ public class WeaponManager : MonoBehaviour
     }
     void Awake()
         {
-            UpdateWeapon(defaultWeaponAsset, 0);
+            gameManger = GameObject.Find("GameManager").GetComponent<GameManger>();
+            UpdateWeapon(gameManger.gun, gameManger.gunNum);
+            UpdateDrone(gameManger.droneAttack);
             controls = new PlayerControls();
             controls.Player.Dash.performed += ctx => Update();
 
-            currentGun = allGuns[0];
-
+            currentGun = allGuns[gameManger.gunNum];
+            droneActive = false;
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
     private void OnEnable()
@@ -179,12 +185,15 @@ public class WeaponManager : MonoBehaviour
         currentGun.SetActive(false);
         currentGun = allGuns[x];
         currentGun.SetActive(true);
+        curWeaponAsset = m_weaponAsset;
+        curGunNum = x;
     }
 
     public void UpdateDrone(WeaponAsset m_weponAsset){
         currentDrone = m_weponAsset.activeGun;
         fireRate = m_weponAsset.fireRate;
         attackDmg = m_weponAsset.attackDmg;
+        curDroneAssest = m_weponAsset;
     }
 
         private void ScissorAttack()
@@ -196,7 +205,7 @@ public class WeaponManager : MonoBehaviour
 
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<Health>().TakeDamage(attackDmg);
+                enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg);
             }
         
     }
@@ -207,7 +216,7 @@ public class WeaponManager : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg);
         }
     }
         private void ScythAttack()
@@ -217,7 +226,7 @@ public class WeaponManager : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+            enemy.GetComponent<EnemyHealth>().TakeDamage(attackDmg);
 
         }
     }

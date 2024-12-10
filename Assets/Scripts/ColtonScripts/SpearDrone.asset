@@ -15,4 +15,4 @@ MonoBehaviour:
   bullet: {fileID: 0}
   activeGun: SpearDrone
   fireRate: 0.5
-  attackDmg: 1
+  attackDmg: 3
