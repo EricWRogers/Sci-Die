@@ -39,6 +39,7 @@ public class WeaponManager : MonoBehaviour
     public WeaponAsset defaultWeaponAsset;
     private bool scythAttacking;
     public string currentDrone = "ScissorDrone";
+    private float dronFireRate;
     //Swap Vars
     public GameObject droneBase;
     public GameObject currentGun;
@@ -93,6 +94,7 @@ public class WeaponManager : MonoBehaviour
         }
         time += Time.deltaTime;
         float timeToNextFire = 1/fireRate;
+        float timeToNextDrone = 1/dronFireRate;
         if (isCharging){
             railgunCharge += Time.deltaTime;
             if(railgunCharge >= 5){
@@ -148,7 +150,7 @@ public class WeaponManager : MonoBehaviour
         }
 
         if(droneActive && !isShopping){
-            if (currentDrone == "ScissorDrone" && fireInput && timeToNextFire < Time.time)
+            if (currentDrone == "ScissorDrone" && fireInput && timeToNextDrone < Time.time)
             {
             
                 Invoke(nameof(ScissorAttack), 0.5f);
@@ -156,7 +158,7 @@ public class WeaponManager : MonoBehaviour
                 Droneanimator.SetTrigger("ScissorAttack");
                 time = 0;
             }
-            if (currentDrone == "SpearDrone" && fireInput && timeToNextFire < Time.time)
+            if (currentDrone == "SpearDrone" && fireInput && timeToNextDrone < Time.time)
             {
 
                 Invoke(nameof(SpearDrone), 0.5f);
@@ -164,7 +166,7 @@ public class WeaponManager : MonoBehaviour
                 Droneanimator.SetTrigger("SpearAttack");
                 time = 0;
             }
-            if (currentDrone == "ScythDrone" && fireInput && timeToNextFire<Time.time && !scythAttacking)
+            if (currentDrone == "ScythDrone" && fireInput && timeToNextDrone<Time.time && !scythAttacking)
             {
                 Invoke(nameof(ScythAttackReset),2f);
                 Droneanimator.SetTrigger("ScythAttack");
@@ -191,7 +193,7 @@ public class WeaponManager : MonoBehaviour
 
     public void UpdateDrone(WeaponAsset m_weponAsset){
         currentDrone = m_weponAsset.activeGun;
-        fireRate = m_weponAsset.fireRate;
+        dronFireRate = m_weponAsset.fireRate;
         attackDmg = m_weponAsset.attackDmg;
         curDroneAssest = m_weponAsset;
     }
