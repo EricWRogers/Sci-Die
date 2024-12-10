@@ -71,7 +71,7 @@ public class ShopManagerScript : MonoBehaviour
         gunRando = Random.Range(0,4);
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        if (m_scrapManager.scrapCount >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID])
+        if (m_scrapManager.scrapCount >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID] && ButtonRef.GetComponent<buttoninfo>().ItemID == 1)
         {
             m_scrapManager.scrapCount -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
             if (gunRando == 0){
@@ -96,7 +96,7 @@ public class ShopManagerScript : MonoBehaviour
 
 
         }
-        if(ButtonRef.GetComponent<buttoninfo>().ItemID == 2){
+        if(m_scrapManager.scrapCount >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID] && ButtonRef.GetComponent<buttoninfo>().ItemID == 2){
             m_scrapManager.scrapCount -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
             if(droneRando  == 2){
                  player.GetComponent<WeaponManager>().UpdateDrone(SpearAttack);
