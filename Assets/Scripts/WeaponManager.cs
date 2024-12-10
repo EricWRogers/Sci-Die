@@ -32,17 +32,20 @@ public class WeaponManager : MonoBehaviour
     public bool isShopping = false;
 //Drone Vars
     public Transform droneAttackPoint;
-    public int attackDmg;
+    public int attackDmg = 2;
     public float m_angle;
     public LayerMask enemyLayers;
     public Animator Droneanimator;
     public WeaponAsset defaultWeaponAsset;
+    private bool scythAttacking;
     public string currentDrone = "ScissorDrone";
     //Swap Vars
     public GameObject droneBase;
     public GameObject currentGun;
 
     public List<GameObject> allGuns;
+
+    private AudioManager audioManager;
 
     public WeaponManager(){
 
@@ -54,6 +57,8 @@ public class WeaponManager : MonoBehaviour
             controls.Player.Dash.performed += ctx => Update();
 
             currentGun = allGuns[0];
+
+            audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
     private void OnEnable()
     {
@@ -124,6 +129,7 @@ public class WeaponManager : MonoBehaviour
                     if(time >= timeToNextFire){
                         Instantiate(bullet, bulletSpawns[0].transform.position, bulletSpawns[0].transform.rotation);
                         time = 0;
+                        audioManager.PlaySound("RayGun");
                     }
                 }
                 if(activeGun == "MachineGun"){
@@ -152,6 +158,16 @@ public class WeaponManager : MonoBehaviour
                 Droneanimator.SetTrigger("SpearAttack");
                 time = 0;
             }
+            if (currentDrone == "ScythDrone" && fireInput && timeToNextFire<Time.time && !scythAttacking)
+            {
+                Invoke(nameof(ScythAttackReset),2f);
+                Droneanimator.SetTrigger("ScythAttack");
+                scythAttacking = true;
+                time = 0;
+            }
+        }
+        if(scythAttacking){
+            ScythAttack();
         }
     }
     public void UpdateWeapon(WeaponAsset m_weaponAsset, int x)
@@ -187,5 +203,20 @@ public class WeaponManager : MonoBehaviour
         {
             enemy.GetComponent<Health>().TakeDamage(attackDmg);
         }
+    }
+        private void ScythAttack()
+    {
+        Vector2 attackPoint = new Vector2 (Droneanimator.gameObject.transform.position.x, Droneanimator.gameObject.transform.position.y );
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint, 0.75f, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Health>().TakeDamage(attackDmg);
+
+        }
+    }
+    private void ScythAttackReset()
+    {
+        scythAttacking = false;
     }
 }
