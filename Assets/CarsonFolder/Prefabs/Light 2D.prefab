@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7834160292376987333}
   - component: {fileID: 1527729798600757926}
+  - component: {fileID: 8222845763742693971}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Intensity: 4.44
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000d7362085791d8c404fa2e50a272132d9677ca1218d76c764
+  m_ApplyToSortingLayers: 00000000d7362085272132d9677ca1218d76c7644fa2e50a
   m_LightCookieSprite: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -66,8 +67,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.3972001, y: 0.35039997, z: 0}
-    m_Extent: {x: 7.0708003, y: 9.2973, z: 0}
+    m_Center: {x: -1.3982501, y: 0.36179972, z: 0}
+    m_Extent: {x: 7.06685, y: 9.2903, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -94,3 +95,24 @@ MonoBehaviour:
   - {x: -2.9636307, y: -1.3141327, z: 0}
   - {x: -2.401989, y: -2.3611603, z: 0}
   - {x: -1.7542381, y: -2.929119, z: 0}
+--- !u!95 &8222845763742693971
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4693041387399411374}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5bed2cba6f42c1441b8cb93d1b15a146, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HealthCounter : MonoBehaviour
 {
-    public Image[] hearts; // UI Image components representing the hearts
+    public Image[] hearts; // UI image components representing the hearts
     public Sprite fullHeart; // Sprite for a full heart
     public Sprite halfHeart; // Sprite for a half heart
     public Sprite emptyHeart; // Sprite for an empty heart

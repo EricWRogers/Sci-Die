@@ -319,6 +319,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hurt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6797537555491965594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,3 +387,5 @@ MonoBehaviour:
   maxSpeed: 0
   speed: 200
   nextWaypointDistance: 3
+  flashTime: 0
+  image: {fileID: 0}
