@@ -6,13 +6,14 @@ using TMPro;
 
 public class ScrapManager : MonoBehaviour
 {
-    public int scrapCount = 10000;
+    public int scrapCount = 0;
     public TMP_Text ScrapTXT;
-    //public ScrapManager sm;
-    
-    void Start()
+    public GameManger gameManger;
+
+    void Awake()
     {
-        
+        gameManger = GameObject.Find("GameManager").GetComponent<GameManger>();
+        scrapCount = gameManger.scrap;
     }
 
     

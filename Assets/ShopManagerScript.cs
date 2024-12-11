@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.PackageManager;
 
 public class ShopManagerScript : MonoBehaviour
 {
@@ -78,12 +77,12 @@ public class ShopManagerScript : MonoBehaviour
                 player.GetComponent<WeaponManager>().UpdateWeapon(ghs.Pistol, 0);
             } else if(gunRando == 1){
                 player.GetComponent<WeaponManager>().UpdateWeapon(ghs.RocketLauncher, 1);
-            } else if(gunRando == 2){
+            } /*else if(gunRando == 2){
                 player.GetComponent<WeaponManager>().UpdateWeapon(ghs.Railgun, 2);
+            }*/ else if(gunRando == 2){
+                player.GetComponent<WeaponManager>().UpdateWeapon(ghs.Shotgun, 2);
             } else if(gunRando == 3){
-                player.GetComponent<WeaponManager>().UpdateWeapon(ghs.Shotgun, 3);
-            } else if(gunRando == 4){
-                player.GetComponent<WeaponManager>().UpdateWeapon(ghs.MachineGun, 4);
+                player.GetComponent<WeaponManager>().UpdateWeapon(ghs.MachineGun, 3);
             }
 
             //Updating Text every time item is purchased

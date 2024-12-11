@@ -1241,6 +1241,11 @@ Tilemap:
   m_CorrespondingSourceObject: {fileID: 335607273694194275, guid: a0485cde0c92be44eb1fff0144dbbc08, type: 3}
   m_PrefabInstance: {fileID: 3398679547867474332}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &257916240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3996675103518410124, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 1419577287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &261845624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,7 +1453,7 @@ Transform:
   m_GameObject: {fileID: 337303596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.4, y: 12.1, z: 1.1949488}
+  m_LocalPosition: {x: 21.1, y: 54.9, z: 1.1949488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4108,13 +4113,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: allGuns.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: allGuns.Array.data[2]
+      value: 
+      objectReference: {fileID: 1898528737}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: allGuns.Array.data[3]
+      value: 
+      objectReference: {fileID: 257916240}
+    - target: {fileID: 49969111346849029, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+      propertyPath: allGuns.Array.data[4]
+      value: 
+      objectReference: {fileID: 1825917290}
     - target: {fileID: 644492538561863964, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: ScrapTXT
       value: 
       objectReference: {fileID: 1292027014}
     - target: {fileID: 644492538561863964, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: scrapCount
-      value: 888
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2121695749972567885, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: hearts.Array.data[0]
@@ -4138,11 +4159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.2
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.3
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 5500740870642560895, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5418,6 +5439,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1825917290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6303618347882732037, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 1419577287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1837253898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5554,6 +5580,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4634773386277907286, guid: 399966e84a71f454aa66f16348597c58, type: 3}
   m_PrefabInstance: {fileID: 1842668362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1898528737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2942469472806641963, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
+  m_PrefabInstance: {fileID: 1419577287}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1914056362
 GameObject:
