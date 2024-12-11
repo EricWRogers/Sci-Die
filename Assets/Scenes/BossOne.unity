@@ -284,6 +284,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0b55b43f27074649833eed3bc4bd3a0, type: 3}
+--- !u!114 &28703395 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4776163323696679968, guid: b5d8ef97cd5e54b4c97a58e3e8a03a12, type: 3}
+  m_PrefabInstance: {fileID: 2108700382}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410e488d458aa6342b786990ca6919e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &48225270
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,17 +890,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b89ca3a4f9546e24fa7f96bc27864b5d, type: 3}
---- !u!114 &606584675 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 458124601313665574, guid: 92cc2f6bfe3eaa54e806b8c88caf4624, type: 3}
-  m_PrefabInstance: {fileID: 139268845}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64bad38e3b2924e4da71bb35008ef6f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &612037981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64356,9 +64356,9 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 606584675}
-        m_TargetAssemblyTypeName: PlayerDied, Assembly-CSharp
-        m_MethodName: BackToMain
+      - m_Target: {fileID: 28703395}
+        m_TargetAssemblyTypeName: WinScript, Assembly-CSharp
+        m_MethodName: ShowWinScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

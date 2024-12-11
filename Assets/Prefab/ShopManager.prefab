@@ -48,8 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba20f5713577c143a093eb956acba9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrap: 100
   ScrapTXT: {fileID: 0}
   buttonOne: {fileID: 0}
   buttonTwo: {fileID: 0}
   buttonThree: {fileID: 0}
+  player: {fileID: 0}
+  ghs: {fileID: 0}
+  gunRando: 0
+  ScissorAttack: {fileID: 11400000, guid: 828e5f9827079a941a7e194d02ed397d, type: 2}
+  SpearAttack: {fileID: 11400000, guid: f60a31855e2b0ab4abfa3a27d2229fb0, type: 2}
+  ScythAttack: {fileID: 11400000, guid: ffb0c54fa3e0e604cafd663236ae0a52, type: 2}
